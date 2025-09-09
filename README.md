@@ -1,82 +1,62 @@
-# HTML
+# AgriAssist - AI Farming Assistant
 
-A modern HTML project utilizing Tailwind CSS for building responsive web applications with minimal setup.
+## 🌾 About
+AgriAssist is an AI-powered agricultural advisory platform designed specifically for Kerala farmers. It provides voice recognition, image analysis, and intelligent farming advice in both English and Malayalam.
 
-## 🚀 Features
+## ✨ Features
+- 🎤 **Voice Recognition** - Speak in English or Malayalam
+- 📷 **Image Analysis** - AI-powered crop disease detection
+- 🤖 **AI Chat** - Intelligent farming advice
+- 📱 **Mobile-First** - Optimized for mobile devices
+- 🌐 **PWA** - Install as a mobile app
+- 🌧️ **Weather Integration** - Real-time weather updates
+- 💰 **Crop Calculator** - Profit and yield calculations
 
-- **HTML5** - Modern HTML structure with best practices
-- **Tailwind CSS** - Utility-first CSS framework for rapid UI development
-- **Custom Components** - Pre-built component classes for buttons and containers
-- **NPM Scripts** - Easy-to-use commands for development and building
-- **Responsive Design** - Mobile-first approach for all screen sizes
+## 🚀 Quick Start
 
-## 📋 Prerequisites
+### For Users
+1. Visit the live website
+2. Allow microphone access for voice features
+3. Start asking questions or upload images
+4. Get instant AI-powered farming advice
 
-- Node.js (v12.x or higher)
-- npm or yarn
+### For Developers
+1. Clone this repository
+2. Open in VS Code
+3. Run `npm install` to install dependencies
+4. Run `npm run dev` to start development server
 
-## 🛠️ Installation
+## 🔧 Configuration
 
-1. Install dependencies:
-```bash
-npm install
-# or
-yarn install
-```
+### Backend Setup
+1. Update `js/config.js` with your backend URL
+2. Add your API keys (Gemini, Weather)
+3. Configure CORS on your backend server
 
-2. Start the development server:
-```bash
-npm run dev
-# or
-yarn dev
-```
+### API Keys Required
+- **Gemini Vision API**: For image analysis
+- **Weather API**: For weather updates (optional)
+- **Backend API**: Your custom farming knowledge base
 
-## 📁 Project Structure
+## 📱 Mobile Installation
+1. Open the website on your mobile browser
+2. Look for "Add to Home Screen" option
+3. Install as a PWA app
 
-```
-html_app/
-├── css/
-│   ├── tailwind.css   # Tailwind source file with custom utilities
-│   └── main.css       # Compiled CSS (generated)
-├── pages/             # HTML pages
-├── index.html         # Main entry point
-├── package.json       # Project dependencies and scripts
-└── tailwind.config.js # Tailwind CSS configuration
-```
+## 🌐 Live Demo
+[Your deployed website URL will be here]
 
-## 🎨 Styling
+## 🤝 Contributing
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
 
-This project uses Tailwind CSS for styling. Custom utility classes include:
+## 📄 License
+MIT License - see LICENSE file for details
 
+## 📞 Support
+For support, email: [your-email@domain.com]
 
-## 🧩 Customization
-
-To customize the Tailwind configuration, edit the `tailwind.config.js` file:
-
-
-## 📦 Build for Production
-
-Build the CSS for production:
-
-```bash
-npm run build:css
-# or
-yarn build:css
-```
-
-## 📱 Responsive Design
-
-The app is built with responsive design using Tailwind CSS breakpoints:
-
-- `sm`: 640px and up
-- `md`: 768px and up
-- `lg`: 1024px and up
-- `xl`: 1280px and up
-- `2xl`: 1536px and up
-
-## 🙏 Acknowledgments
-
-- Built with [Rocket.new](https://rocket.new)
-- Powered by HTML and Tailwind CSS
-
-
+---
+Made with ❤️ for Kerala Farmers
