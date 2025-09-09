@@ -13,7 +13,7 @@ const CONFIG = {
             retryAttempts: 3
         },
         production: {
-            baseUrl: 'https://your-backend-domain.com', // Replace with your actual backend URL
+            baseUrl: 'https://your-backend-domain.railway.app', // Replace with your actual backend URL
             timeout: 30000,
             retryAttempts: 3
         }
