@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Primary Colors */
+    --color-primary: #2D5016; /* deep-forest-green */
+    --color-primary-50: #F0F4ED; /* light-forest-tint */
+    --color-primary-100: #D9E5CC; /* forest-tint-100 */
+    --color-primary-200: #B8CFA3; /* forest-tint-200 */
+    --color-primary-300: #96B97A; /* forest-tint-300 */
+    --color-primary-400: #75A351; /* forest-tint-400 */
+    --color-primary-500: #548D28; /* forest-tint-500 */
+    --color-primary-600: #2D5016; /* deep-forest-green */
+    --color-primary-700: #244012; /* darker-forest */
+    --color-primary-800: #1B300E; /* darkest-forest */
+    --color-primary-900: #12200A; /* forest-black */
+
+    /* Secondary Colors */
+    --color-secondary: #4A7C59; /* fresh-leaf-green */
+    --color-secondary-50: #F2F7F4; /* light-leaf-tint */
+    --color-secondary-100: #DDEAE1; /* leaf-tint-100 */
+    --color-secondary-200: #BBDDCC; /* leaf-tint-200 */
+    --color-secondary-300: #99D0B7; /* leaf-tint-300 */
+    --color-secondary-400: #77C3A2; /* leaf-tint-400 */
+    --color-secondary-500: #55B68D; /* leaf-tint-500 */
+    --color-secondary-600: #4A7C59; /* fresh-leaf-green */
+    --color-secondary-700: #3E6347; /* darker-leaf */
+    --color-secondary-800: #324A35; /* darkest-leaf */
+    --color-secondary-900: #263123; /* leaf-black */
+
+    /* Accent Colors */
+    --color-accent: #FFB000; /* golden-harvest-yellow */
+    --color-accent-50: #FFFBF0; /* light-harvest-tint */
+    --color-accent-100: #FFF3CC; /* harvest-tint-100 */
+    --color-accent-200: #FFE799; /* harvest-tint-200 */
+    --color-accent-300: #FFDB66; /* harvest-tint-300 */
+    --color-accent-400: #FFCF33; /* harvest-tint-400 */
+    --color-accent-500: #FFC300; /* harvest-tint-500 */
+    --color-accent-600: #FFB000; /* golden-harvest-yellow */
+    --color-accent-700: #CC8D00; /* darker-harvest */
+    --color-accent-800: #996A00; /* darkest-harvest */
+    --color-accent-900: #664700; /* harvest-black */
+
+    /* Background Colors */
+    --color-background: #FEFEFE; /* coconut-white */
+    --color-surface: #F8F9FA; /* subtle-gray */
+    --color-surface-50: #FFFFFF; /* pure-white */
+    --color-surface-100: #F8F9FA; /* subtle-gray */
+    --color-surface-200: #E9ECEF; /* light-gray */
+    --color-surface-300: #DEE2E6; /* medium-gray */
+    --color-surface-400: #CED4DA; /* gray-400 */
+    --color-surface-500: #ADB5BD; /* gray-500 */
+
+    /* Text Colors */
+    --color-text-primary: #1A1A1A; /* high-contrast-black */
+    --color-text-secondary: #6B7280; /* clear-hierarchy-gray */
+    --color-text-tertiary: #9CA3AF; /* light-text-gray */
+    --color-text-inverse: #FFFFFF; /* white-text */
+
+    /* Status Colors */
+    --color-success: #059669; /* healthy-crop-green */
+    --color-success-50: #ECFDF5; /* light-success-tint */
+    --color-success-100: #D1FAE5; /* success-tint-100 */
+    --color-success-200: #A7F3D0; /* success-tint-200 */
+    --color-success-300: #6EE7B7; /* success-tint-300 */
+    --color-success-400: #34D399; /* success-tint-400 */
+    --color-success-500: #10B981; /* success-tint-500 */
+    --color-success-600: #059669; /* healthy-crop-green */
+    --color-success-700: #047857; /* darker-success */
+    --color-success-800: #065F46; /* darkest-success */
+    --color-success-900: #064E3B; /* success-black */
+
+    --color-warning: #D97706; /* monsoon-amber */
+    --color-warning-50: #FFFBEB; /* light-warning-tint */
+    --color-warning-100: #FEF3C7; /* warning-tint-100 */
+    --color-warning-200: #FDE68A; /* warning-tint-200 */
+    --color-warning-300: #FCD34D; /* warning-tint-300 */
+    --color-warning-400: #FBBF24; /* warning-tint-400 */
+    --color-warning-500: #F59E0B; /* warning-tint-500 */
+    --color-warning-600: #D97706; /* monsoon-amber */
+    --color-warning-700: #B45309; /* darker-warning */
+    --color-warning-800: #92400E; /* darkest-warning */
+    --color-warning-900: #78350F; /* warning-black */
+
+    --color-error: #DC2626; /* urgent-red */
+    --color-error-50: #FEF2F2; /* light-error-tint */
+    --color-error-100: #FEE2E2; /* error-tint-100 */
+    --color-error-200: #FECACA; /* error-tint-200 */
+    --color-error-300: #FCA5A5; /* error-tint-300 */
+    --color-error-400: #F87171; /* error-tint-400 */
+    --color-error-500: #EF4444; /* error-tint-500 */
+    --color-error-600: #DC2626; /* urgent-red */
+    --color-error-700: #B91C1C; /* darker-error */
+    --color-error-800: #991B1B; /* darkest-error */
+    --color-error-900: #7F1D1D; /* error-black */
+
+    /* Border Colors */
+    --color-border: #E5E7EB; /* subtle-border-gray */
+    --color-border-light: #F3F4F6; /* light-border-gray */
+    --color-border-dark: #D1D5DB; /* dark-border-gray */
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .font-malayalam {
+    font-family: 'Noto Sans Malayalam', sans-serif;
+  }
+}
+
+@layer components {
+  /* Chat Bubble Shadows */
+  .shadow-chat {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  /* Button Shadows */
+  .shadow-button {
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  /* Card Shadows */
+  .shadow-card {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  /* Smooth Transitions */
+  .transition-smooth {
+    transition: all 300ms ease-in-out;
+  }
+
+  .transition-quick {
+    transition: all 200ms ease-in-out;
+  }
+
+  /* Success Celebration Animation */
+  .animate-success {
+    animation: successPulse 600ms ease-in-out;
+  }
+
+  @keyframes successPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+}
+
+@layer utilities {
+  /* Custom Focus States */
+  .focus-agri {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+  }
+
+  /* Text Utilities */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Malayalam Text Support */
+  .text-malayalam {
+    font-family: 'Noto Sans Malayalam', sans-serif;
+    direction: ltr;
+  }
+}

@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="ml" dir="ltr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Community Hub - AgriAssist Farmer Network</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <meta name="description" content="Connect with Kerala farmers, share experiences, and learn from community success stories" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232D5016'%3E%3Cpath d='M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z'/%3E%3C/svg%3E" />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fagriassist1295back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+<body class="bg-background font-sans">
+    <!-- Header Navigation -->
+    <header class="bg-white shadow-sm border-b border-border sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-poppins font-bold text-primary">AgriAssist</h1>
+                        <p class="text-xs text-text-secondary font-malayalam">ഡിജിറ്റൽ കൃഷി ഓഫീസർ</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="homepage_ai_query_interface.html" class="text-text-secondary hover:text-primary transition-colors">Home</a>
+                    <a href="knowledge_base_crop_season_guide.html" class="text-text-secondary hover:text-primary transition-colors">Knowledge Base</a>
+                    <a href="community_hub_farmer_network.html" class="text-primary font-medium border-b-2 border-primary pb-1">Community</a>
+                    <a href="expert_network_agricultural_officer_connect.html" class="text-text-secondary hover:text-primary transition-colors">Experts</a>
+                    <a href="my_farm_dashboard_personalized_advisor.html" class="text-text-secondary hover:text-primary transition-colors">My Farm</a>
+                    <a href="help_support_multilingual_assistance.html" class="text-text-secondary hover:text-primary transition-colors">Help</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden p-2 rounded-lg hover:bg-surface-100 transition-colors" id="mobile-menu-btn">
+                    <svg class="w-6 h-6 text-text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div class="md:hidden hidden" id="mobile-menu">
+                <div class="py-4 space-y-2 border-t border-border">
+                    <a href="homepage_ai_query_interface.html" class="block px-4 py-2 text-text-secondary hover:text-primary hover:bg-surface-100 rounded-lg transition-colors">Home</a>
+                    <a href="knowledge_base_crop_season_guide.html" class="block px-4 py-2 text-text-secondary hover:text-primary hover:bg-surface-100 rounded-lg transition-colors">Knowledge Base</a>
+                    <a href="community_hub_farmer_network.html" class="block px-4 py-2 text-primary font-medium bg-primary-50 rounded-lg">Community</a>
+                    <a href="expert_network_agricultural_officer_connect.html" class="block px-4 py-2 text-text-secondary hover:text-primary hover:bg-surface-100 rounded-lg transition-colors">Experts</a>
+                    <a href="my_farm_dashboard_personalized_advisor.html" class="block px-4 py-2 text-text-secondary hover:text-primary hover:bg-surface-100 rounded-lg transition-colors">My Farm</a>
+                    <a href="help_support_multilingual_assistance.html" class="block px-4 py-2 text-text-secondary hover:text-primary hover:bg-surface-100 rounded-lg transition-colors">Help</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-br from-primary-50 to-secondary-50 py-12 lg:py-16">
+        <div class="absolute inset-0 opacity-10">
+            <img src="https://images.pexels.com/photos/2132250/pexels-photo-2132250.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Kerala farmers community" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+        </div>
+        
+        <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h1 class="text-3xl lg:text-5xl font-poppins font-bold text-primary mb-4">
+                    Kerala Farmers Community
+                </h1>
+                <p class="text-lg lg:text-xl text-text-secondary mb-2 font-malayalam">
+                    കേരളത്തിലെ കൃഷിക്കാരുടെ കമ്മ്യൂണിറ്റി
+                </p>
+                <p class="text-base text-text-tertiary max-w-2xl mx-auto">
+                    Connect with fellow farmers, share experiences, and learn from success stories across Kerala's diverse agricultural regions.
+                </p>
+            </div>
+
+            <!-- Community Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <div class="bg-white rounded-xl p-4 text-center shadow-card">
+                    <div class="text-2xl font-poppins font-bold text-primary mb-1">12,847</div>
+                    <div class="text-sm text-text-secondary">Active Farmers</div>
+                </div>
+                <div class="bg-white rounded-xl p-4 text-center shadow-card">
+                    <div class="text-2xl font-poppins font-bold text-secondary mb-1">14</div>
+                    <div class="text-sm text-text-secondary">Districts</div>
+                </div>
+                <div class="bg-white rounded-xl p-4 text-center shadow-card">
+                    <div class="text-2xl font-poppins font-bold text-accent mb-1">2,341</div>
+                    <div class="text-sm text-text-secondary">Success Stories</div>
+                </div>
+                <div class="bg-white rounded-xl p-4 text-center shadow-card">
+                    <div class="text-2xl font-poppins font-bold text-success mb-1">89%</div>
+                    <div class="text-sm text-text-secondary">Satisfaction Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Actions -->
+    <section class="py-8 bg-white border-b border-border">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap gap-4 justify-center">
+                <button class="inline-flex items-center px-6 py-3 bg-primary text-white rounded-xl hover:bg-primary-700 transition-colors font-medium" id="ask-question-btn">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    Ask Question
+                </button>
+                <button class="inline-flex items-center px-6 py-3 bg-secondary text-white rounded-xl hover:bg-secondary-700 transition-colors font-medium" id="share-success-btn">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    Share Success
+                </button>
+                <button class="inline-flex items-center px-6 py-3 bg-accent text-white rounded-xl hover:bg-accent-700 transition-colors font-medium" id="join-group-btn">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                    </svg>
+                    Join Group
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="py-12 bg-surface-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Left Column - Groups & Categories -->
+                <div class="lg:col-span-1">
+                    <!-- District Groups -->
+                    <div class="bg-white rounded-2xl p-6 shadow-card mb-6">
+                        <h3 class="text-lg font-poppins font-semibold text-text-primary mb-4 flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                            District Groups
+                        </h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between p-3 bg-surface-50 rounded-lg hover:bg-primary-50 transition-colors cursor-pointer">
+                                <div>
+                                    <p class="font-medium text-text-primary">Thrissur</p>
+                                    <p class="text-sm text-text-secondary">2,847 farmers</p>
+                                </div>
+                                <span class="w-2 h-2 bg-success rounded-full"></span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-surface-50 rounded-lg hover:bg-primary-50 transition-colors cursor-pointer">
+                                <div>
+                                    <p class="font-medium text-text-primary">Kottayam</p>
+                                    <p class="text-sm text-text-secondary">2,156 farmers</p>
+                                </div>
+                                <span class="w-2 h-2 bg-success rounded-full"></span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-surface-50 rounded-lg hover:bg-primary-50 transition-colors cursor-pointer">
+                                <div>
+                                    <p class="font-medium text-text-primary">Wayanad</p>
+                                    <p class="text-sm text-text-secondary">1,923 farmers</p>
+                                </div>
+                                <span class="w-2 h-2 bg-success rounded-full"></span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-surface-50 rounded-lg hover:bg-primary-50 transition-colors cursor-pointer">
+                                <div>
+                                    <p class="font-medium text-text-primary">Palakkad</p>
+                                    <p class="text-sm text-text-secondary">1,789 farmers</p>
+                                </div>
+                                <span class="w-2 h-2 bg-success rounded-full"></span>
+                            </div>
+                            <button class="w-full text-center text-primary font-medium py-2 hover:bg-primary-50 rounded-lg transition-colors">
+                                View All Districts
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Crop Groups -->
+                    <div class="bg-white rounded-2xl p-6 shadow-card">
+                        <h3 class="text-lg font-poppins font-semibold text-text-primary mb-4 flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+                            Crop Communities
+                        </h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between p-3 bg-surface-50 rounded-lg hover:bg-secondary-50 transition-colors cursor-pointer">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center">
+                                        <span class="text-xs font-medium text-primary">🌾</span>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-text-primary font-malayalam">നെല്ല്</p>
+                                        <p class="text-sm text-text-secondary">Rice Farmers</p>
+                                    </div>
+                                </div>
+                                <span class="text-sm text-text-tertiary">4,521</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-surface-50 rounded-lg hover:bg-secondary-50 transition-colors cursor-pointer">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 bg-secondary-100 rounded-full flex items-center justify-center">
+                                        <span class="text-xs font-medium text-secondary">🥥</span>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-text-primary font-malayalam">തെങ്ങ്</p>
+                                        <p class="text-sm text-text-secondary">Coconut Farmers</p>
+                                    </div>
+                                </div>
+                                <span class="text-sm text-text-tertiary">3,847</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-surface-50 rounded-lg hover:bg-secondary-50 transition-colors cursor-pointer">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 bg-accent-100 rounded-full flex items-center justify-center">
+                                        <span class="text-xs font-medium text-accent">🌶️</span>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-text-primary font-malayalam">കുരുമുളക്</p>
+                                        <p class="text-sm text-text-secondary">Pepper Farmers</p>
+                                    </div>
+                                </div>
+                                <span class="text-sm text-text-tertiary">2,156</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-surface-50 rounded-lg hover:bg-secondary-50 transition-colors cursor-pointer">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 bg-success-100 rounded-full flex items-center justify-center">
+                                        <span class="text-xs font-medium text-success">🍌</span>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-text-primary font-malayalam">വാഴ</p>
+                                        <p class="text-sm text-text-secondary">Banana Farmers</p>
+                                    </div>
+                                </div>
+                                <span class="text-sm text-text-tertiary">1,923</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Center Column - Main Feed -->
+                <div class="lg:col-span-2">
+                    <!-- Featured Success Story -->
+                    <div class="bg-white rounded-2xl p-6 shadow-card mb-6">
+                        <div class="flex items-center space-x-2 mb-4">
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-success-100 text-success-700">
+                                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                                Featured Success
+                            </span>
+                            <span class="text-sm text-text-tertiary">2 hours ago</span>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4 mb-4">
+                            <div class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-poppins font-semibold text-text-primary mb-1">രാജേഷ് കുമാർ</h3>
+                                <p class="text-sm text-text-secondary mb-2">Thrissur • Rice Farmer • 15 years experience</p>
+                                <p class="text-text-primary mb-3 font-malayalam">
+                                    "AgriAssist ന്റെ സഹായത്തോടെ എന്റെ നെല്ലിന്റെ വിളവ് 45% വർദ്ധിച്ചു! പുതിയ കീടനാശിനി രീതികളും മണ്ണ് പരിശോധനയും വളരെ ഉപകാരപ്രദമായിരുന്നു."
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Before/After Images -->
+                        <div class="grid grid-cols-2 gap-4 mb-4">
+                            <div class="relative">
+                                <img src="https://images.pixabay.com/photos/2016/08/11/08/04/rice-1585785_1280.jpg" alt="Before - Rice field" class="w-full h-32 object-cover rounded-lg" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                                <div class="absolute top-2 left-2 bg-error text-white px-2 py-1 rounded text-xs font-medium">Before</div>
+                            </div>
+                            <div class="relative">
+                                <img src="https://images.pexels.com/photos/1595104/pexels-photo-1595104.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="After - Improved rice field" class="w-full h-32 object-cover rounded-lg" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                                <div class="absolute top-2 left-2 bg-success text-white px-2 py-1 rounded text-xs font-medium">After</div>
+                            </div>
+                        </div>
+
+                        <!-- Metrics -->
+                        <div class="grid grid-cols-3 gap-4 mb-4">
+                            <div class="text-center p-3 bg-success-50 rounded-lg">
+                                <div class="text-lg font-poppins font-bold text-success">+45%</div>
+                                <div class="text-xs text-text-secondary">Yield Increase</div>
+                            </div>
+                            <div class="text-center p-3 bg-primary-50 rounded-lg">
+                                <div class="text-lg font-poppins font-bold text-primary">₹28,000</div>
+                                <div class="text-xs text-text-secondary">Extra Income</div>
+                            </div>
+                            <div class="text-center p-3 bg-accent-50 rounded-lg">
+                                <div class="text-lg font-poppins font-bold text-accent">6 months</div>
+                                <div class="text-xs text-text-secondary">Time Frame</div>
+                            </div>
+                        </div>
+
+                        <!-- Engagement -->
+                        <div class="flex items-center justify-between pt-4 border-t border-border">
+                            <div class="flex items-center space-x-4">
+                                <button class="flex items-center space-x-2 text-text-secondary hover:text-primary transition-colors">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                    </svg>
+                                    <span class="text-sm">247</span>
+                                </button>
+                                <button class="flex items-center space-x-2 text-text-secondary hover:text-secondary transition-colors">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                                    </svg>
+                                    <span class="text-sm">89</span>
+                                </button>
+                                <button class="flex items-center space-x-2 text-text-secondary hover:text-accent transition-colors">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+                                    </svg>
+                                    <span class="text-sm">Share</span>
+                                </button>
+                            </div>
+                            <button class="text-primary font-medium text-sm hover:text-primary-700 transition-colors">
+                                View Full Story
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Recent Discussions -->
+                    <div class="bg-white rounded-2xl p-6 shadow-card mb-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-poppins font-semibold text-text-primary">Recent Discussions</h3>
+                            <button class="text-primary font-medium text-sm hover:text-primary-700 transition-colors">View All</button>
+                        </div>
+
+                        <div class="space-y-4">
+                            <!-- Discussion 1 -->
+                            <div class="border-l-4 border-primary pl-4 py-2">
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-8 h-8 bg-secondary-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-4 h-4 text-secondary" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="flex items-center space-x-2 mb-1">
+                                            <p class="font-medium text-text-primary text-sm">സുരേഷ് നായർ</p>
+                                            <span class="text-xs text-text-tertiary">• Kottayam • 15 min ago</span>
+                                        </div>
+                                        <p class="text-sm text-text-primary font-malayalam mb-2">
+                                            "തെങ്ങിന്റെ ഇലകളിൽ മഞ്ഞ പാടുകൾ കാണുന്നു. ഇത് എന്തായിരിക്കും കാരണം?"
+                                        </p>
+                                        <div class="flex items-center space-x-4 text-xs text-text-secondary">
+                                            <span class="flex items-center space-x-1">
+                                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                                                </svg>
+                                                <span>12 replies</span>
+                                            </span>
+                                            <span class="inline-flex items-center px-2 py-1 rounded-full bg-accent-100 text-accent-700">
+                                                Expert Answered
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Discussion 2 -->
+                            <div class="border-l-4 border-secondary pl-4 py-2">
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="flex items-center space-x-2 mb-1">
+                                            <p class="font-medium text-text-primary text-sm">Priya Menon</p>
+                                            <span class="text-xs text-text-tertiary">• Wayanad • 1 hour ago</span>
+                                        </div>
+                                        <p class="text-sm text-text-primary mb-2">
+                                            "Best organic fertilizer for pepper plants during monsoon season?"
+                                        </p>
+                                        <div class="flex items-center space-x-4 text-xs text-text-secondary">
+                                            <span class="flex items-center space-x-1">
+                                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                                                </svg>
+                                                <span>8 replies</span>
+                                            </span>
+                                            <span class="inline-flex items-center px-2 py-1 rounded-full bg-success-100 text-success-700">
+                                                Active Discussion
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Discussion 3 -->
+                            <div class="border-l-4 border-accent pl-4 py-2">
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-8 h-8 bg-accent-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="flex items-center space-x-2 mb-1">
+                                            <p class="font-medium text-text-primary text-sm font-malayalam">അനിൽ കുമാർ</p>
+                                            <span class="text-xs text-text-tertiary">• Palakkad • 2 hours ago</span>
+                                        </div>
+                                        <p class="text-sm text-text-primary font-malayalam mb-2">
+                                            "വാഴയുടെ പുതിയ ഇനം നട്ടു. വളർച്ചയ്ക്ക് എന്ത് ശ്രദ്ധിക്കണം?"
+                                        </p>
+                                        <div class="flex items-center space-x-4 text-xs text-text-secondary">
+                                            <span class="flex items-center space-x-1">
+                                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                                                </svg>
+                                                <span>5 replies</span>
+                                            </span>
+                                            <span class="inline-flex items-center px-2 py-1 rounded-full bg-primary-100 text-primary-700">
+                                                New Topic
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Community Leaders -->
+                    <div class="bg-white rounded-2xl p-6 shadow-card">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-poppins font-semibold text-text-primary">Community Leaders</h3>
+                            <button class="text-primary font-medium text-sm hover:text-primary-700 transition-colors">View All</button>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- Leader 1 -->
+                            <div class="flex items-center space-x-3 p-3 bg-surface-50 rounded-lg">
+                                <div class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                    </svg>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-medium text-text-primary font-malayalam">രാധിക അമ്മ</p>
+                                    <p class="text-sm text-text-secondary">Organic Rice Expert • Thrissur</p>
+                                    <div class="flex items-center space-x-2 mt-1">
+                                        <span class="text-xs bg-success-100 text-success-700 px-2 py-1 rounded-full">847 Helped</span>
+                                        <span class="text-xs text-text-tertiary">⭐ 4.9</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Leader 2 -->
+                            <div class="flex items-center space-x-3 p-3 bg-surface-50 rounded-lg">
+                                <div class="w-12 h-12 bg-secondary-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-6 h-6 text-secondary" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                    </svg>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-medium text-text-primary">Dr. Vineeth Kumar</p>
+                                    <p class="text-sm text-text-secondary">Spice Cultivation • Wayanad</p>
+                                    <div class="flex items-center space-x-2 mt-1">
+                                        <span class="text-xs bg-accent-100 text-accent-700 px-2 py-1 rounded-full">623 Helped</span>
+                                        <span class="text-xs text-text-tertiary">⭐ 4.8</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Brand -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-poppins font-bold">AgriAssist</h3>
+                            <p class="text-sm opacity-80 font-malayalam">നിങ്ങളുടെ ഡിജിറ്റൽ കൃഷി ഓഫീസർ</p>
+                        </div>
+                    </div>
+                    <p class="text-sm opacity-80 mb-4 max-w-md">
+                        Kerala's first AI-powered agricultural advisory platform, bridging traditional farming wisdom with modern technology.
+                    </p>
+                    <div class="flex space-x-4">
+                        <div class="flex items-center space-x-2 text-sm">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                            <span>Available 24/7</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                            </svg>
+                            <span>Trusted & Secure</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-poppins font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm opacity-80">
+                        <li><a href="knowledge_base_crop_season_guide.html" class="hover:opacity-100 transition-opacity">Knowledge Base</a></li>
+                        <li><a href="community_hub_farmer_network.html" class="hover:opacity-100 transition-opacity">Community</a></li>
+                        <li><a href="expert_network_agricultural_officer_connect.html" class="hover:opacity-100 transition-opacity">Expert Network</a></li>
+                        <li><a href="my_farm_dashboard_personalized_advisor.html" class="hover:opacity-100 transition-opacity">My Farm</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h4 class="font-poppins font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2 text-sm opacity-80">
+                        <li><a href="help_support_multilingual_assistance.html" class="hover:opacity-100 transition-opacity">Help Center</a></li>
+                        <li><a href="javascript:void(0)" class="hover:opacity-100 transition-opacity">Contact Us</a></li>
+                        <li><a href="javascript:void(0)" class="hover:opacity-100 transition-opacity">Privacy Policy</a></li>
+                        <li><a href="javascript:void(0)" class="hover:opacity-100 transition-opacity">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-primary-500 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm opacity-80">© 2025 AgriAssist. All Rights Reserved.</p>
+                <div class="flex items-center space-x-4 mt-4 md:mt-0">
+                    <span class="text-sm opacity-80">Powered by Kerala Agricultural University</span>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-2 h-2 bg-success rounded-full animate-pulse"></div>
+                        <span class="text-xs opacity-60">System Online</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Quick action buttons
+        document.getElementById('ask-question-btn').addEventListener('click', function() {
+            alert('Ask Question feature - would open question submission form');
+        });
+
+        document.getElementById('share-success-btn').addEventListener('click', function() {
+            alert('Share Success feature - would open success story submission form');
+        });
+
+        document.getElementById('join-group-btn').addEventListener('click', function() {
+            alert('Join Group feature - would show group selection interface');
+        });
+
+        // Add click handlers for interactive elements
+        document.querySelectorAll('.cursor-pointer').forEach(element => {
+            element.addEventListener('click', function() {
+                // Handle group/community navigation
+                console.log('Navigating to:', this.textContent.trim());
+            });
+        });
+    </script>
+</body>
+</html>

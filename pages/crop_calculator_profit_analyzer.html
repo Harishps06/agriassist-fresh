@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="ml" dir="ltr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crop Calculator - AgriAssist | വിള കാൽക്കുലേറ്റർ</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <meta name="description" content="Calculate crop yield, profit margins, and farming costs for Kerala crops - Rice, Coconut, Banana, Spices" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232D5016'%3E%3Cpath d='M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z'/%3E%3C/svg%3E" />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fagriassist1295back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+<body class="bg-background font-sans">
+    <!-- Header Navigation -->
+    <header class="bg-white shadow-sm border-b border-border sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-poppins font-bold text-primary">AgriAssist</h1>
+                        <p class="text-xs text-text-secondary font-malayalam">ഡിജിറ്റൽ കൃഷി ഓഫീസർ</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="homepage_ai_query_interface.html" class="text-text-secondary hover:text-primary transition-colors">Home</a>
+                    <a href="knowledge_base_crop_season_guide.html" class="text-text-secondary hover:text-primary transition-colors">Knowledge Base</a>
+                    <a href="community_hub_farmer_network.html" class="text-text-secondary hover:text-primary transition-colors">Community</a>
+                    <a href="expert_network_agricultural_officer_connect.html" class="text-text-secondary hover:text-primary transition-colors">Experts</a>
+                    <a href="my_farm_dashboard_personalized_advisor.html" class="text-text-secondary hover:text-primary transition-colors">My Farm</a>
+                    <a href="crop_calculator_profit_analyzer.html" class="text-primary font-medium border-b-2 border-primary pb-1">Calculator</a>
+                    <a href="help_support_multilingual_assistance.html" class="text-text-secondary hover:text-primary transition-colors">Help</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden p-2 rounded-lg hover:bg-surface-100 transition-colors" id="mobile-menu-btn">
+                    <svg class="w-6 h-6 text-text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div class="md:hidden hidden" id="mobile-menu">
+                <div class="py-4 space-y-2 border-t border-border">
+                    <a href="homepage_ai_query_interface.html" class="block px-4 py-2 text-text-secondary hover:text-primary hover:bg-surface-100 rounded-lg transition-colors">Home</a>
+                    <a href="knowledge_base_crop_season_guide.html" class="block px-4 py-2 text-text-secondary hover:text-primary hover:bg-surface-100 rounded-lg transition-colors">Knowledge Base</a>
+                    <a href="community_hub_farmer_network.html" class="block px-4 py-2 text-text-secondary hover:text-primary hover:bg-surface-100 rounded-lg transition-colors">Community</a>
+                    <a href="expert_network_agricultural_officer_connect.html" class="block px-4 py-2 text-text-secondary hover:text-primary hover:bg-surface-100 rounded-lg transition-colors">Experts</a>
+                    <a href="my_farm_dashboard_personalized_advisor.html" class="block px-4 py-2 text-text-secondary hover:text-primary hover:bg-surface-100 rounded-lg transition-colors">My Farm</a>
+                    <a href="crop_calculator_profit_analyzer.html" class="block px-4 py-2 text-primary font-medium bg-primary-50 rounded-lg">Calculator</a>
+                    <a href="help_support_multilingual_assistance.html" class="block px-4 py-2 text-text-secondary hover:text-primary hover:bg-surface-100 rounded-lg transition-colors">Help</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-br from-primary-50 to-secondary-50 py-12">
+        <div class="absolute inset-0 opacity-5">
+            <img src="https://images.pexels.com/photos/1595104/pexels-photo-1595104.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Kerala farming calculator" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+        </div>
+        
+        <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h1 class="text-3xl lg:text-4xl font-poppins font-bold text-primary mb-4">
+                    Crop Calculator & Profit Analyzer
+                </h1>
+                <p class="text-xl text-text-secondary mb-2 font-malayalam">
+                    വിള കാൽക്കുലേറ്റർ & ലാഭ വിശകലനം
+                </p>
+                <p class="text-base text-text-tertiary max-w-2xl mx-auto">
+                    Calculate crop yield, estimate costs, and analyze profit margins for Kerala's major crops
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Calculator Interface -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Calculator Form -->
+                <div class="lg:col-span-2">
+                    <div class="bg-white rounded-2xl shadow-card p-6">
+                        <h2 class="text-2xl font-poppins font-bold text-text-primary mb-6">Crop Profit Calculator</h2>
+                        
+                        <form id="cropCalculatorForm" class="space-y-6">
+                            <!-- Crop Selection -->
+                            <div>
+                                <label class="block text-sm font-medium text-text-primary mb-3">Select Crop</label>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                                    <button type="button" class="crop-option p-4 border-2 border-border rounded-xl hover:border-primary hover:bg-primary-50 transition-colors text-center" data-crop="rice">
+                                        <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+                                            <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z"/>
+                                            </svg>
+                                        </div>
+                                        <p class="text-sm font-medium text-text-primary">Rice</p>
+                                        <p class="text-xs text-text-secondary font-malayalam">നെല്ല്</p>
+                                    </button>
+                                    
+                                    <button type="button" class="crop-option p-4 border-2 border-border rounded-xl hover:border-secondary hover:bg-secondary-50 transition-colors text-center" data-crop="coconut">
+                                        <div class="w-12 h-12 bg-secondary-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+                                            <svg class="w-6 h-6 text-secondary" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                                            </svg>
+                                        </div>
+                                        <p class="text-sm font-medium text-text-primary">Coconut</p>
+                                        <p class="text-xs text-text-secondary font-malayalam">തെങ്ങ്</p>
+                                    </button>
+                                    
+                                    <button type="button" class="crop-option p-4 border-2 border-border rounded-xl hover:border-accent hover:bg-accent-50 transition-colors text-center" data-crop="banana">
+                                        <div class="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+                                            <svg class="w-6 h-6 text-accent-700" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                            </svg>
+                                        </div>
+                                        <p class="text-sm font-medium text-text-primary">Banana</p>
+                                        <p class="text-xs text-text-secondary font-malayalam">വാഴ</p>
+                                    </button>
+                                    
+                                    <button type="button" class="crop-option p-4 border-2 border-border rounded-xl hover:border-success hover:bg-success-50 transition-colors text-center" data-crop="spices">
+                                        <div class="w-12 h-12 bg-success-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+                                            <svg class="w-6 h-6 text-success" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M9 11H7v9a2 2 0 002 2h8a2 2 0 002-2v-9h-2m-4 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v2h2m4 0h2v2h-2v-2z"/>
+                                            </svg>
+                                        </div>
+                                        <p class="text-sm font-medium text-text-primary">Spices</p>
+                                        <p class="text-xs text-text-secondary font-malayalam">മസാല</p>
+                                    </button>
+                                </div>
+                                <input type="hidden" id="selectedCrop" name="crop" value="">
+                            </div>
+
+                            <!-- Farm Details -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="farmArea" class="block text-sm font-medium text-text-primary mb-2">Farm Area (acres)</label>
+                                    <input type="number" id="farmArea" name="area" step="0.1" min="0.1" max="100" class="w-full p-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="2.5">
+                                </div>
+                                
+                                <div>
+                                    <label for="expectedYield" class="block text-sm font-medium text-text-primary mb-2">Expected Yield (per acre)</label>
+                                    <input type="number" id="expectedYield" name="yield" step="0.1" min="0" class="w-full p-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="2000">
+                                    <p class="text-xs text-text-secondary mt-1" id="yieldUnit">kg per acre</p>
+                                </div>
+                            </div>
+
+                            <!-- Cost Inputs -->
+                            <div class="space-y-4">
+                                <h3 class="text-lg font-poppins font-semibold text-text-primary">Cost Breakdown</h3>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="seedCost" class="block text-sm font-medium text-text-primary mb-2">Seed Cost (₹)</label>
+                                        <input type="number" id="seedCost" name="seedCost" step="0.01" min="0" class="w-full p-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="5000">
+                                    </div>
+                                    
+                                    <div>
+                                        <label for="fertilizerCost" class="block text-sm font-medium text-text-primary mb-2">Fertilizer Cost (₹)</label>
+                                        <input type="number" id="fertilizerCost" name="fertilizerCost" step="0.01" min="0" class="w-full p-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="3000">
+                                    </div>
+                                    
+                                    <div>
+                                        <label for="pesticideCost" class="block text-sm font-medium text-text-primary mb-2">Pesticide Cost (₹)</label>
+                                        <input type="number" id="pesticideCost" name="pesticideCost" step="0.01" min="0" class="w-full p-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="2000">
+                                    </div>
+                                    
+                                    <div>
+                                        <label for="laborCost" class="block text-sm font-medium text-text-primary mb-2">Labor Cost (₹)</label>
+                                        <input type="number" id="laborCost" name="laborCost" step="0.01" min="0" class="w-full p-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="8000">
+                                    </div>
+                                    
+                                    <div>
+                                        <label for="machineryCost" class="block text-sm font-medium text-text-primary mb-2">Machinery Cost (₹)</label>
+                                        <input type="number" id="machineryCost" name="machineryCost" step="0.01" min="0" class="w-full p-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="5000">
+                                    </div>
+                                    
+                                    <div>
+                                        <label for="otherCosts" class="block text-sm font-medium text-text-primary mb-2">Other Costs (₹)</label>
+                                        <input type="number" id="otherCosts" name="otherCosts" step="0.01" min="0" class="w-full p-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="2000">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Market Price -->
+                            <div>
+                                <label for="marketPrice" class="block text-sm font-medium text-text-primary mb-2">Market Price (₹ per unit)</label>
+                                <input type="number" id="marketPrice" name="marketPrice" step="0.01" min="0" class="w-full p-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="25">
+                                <p class="text-xs text-text-secondary mt-1" id="priceUnit">per kg</p>
+                            </div>
+
+                            <button type="submit" class="w-full bg-primary text-white py-3 px-6 rounded-lg hover:bg-primary-700 transition-colors font-medium">
+                                Calculate Profit
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Results Panel -->
+                <div class="space-y-6">
+                    <!-- Quick Results -->
+                    <div class="bg-white rounded-2xl shadow-card p-6">
+                        <h3 class="text-lg font-poppins font-semibold text-text-primary mb-4">Calculation Results</h3>
+                        
+                        <div id="resultsContainer" class="space-y-4">
+                            <div class="text-center text-text-secondary py-8">
+                                <svg class="w-12 h-12 mx-auto mb-3 text-text-tertiary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                                </svg>
+                                <p class="text-sm">Select a crop and enter details to see calculations</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Market Prices -->
+                    <div class="bg-white rounded-2xl shadow-card p-6">
+                        <h3 class="text-lg font-poppins font-semibold text-text-primary mb-4">Current Market Prices</h3>
+                        <div class="space-y-3" id="marketPrices">
+                            <div class="flex items-center justify-between py-2 border-b border-border">
+                                <span class="text-sm text-text-primary">Rice (per quintal)</span>
+                                <span class="text-sm font-medium text-text-primary">₹2,850</span>
+                            </div>
+                            <div class="flex items-center justify-between py-2 border-b border-border">
+                                <span class="text-sm text-text-primary">Coconut (per 1000)</span>
+                                <span class="text-sm font-medium text-text-primary">₹18,500</span>
+                            </div>
+                            <div class="flex items-center justify-between py-2 border-b border-border">
+                                <span class="text-sm text-text-primary">Banana (per kg)</span>
+                                <span class="text-sm font-medium text-text-primary">₹45</span>
+                            </div>
+                            <div class="flex items-center justify-between py-2">
+                                <span class="text-sm text-text-primary">Pepper (per kg)</span>
+                                <span class="text-sm font-medium text-text-primary">₹485</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-text-secondary mt-3">Updated 2 hours ago</p>
+                    </div>
+
+                    <!-- Tips -->
+                    <div class="bg-gradient-to-br from-accent-50 to-accent-100 rounded-2xl p-6">
+                        <h3 class="text-lg font-poppins font-semibold text-text-primary mb-4">💡 Profit Tips</h3>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex items-start space-x-2">
+                                <div class="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0"></div>
+                                <p class="text-text-primary">Use organic fertilizers to reduce costs and increase market value</p>
+                            </div>
+                            <div class="flex items-start space-x-2">
+                                <div class="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0"></div>
+                                <p class="text-text-primary">Consider intercropping to maximize land utilization</p>
+                            </div>
+                            <div class="flex items-start space-x-2">
+                                <div class="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0"></div>
+                                <p class="text-text-primary">Monitor market prices regularly for better selling decisions</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Brand -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-poppins font-bold">AgriAssist</h3>
+                            <p class="text-sm opacity-80 font-malayalam">നിങ്ങളുടെ ഡിജിറ്റൽ കൃഷി ഓഫീസർ</p>
+                        </div>
+                    </div>
+                    <p class="text-sm opacity-80 mb-4 max-w-md">
+                        Kerala's first AI-powered agricultural advisory platform, bridging traditional farming wisdom with modern technology.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-poppins font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm opacity-80">
+                        <li><a href="homepage_ai_query_interface.html" class="hover:opacity-100 transition-opacity">Home</a></li>
+                        <li><a href="knowledge_base_crop_season_guide.html" class="hover:opacity-100 transition-opacity">Knowledge Base</a></li>
+                        <li><a href="community_hub_farmer_network.html" class="hover:opacity-100 transition-opacity">Community</a></li>
+                        <li><a href="my_farm_dashboard_personalized_advisor.html" class="hover:opacity-100 transition-opacity">My Farm</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h4 class="font-poppins font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2 text-sm opacity-80">
+                        <li><a href="help_support_multilingual_assistance.html" class="hover:opacity-100 transition-opacity">Help Center</a></li>
+                        <li><a href="javascript:void(0)" class="hover:opacity-100 transition-opacity">Contact Us</a></li>
+                        <li><a href="javascript:void(0)" class="hover:opacity-100 transition-opacity">Privacy Policy</a></li>
+                        <li><a href="javascript:void(0)" class="hover:opacity-100 transition-opacity">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-primary-500 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm opacity-80">© 2025 AgriAssist. All Rights Reserved.</p>
+                <div class="flex items-center space-x-4 mt-4 md:mt-0">
+                    <span class="text-sm opacity-80">Powered by Kerala Agricultural University</span>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-2 h-2 bg-success rounded-full animate-pulse"></div>
+                        <span class="text-xs opacity-60">System Online</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Crop selection
+        const cropOptions = document.querySelectorAll('.crop-option');
+        const selectedCropInput = document.getElementById('selectedCrop');
+        const yieldUnit = document.getElementById('yieldUnit');
+        const priceUnit = document.getElementById('priceUnit');
+
+        // Default crop data
+        const cropData = {
+            rice: {
+                name: 'Rice',
+                malayalam: 'നെല്ല്',
+                defaultYield: 2000,
+                yieldUnit: 'kg per acre',
+                defaultPrice: 25,
+                priceUnit: 'per kg',
+                color: 'primary'
+            },
+            coconut: {
+                name: 'Coconut',
+                malayalam: 'തെങ്ങ്',
+                defaultYield: 80,
+                yieldUnit: 'nuts per tree per year',
+                defaultPrice: 18.5,
+                priceUnit: 'per nut',
+                color: 'secondary'
+            },
+            banana: {
+                name: 'Banana',
+                malayalam: 'വാഴ',
+                defaultYield: 25,
+                yieldUnit: 'tons per acre',
+                defaultPrice: 45,
+                priceUnit: 'per kg',
+                color: 'accent'
+            },
+            spices: {
+                name: 'Spices',
+                malayalam: 'മസാല',
+                defaultYield: 2,
+                yieldUnit: 'kg per acre',
+                defaultPrice: 485,
+                priceUnit: 'per kg',
+                color: 'success'
+            }
+        };
+
+        cropOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                const crop = this.dataset.crop;
+                
+                // Remove active state from all options
+                cropOptions.forEach(opt => {
+                    opt.classList.remove('border-primary', 'bg-primary-50', 'border-secondary', 'bg-secondary-50', 'border-accent', 'bg-accent-50', 'border-success', 'bg-success-50');
+                });
+                
+                // Add active state to selected option
+                const cropInfo = cropData[crop];
+                this.classList.add(`border-${cropInfo.color}`, `bg-${cropInfo.color}-50`);
+                
+                // Update form
+                selectedCropInput.value = crop;
+                document.getElementById('expectedYield').value = cropInfo.defaultYield;
+                document.getElementById('marketPrice').value = cropInfo.defaultPrice;
+                yieldUnit.textContent = cropInfo.yieldUnit;
+                priceUnit.textContent = cropInfo.priceUnit;
+                
+                // Update market prices
+                updateMarketPrices(crop);
+            });
+        });
+
+        function updateMarketPrices(crop) {
+            const marketPrices = {
+                rice: { price: 2850, unit: 'per quintal' },
+                coconut: { price: 18500, unit: 'per 1000' },
+                banana: { price: 45, unit: 'per kg' },
+                spices: { price: 485, unit: 'per kg' }
+            };
+            
+            const prices = document.getElementById('marketPrices');
+            const selectedPrice = marketPrices[crop];
+            
+            // Highlight selected crop price
+            prices.innerHTML = Object.entries(marketPrices).map(([cropName, data]) => {
+                const isSelected = cropName === crop;
+                return `
+                    <div class="flex items-center justify-between py-2 border-b border-border ${isSelected ? 'bg-primary-50 rounded-lg px-3' : ''}">
+                        <span class="text-sm text-text-primary">${cropData[cropName].name} (${data.unit})</span>
+                        <span class="text-sm font-medium text-text-primary">₹${data.price.toLocaleString()}</span>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Form submission and calculation
+        document.getElementById('cropCalculatorForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            if (!data.crop) {
+                alert('Please select a crop first');
+                return;
+            }
+            
+            const crop = cropData[data.crop];
+            const area = parseFloat(data.area) || 0;
+            const yieldPerAcre = parseFloat(data.yield) || 0;
+            const totalYield = area * yieldPerAcre;
+            
+            const costs = {
+                seed: parseFloat(data.seedCost) || 0,
+                fertilizer: parseFloat(data.fertilizerCost) || 0,
+                pesticide: parseFloat(data.pesticideCost) || 0,
+                labor: parseFloat(data.laborCost) || 0,
+                machinery: parseFloat(data.machineryCost) || 0,
+                other: parseFloat(data.otherCosts) || 0
+            };
+            
+            const totalCosts = Object.values(costs).reduce((sum, cost) => sum + cost, 0);
+            const marketPrice = parseFloat(data.marketPrice) || 0;
+            const totalRevenue = totalYield * marketPrice;
+            const profit = totalRevenue - totalCosts;
+            const profitMargin = totalRevenue > 0 ? (profit / totalRevenue) * 100 : 0;
+            
+            // Display results
+            displayResults({
+                crop: crop.name,
+                area: area,
+                totalYield: totalYield,
+                totalCosts: totalCosts,
+                totalRevenue: totalRevenue,
+                profit: profit,
+                profitMargin: profitMargin,
+                costs: costs
+            });
+        });
+
+        function displayResults(results) {
+            const container = document.getElementById('resultsContainer');
+            
+            container.innerHTML = `
+                <div class="space-y-4">
+                    <!-- Summary -->
+                    <div class="bg-gradient-to-r from-primary-50 to-secondary-50 rounded-lg p-4">
+                        <h4 class="font-semibold text-text-primary mb-2">${results.crop} Farming Summary</h4>
+                        <div class="grid grid-cols-2 gap-4 text-sm">
+                            <div>
+                                <p class="text-text-secondary">Farm Area</p>
+                                <p class="font-medium text-text-primary">${results.area} acres</p>
+                            </div>
+                            <div>
+                                <p class="text-text-secondary">Total Yield</p>
+                                <p class="font-medium text-text-primary">${results.totalYield.toLocaleString()} ${cropData[selectedCropInput.value].yieldUnit.split(' ')[0]}</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Financial Summary -->
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center py-2 border-b border-border">
+                            <span class="text-sm text-text-secondary">Total Revenue</span>
+                            <span class="text-sm font-medium text-success">₹${results.totalRevenue.toLocaleString()}</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-border">
+                            <span class="text-sm text-text-secondary">Total Costs</span>
+                            <span class="text-sm font-medium text-error">₹${results.totalCosts.toLocaleString()}</span>
+                        </div>
+                        <div class="flex justify-between items-center py-3 bg-${results.profit >= 0 ? 'success' : 'error'}-50 rounded-lg px-3">
+                            <span class="text-sm font-medium text-text-primary">Net Profit</span>
+                            <span class="text-lg font-bold text-${results.profit >= 0 ? 'success' : 'error'}">₹${results.profit.toLocaleString()}</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2">
+                            <span class="text-sm text-text-secondary">Profit Margin</span>
+                            <span class="text-sm font-medium text-${results.profitMargin >= 0 ? 'success' : 'error'}">${results.profitMargin.toFixed(1)}%</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Cost Breakdown -->
+                    <div class="space-y-2">
+                        <h5 class="text-sm font-medium text-text-primary">Cost Breakdown</h5>
+                        ${Object.entries(results.costs).map(([key, value]) => `
+                            <div class="flex justify-between items-center text-xs">
+                                <span class="text-text-secondary capitalize">${key.replace('Cost', '')}</span>
+                                <span class="text-text-primary">₹${value.toLocaleString()}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                    
+                    <!-- Recommendations -->
+                    <div class="bg-accent-50 rounded-lg p-3">
+                        <h5 class="text-sm font-medium text-text-primary mb-2">💡 Recommendations</h5>
+                        <div class="space-y-1 text-xs text-text-primary">
+                            ${results.profitMargin > 20 ? 
+                                '<p>• Excellent profit margin! Consider expanding this crop.</p>' : 
+                                '<p>• Consider reducing costs or improving yield for better profits.</p>'
+                            }
+                            ${results.profitMargin < 0 ? 
+                                '<p>• Current setup shows losses. Review costs and market prices.</p>' : 
+                                '<p>• Monitor market prices for optimal selling time.</p>'
+                            }
+                            <p>• Consider organic farming for premium pricing.</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Auto-fill with sample data for demo
+        document.addEventListener('DOMContentLoaded', function() {
+            // Select rice by default
+            cropOptions[0].click();
+            
+            // Fill with sample data
+            document.getElementById('farmArea').value = '2.5';
+            document.getElementById('expectedYield').value = '2000';
+            document.getElementById('seedCost').value = '5000';
+            document.getElementById('fertilizerCost').value = '3000';
+            document.getElementById('pesticideCost').value = '2000';
+            document.getElementById('laborCost').value = '8000';
+            document.getElementById('machineryCost').value = '5000';
+            document.getElementById('otherCosts').value = '2000';
+            document.getElementById('marketPrice').value = '25';
+        });
+    </script>
+</body>
+</html>

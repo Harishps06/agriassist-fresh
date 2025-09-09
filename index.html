@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgriAssist - Smart Farming Solutions</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: white;
+        }
+        
+        .loading-container {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .logo-main {
+            font-size: 2.5rem;
+            font-weight: bold;
+            line-height: 1;
+        }
+        
+        .logo-sub {
+            font-size: 1rem;
+            opacity: 0.8;
+            font-weight: normal;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255,255,255,0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2rem;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .logo-icon {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .logo-main {
+                font-size: 2rem;
+            }
+            
+            .logo-sub {
+                font-size: 0.9rem;
+                text-align: center;
+            }
+        }
+    </style>
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fagriassist1295back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+<body>
+    <div class="loading-container">
+        <div class="logo">
+            <div class="logo-icon">
+                🌾
+            </div>
+            <div class="logo-text">
+                <div class="logo-main">AgriAssist</div>
+                <div class="logo-sub">Smart Farming Solutions</div>
+            </div>
+        </div>
+        <div class="tagline">Smart Farming Solutions at Your Fingertips</div>
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Loading your farming dashboard...</div>
+    </div>
+
+    <script>
+        // Redirect to the homepage AI query interface after a brief loading animation
+        setTimeout(function() {
+            window.location.href = 'pages/homepage_ai_query_interface.html';
+        }, 2000);
+    </script>
+</body>
+</html>

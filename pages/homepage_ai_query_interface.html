@@ -1,0 +1,1728 @@
+<!DOCTYPE html>
+<html lang="ml" dir="ltr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgriAssist - നിങ്ങളുടെ ഡിജിറ്റൽ കൃഷി ഓഫീസർ</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <meta name="description" content="Kerala's AI-powered agricultural advisory platform - Your Digital Krishi Officer available 24/7" />
+    <!-- Custom favicon - Replace with your logo image URL -->
+    <link rel="icon" type="image/png" href="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=64&h=64&fit=crop&crop=center" />
+    <!-- Alternative: Use custom SVG favicon -->
+    <!-- <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232D5016'%3E%3Cpath d='M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z'/%3E%3C/svg%3E" /> -->
+    
+    <style>
+        /* Custom logo styling */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #2D5016, #4CAF50);
+            box-shadow: 0 2px 8px rgba(45, 80, 22, 0.3);
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-main {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #2D5016;
+            line-height: 1.2;
+        }
+        
+        .logo-sub {
+            font-size: 0.75rem;
+            color: #6B7280;
+            line-height: 1;
+        }
+        
+        .footer-logo-icon {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Mobile responsive logo */
+        @media (max-width: 768px) {
+            .logo-text {
+                display: none;
+            }
+            
+            .mobile-logo-text {
+                display: block;
+                margin-left: 8px;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .mobile-logo-text {
+                display: none;
+            }
+        }
+    </style>
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fagriassist1295back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+<body class="bg-background font-sans">
+<!-- Header Navigation -->
+<header class="bg-white shadow-sm border-b border-border sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <!-- Logo - Multiple Options Available -->
+            <div class="logo-container">
+                <!-- Option 1: Custom Image Logo (Replace URL with your logo) -->
+                <!-- <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=80&h=80&fit=crop&crop=center" alt="AgriAssist Logo" class="w-10 h-10 rounded-lg object-cover"> -->
+                
+                <!-- Option 2: Icon with Gradient Background (Current) -->
+                <div class="logo-icon">
+                    <!-- Replace this SVG with your custom icon -->
+                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <!-- Leaf/Plant Icon -->
+                        <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+                    </svg>
+                </div>
+                
+                <!-- Option 3: Text Logo with Custom Styling -->
+                <div class="logo-text">
+                    <div class="logo-main">AgriAssist</div>
+                    <div class="logo-sub font-malayalam">ഡിജിറ്റൽ കൃഷി ഓഫീസർ</div>
+                </div>
+                
+                <!-- Mobile Logo Text -->
+                <div class="mobile-logo-text">
+                    <h1 class="text-lg font-bold text-primary">AgriAssist</h1>
+                </div>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="homepage_ai_query_interface.html" class="text-primary font-medium border-b-2 border-primary pb-1">Home</a>
+                <a href="knowledge_base_crop_season_guide.html" class="text-text-secondary hover:text-primary transition-colors">Knowledge Base</a>
+                <a href="community_hub_farmer_network.html" class="text-text-secondary hover:text-primary transition-colors">Community</a>
+                <a href="expert_network_agricultural_officer_connect.html" class="text-text-secondary hover:text-primary transition-colors">Experts</a>
+                <a href="my_farm_dashboard_personalized_advisor.html" class="text-text-secondary hover:text-primary transition-colors">My Farm</a>
+                <a href="crop_calculator_profit_analyzer.html" class="text-text-secondary hover:text-primary transition-colors">Calculator</a>
+                <a href="help_support_multilingual_assistance.html" class="text-text-secondary hover:text-primary transition-colors">Help</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden p-2 rounded-lg hover:bg-surface-100 transition-colors" id="mobile-menu-btn">
+                <svg class="w-6 h-6 text-text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="py-4 space-y-2 border-t border-border">
+                <a href="homepage_ai_query_interface.html" class="block px-4 py-2 text-primary font-medium bg-primary-50 rounded-lg">Home</a>
+                <a href="knowledge_base_crop_season_guide.html" class="block px-4 py-2 text-text-secondary hover:text-primary hover:bg-surface-100 rounded-lg transition-colors">Knowledge Base</a>
+                <a href="community_hub_farmer_network.html" class="block px-4 py-2 text-text-secondary hover:text-primary hover:bg-surface-100 rounded-lg transition-colors">Community</a>
+                <a href="expert_network_agricultural_officer_connect.html" class="block px-4 py-2 text-text-secondary hover:text-primary hover:bg-surface-100 rounded-lg transition-colors">Experts</a>
+                <a href="my_farm_dashboard_personalized_advisor.html" class="block px-4 py-2 text-text-secondary hover:text-primary hover:bg-surface-100 rounded-lg transition-colors">My Farm</a>
+                    <a href="crop_calculator_profit_analyzer.html" class="block px-4 py-2 text-text-secondary hover:text-primary hover:bg-surface-100 rounded-lg transition-colors">Calculator</a>
+                <a href="help_support_multilingual_assistance.html" class="block px-4 py-2 text-text-secondary hover:text-primary hover:bg-surface-100 rounded-lg transition-colors">Help</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <!-- Hero Section with AI Query Interface -->
+    <section class="relative bg-gradient-to-br from-primary-50 to-secondary-50 py-12 lg:py-20">
+        <div class="absolute inset-0 opacity-10">
+            <img src="https://images.pexels.com/photos/1595104/pexels-photo-1595104.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Kerala rice fields" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+        </div>
+        
+        <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <!-- Welcome Message -->
+            <div class="mb-8">
+                <h1 class="text-3xl lg:text-5xl font-poppins font-bold text-primary mb-4 font-malayalam">
+                    നമസ്കാരം, നിങ്ങളുടെ കൃഷി സഹായി ഇവിടെ
+                </h1>
+                <p class="text-lg lg:text-xl text-text-secondary mb-2">
+                    Your Digital Krishi Officer - Available 24/7
+                </p>
+                <p class="text-base text-text-tertiary max-w-2xl mx-auto">
+                    Ask questions, share photos, or record voice messages in Malayalam. Get instant AI-powered agricultural advice backed by Kerala Agricultural University.
+                </p>
+            </div>
+
+            <!-- Multimodal Input Interface -->
+            <div class="bg-white rounded-2xl shadow-card p-6 lg:p-8 mb-8">
+                <div class="mb-6">
+                    <h2 class="text-xl font-poppins font-semibold text-text-primary mb-2">How can I help you today?</h2>
+                    <p class="text-sm text-text-secondary font-malayalam">ഇന്ന് ഞാൻ നിങ്ങളെ എങ്ങനെ സഹായിക്കാം?</p>
+                </div>
+
+                <!-- Input Options -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    <!-- Text Input -->
+                    <div class="bg-surface-50 rounded-xl p-4 border-2 border-dashed border-border hover:border-primary transition-colors cursor-pointer" id="text-input-option">
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+                                </svg>
+                            </div>
+                            <h3 class="font-medium text-text-primary mb-1">Type Question</h3>
+                            <p class="text-xs text-text-secondary font-malayalam">ചോദ്യം ടൈപ്പ് ചെയ്യുക</p>
+                        </div>
+                    </div>
+
+                    <!-- Voice Input -->
+                    <div class="bg-surface-50 rounded-xl p-4 border-2 border-dashed border-border hover:border-secondary transition-colors cursor-pointer" id="voice-input-option">
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
+                                </svg>
+                            </div>
+                            <h3 class="font-medium text-text-primary mb-1">Voice Message</h3>
+                            <p class="text-xs text-text-secondary font-malayalam">ശബ്ദ സന്ദേശം</p>
+                        </div>
+                    </div>
+
+                    <!-- Photo Input -->
+                    <div class="bg-surface-50 rounded-xl p-4 border-2 border-dashed border-border hover:border-accent transition-colors cursor-pointer" id="photo-input-option">
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                </svg>
+                            </div>
+                            <h3 class="font-medium text-text-primary mb-1">Take Photo</h3>
+                            <p class="text-xs text-text-secondary font-malayalam">ഫോട്ടോ എടുക്കുക</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Input Area -->
+                <form id="queryForm">
+    <div class="relative">
+        <textarea placeholder="എന്റെ നെല്ലിന് എന്താണ് പറ്റിയത്? (What's wrong with my rice?)" class="w-full p-4 border border-border rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent font-malayalam" rows="3" id="query-input"></textarea>
+        <div class="absolute bottom-3 right-3 flex space-x-2">
+            <button type="button" class="bg-secondary text-white p-2 rounded-lg hover:bg-secondary-700 transition-colors" id="voice-record-btn" title="Record Voice Message">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
+                </svg>
+            </button>
+            <button type="button" class="bg-accent text-white p-2 rounded-lg hover:bg-accent-700 transition-colors" id="photo-upload-btn" title="Upload Photo">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+            </button>
+            <button type="submit" class="bg-primary text-white p-2 rounded-lg hover:bg-primary-700 transition-colors" id="submit-btn">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+            </svg>
+        </button>
+        </div>
+    </div>
+</form>
+
+<!-- Enhanced Response Area -->
+<div id="responseArea" class="mt-6">
+    <div class="bg-surface-50 rounded-lg border border-border p-4 text-text-secondary" id="default-response">
+        <div class="flex items-center space-x-2 mb-2">
+            <div class="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+            <span class="text-sm font-medium">AI Assistant Ready</span>
+        </div>
+        <p class="text-sm">Ask me anything about farming, crop diseases, weather, or get personalized advice for your farm.</p>
+    </div>
+    
+    <!-- Loading State -->
+    <div id="loading-response" class="hidden bg-white rounded-lg border border-border p-4">
+        <div class="flex items-center space-x-3">
+            <div class="w-6 h-6 bg-primary-100 rounded-full flex items-center justify-center">
+                <svg class="w-4 h-4 text-primary animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                </svg>
+            </div>
+            <div class="flex-1">
+                <p class="text-sm font-medium text-text-primary">Analyzing your query...</p>
+                <p class="text-xs text-text-secondary">Getting personalized farming advice</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- AI Response -->
+    <div id="ai-response" class="hidden bg-white rounded-lg border border-border p-4">
+        <div class="flex items-start space-x-3">
+            <div class="w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z"/>
+                </svg>
+            </div>
+            <div class="flex-1">
+                <div class="flex items-center space-x-2 mb-2">
+                    <span class="text-sm font-medium text-text-primary">AI Assistant</span>
+                    <span class="text-xs text-text-secondary">• Just now</span>
+                </div>
+                <div id="response-content" class="text-sm text-text-primary"></div>
+                <div class="flex items-center space-x-4 mt-3 text-xs text-text-secondary">
+                    <button class="hover:text-primary transition-colors" id="copy-response">📋 Copy</button>
+                    <button class="hover:text-primary transition-colors" id="save-response">💾 Save</button>
+                    <button class="hover:text-primary transition-colors" id="share-response">🔗 Share</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Error State -->
+    <div id="error-response" class="hidden bg-error-50 rounded-lg border border-error-200 p-4">
+        <div class="flex items-start space-x-3">
+            <div class="w-8 h-8 bg-error-100 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-error" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+            </div>
+            <div class="flex-1">
+                <p class="text-sm font-medium text-error-700">Connection Error</p>
+                <p class="text-xs text-error-600 mt-1">Unable to connect to AgriAssist server. Please check your internet connection and try again.</p>
+                <button class="mt-2 text-xs text-error-700 hover:text-error-800 underline" id="retry-btn">Retry</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+                <!-- Quick Examples -->
+                <div class="mt-4 flex flex-wrap gap-2 justify-center">
+                    <button class="px-3 py-1 bg-surface-100 text-text-secondary text-sm rounded-full hover:bg-primary-50 hover:text-primary transition-colors font-malayalam">
+                        നെല്ലിന്റെ രോഗങ്ങൾ
+                    </button>
+                    <button class="px-3 py-1 bg-surface-100 text-text-secondary text-sm rounded-full hover:bg-primary-50 hover:text-primary transition-colors">
+                        Coconut care tips
+                    </button>
+                    <button class="px-3 py-1 bg-surface-100 text-text-secondary text-sm rounded-full hover:bg-primary-50 hover:text-primary transition-colors font-malayalam">
+                        കാലാവസ്ഥ പ്രവചനം
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Indicators -->
+    <section class="py-8 bg-white border-y border-border">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-6">
+                <p class="text-sm text-text-secondary font-medium">Trusted by Kerala's farming community</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center opacity-60">
+                <!-- Kerala Agricultural University -->
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/>
+                        </svg>
+                    </div>
+                    <p class="text-xs font-medium text-text-primary">Kerala Agricultural University</p>
+                </div>
+
+                <!-- Department of Agriculture -->
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <svg class="w-8 h-8 text-secondary" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <p class="text-xs font-medium text-text-primary">Dept. of Agriculture</p>
+                </div>
+
+                <!-- ICAR -->
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <svg class="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M9 11H7v9a2 2 0 002 2h8a2 2 0 002-2v-9h-2m-4 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v2h2m4 0h2v2h-2v-2z"/>
+                        </svg>
+                    </div>
+                    <p class="text-xs font-medium text-text-primary">ICAR Certified</p>
+                </div>
+
+                <!-- Kerala Govt -->
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-success-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <svg class="w-8 h-8 text-success" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                        </svg>
+                    </div>
+                    <p class="text-xs font-medium text-text-primary">Kerala Govt. Approved</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Activity Feed -->
+    <section class="py-12 bg-surface-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl lg:text-3xl font-poppins font-bold text-text-primary mb-2">
+                    Live from Kerala's Fields
+                </h2>
+                <p class="text-text-secondary font-malayalam">കേരളത്തിലെ കൃഷിക്കാരുടെ തത്സമയ അനുഭവങ്ങൾ</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Recent Query 1 -->
+                <div class="bg-white rounded-xl p-6 shadow-card">
+                    <div class="flex items-start space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-sm text-text-secondary mb-1">2 minutes ago • Thrissur</p>
+                            <p class="text-text-primary font-malayalam text-sm">
+                                "എന്റെ നെല്ലിന്റെ ഇലകൾ മഞ്ഞയായി വരുന്നു. എന്താണ് കാരണം?"
+                            </p>
+                            <div class="mt-2 flex items-center space-x-2">
+                                <span class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-success-100 text-success-700">
+                                    <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                                    </svg>
+                                    Solved
+                                </span>
+                                <span class="text-xs text-text-tertiary">Rice nutrient deficiency</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Query 2 -->
+                <div class="bg-white rounded-xl p-6 shadow-card">
+                    <div class="flex items-start space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-secondary-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <svg class="w-5 h-5 text-secondary" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-sm text-text-secondary mb-1">5 minutes ago • Kottayam</p>
+                            <p class="text-text-primary text-sm">
+                                "Best time to plant coconut saplings this season?"
+                            </p>
+                            <div class="mt-2 flex items-center space-x-2">
+                                <span class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-accent-100 text-accent-700">
+                                    <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                    </svg>
+                                    Expert Advice
+                                </span>
+                                <span class="text-xs text-text-tertiary">Monsoon planting guide</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Success Story -->
+                <div class="bg-white rounded-xl p-6 shadow-card">
+                    <div class="flex items-start space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-success-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <svg class="w-5 h-5 text-success" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-sm text-text-secondary mb-1">1 hour ago • Wayanad</p>
+                            <p class="text-text-primary text-sm font-malayalam">
+                                "AgriAssist ന്റെ സഹായത്തോടെ എന്റെ കുരുമുളക് വിളവ് 40% വർദ്ധിച്ചു!"
+                            </p>
+                            <div class="mt-2 flex items-center space-x-2">
+                                <span class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-success-100 text-success-700">
+                                    <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                    </svg>
+                                    Success Story
+                                </span>
+                                <span class="text-xs text-text-tertiary">Pepper farming</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-8">
+                <p class="text-sm text-text-secondary mb-4">
+                    <span class="inline-flex items-center">
+                        <span class="w-2 h-2 bg-success rounded-full mr-2 animate-pulse"></span>
+                        12,847 farmers helped this month
+                    </span>
+                </p>
+                <a href="community_hub_farmer_network.html" class="inline-flex items-center px-6 py-3 bg-primary text-white rounded-xl hover:bg-primary-700 transition-colors font-medium">
+                    Join Our Community
+                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Access Cards -->
+    <section class="py-12 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl lg:text-3xl font-poppins font-bold text-text-primary mb-2">
+                    Quick Access
+                </h2>
+                <p class="text-text-secondary">Essential tools for Kerala farmers</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Seasonal Calendar -->
+                <a href="knowledge_base_crop_season_guide.html" class="group bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl p-6 hover:shadow-lg transition-all duration-300">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+                        <span class="text-xs bg-primary text-white px-2 py-1 rounded-full">Updated</span>
+                    </div>
+                    <h3 class="text-lg font-poppins font-semibold text-text-primary mb-2">Seasonal Calendar</h3>
+                    <p class="text-sm text-text-secondary mb-3 font-malayalam">കാലാനുസൃത കൃഷി കലണ്ടർ</p>
+                    <p class="text-xs text-text-tertiary">Perfect timing for planting, harvesting, and crop care in Kerala's climate</p>
+                </a>
+
+                <!-- Weather Widget -->
+                <div class="group bg-gradient-to-br from-secondary-50 to-secondary-100 rounded-2xl p-6 hover:shadow-lg transition-all duration-300 cursor-pointer" id="weather-widget">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-secondary rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+                            </svg>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-secondary" id="current-temp">28°C</div>
+                            <div class="text-xs text-text-secondary" id="weather-status">Partly Cloudy</div>
+                    </div>
+                    </div>
+                    <h3 class="text-lg font-poppins font-semibold text-text-primary mb-2">Weather & Farming</h3>
+                    <p class="text-sm text-text-secondary mb-3 font-malayalam">കാലാവസ്ഥ & കൃഷി ഉപദേശം</p>
+                    <div class="space-y-2 text-xs" id="weather-recommendations">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-2 h-2 bg-success rounded-full"></div>
+                            <span class="text-text-primary">Good for rice planting</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-2 h-2 bg-warning rounded-full"></div>
+                            <span class="text-text-primary">Monitor for pests</span>
+                        </div>
+                    </div>
+                    <div class="mt-3 text-xs text-text-tertiary" id="weather-location">📍 Thrissur, Kerala</div>
+                </div>
+
+                <!-- Expert Connect -->
+                <a href="expert_network_agricultural_officer_connect.html" class="group bg-gradient-to-br from-accent-50 to-accent-100 rounded-2xl p-6 hover:shadow-lg transition-all duration-300">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-accent rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                            </svg>
+                        </div>
+                        <span class="text-xs bg-success text-white px-2 py-1 rounded-full">Online</span>
+                    </div>
+                    <h3 class="text-lg font-poppins font-semibold text-text-primary mb-2">Expert Connect</h3>
+                    <p class="text-sm text-text-secondary mb-3 font-malayalam">വിദഗ്ധരുമായി ബന്ധപ്പെടുക</p>
+                    <p class="text-xs text-text-tertiary">Connect with certified agricultural officers and farming experts</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+<!-- Footer -->
+<footer class="bg-primary text-white py-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- Brand -->
+            <div class="md:col-span-2">
+                <div class="flex items-center space-x-3 mb-4">
+                    <!-- Footer Logo - Multiple Options -->
+                    <!-- Option 1: Custom Image Logo (Replace URL with your logo) -->
+                    <!-- <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=80&h=80&fit=crop&crop=center" alt="AgriAssist Logo" class="w-10 h-10 rounded-lg object-cover"> -->
+                    
+                    <!-- Option 2: Icon with Background (Current) -->
+                    <div class="footer-logo-icon">
+                        <!-- Replace this SVG with your custom icon -->
+                        <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                            <!-- Leaf/Plant Icon -->
+                            <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+                        </svg>
+                    </div>
+                    
+                    <!-- Logo Text -->
+                    <div>
+                        <h3 class="text-xl font-poppins font-bold">AgriAssist</h3>
+                        <p class="text-sm opacity-80 font-malayalam">നിങ്ങളുടെ ഡിജിറ്റൽ കൃഷി ഓഫീസർ</p>
+                    </div>
+                </div>
+                <p class="text-sm opacity-80 mb-4 max-w-md">
+                    Kerala's first AI-powered agricultural advisory platform, bridging traditional farming wisdom with modern technology.
+                </p>
+                <div class="flex space-x-4">
+                    <div class="flex items-center space-x-2 text-sm">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                        <span>Available 24/7</span>
+                    </div>
+                    <div class="flex items-center space-x-2 text-sm">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                        </svg>
+                        <span>Trusted & Secure</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h4 class="font-poppins font-semibold mb-4">Quick Links</h4>
+                <ul class="space-y-2 text-sm opacity-80">
+                    <li><a href="knowledge_base_crop_season_guide.html" class="hover:opacity-100 transition-opacity">Knowledge Base</a></li>
+                    <li><a href="community_hub_farmer_network.html" class="hover:opacity-100 transition-opacity">Community</a></li>
+                    <li><a href="expert_network_agricultural_officer_connect.html" class="hover:opacity-100 transition-opacity">Expert Network</a></li>
+                    <li><a href="my_farm_dashboard_personalized_advisor.html" class="hover:opacity-100 transition-opacity">My Farm</a></li>
+                </ul>
+            </div>
+
+            <!-- Support -->
+            <div>
+                <h4 class="font-poppins font-semibold mb-4">Support</h4>
+                <ul class="space-y-2 text-sm opacity-80">
+                    <li><a href="help_support_multilingual_assistance.html" class="hover:opacity-100 transition-opacity">Help Center</a></li>
+                    <li><a href="javascript:void(0)" class="hover:opacity-100 transition-opacity">Contact Us</a></li>
+                    <li><a href="javascript:void(0)" class="hover:opacity-100 transition-opacity">Privacy Policy</a></li>
+                    <li><a href="javascript:void(0)" class="hover:opacity-100 transition-opacity">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-primary-500 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p class="text-sm opacity-80">© 2025 AgriAssist. All Rights Reserved.</p>
+            <div class="flex items-center space-x-4 mt-4 md:mt-0">
+                <span class="text-sm opacity-80">Powered by Kerala Agricultural University</span>
+                <div class="flex items-center space-x-2">
+                    <div class="w-2 h-2 bg-success rounded-full animate-pulse"></div>
+                    <span class="text-xs opacity-60">System Online</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Input option handlers
+        document.getElementById('text-input-option').addEventListener('click', function() {
+            document.getElementById('query-input').focus();
+        });
+
+        document.getElementById('voice-input-option').addEventListener('click', function() {
+            // Voice input functionality would be implemented here
+            alert('Voice input feature - would integrate with Web Speech API');
+        });
+
+        document.getElementById('photo-input-option').addEventListener('click', function() {
+            // Photo input functionality would be implemented here
+            alert('Photo input feature - would integrate with camera API');
+        });
+
+        // Quick example buttons
+        document.querySelectorAll('button[class*="bg-surface-100"]').forEach(button => {
+            button.addEventListener('click', function() {
+                document.getElementById('query-input').value = this.textContent.trim();
+                document.getElementById('query-input').focus();
+            });
+        });
+        // Enhanced AI Query Interface
+        const queryForm = document.getElementById('queryForm');
+        const queryInput = document.getElementById('query-input');
+    const responseArea = document.getElementById('responseArea');
+        const defaultResponse = document.getElementById('default-response');
+        const loadingResponse = document.getElementById('loading-response');
+        const aiResponse = document.getElementById('ai-response');
+        const errorResponse = document.getElementById('error-response');
+        const responseContent = document.getElementById('response-content');
+        const submitBtn = document.getElementById('submit-btn');
+        const voiceRecordBtn = document.getElementById('voice-record-btn');
+        const photoUploadBtn = document.getElementById('photo-upload-btn');
+
+        // Advanced Voice Recognition System
+        class VoiceRecognitionService {
+            constructor() {
+                this.recognition = null;
+                this.isListening = false;
+                this.supportedLanguages = ['en-US', 'ml-IN']; // English and Malayalam
+                this.currentLanguage = 'en-US';
+                this.isSupported = 'webkitSpeechRecognition' in window || 'SpeechRecognition' in window;
+                this.audioContext = null;
+                this.analyser = null;
+                this.microphone = null;
+                this.visualizer = null;
+            }
+
+            init() {
+                if (!this.isSupported) {
+                    console.log('Speech recognition not supported');
+                    return false;
+                }
+
+                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                this.recognition = new SpeechRecognition();
+                
+                this.recognition.continuous = false;
+                this.recognition.interimResults = true;
+                this.recognition.lang = this.currentLanguage;
+                this.recognition.maxAlternatives = 1;
+
+                this.recognition.onstart = () => {
+                    console.log('Voice recognition started');
+                    this.isListening = true;
+                    this.updateUI(true);
+                    this.startVisualizer();
+                };
+
+                this.recognition.onresult = (event) => {
+                    let finalTranscript = '';
+                    let interimTranscript = '';
+
+                    for (let i = event.resultIndex; i < event.results.length; i++) {
+                        const transcript = event.results[i][0].transcript;
+                        if (event.results[i].isFinal) {
+                            finalTranscript += transcript;
+                        } else {
+                            interimTranscript += transcript;
+                        }
+                    }
+
+                    // Update input field with interim results
+                    if (interimTranscript) {
+                        queryInput.value = interimTranscript;
+                    }
+
+                    // Process final result
+                    if (finalTranscript) {
+                        queryInput.value = finalTranscript;
+                        this.processVoiceInput(finalTranscript);
+                    }
+                };
+
+                this.recognition.onerror = (event) => {
+                    console.error('Speech recognition error:', event.error);
+                    this.isListening = false;
+                    this.updateUI(false);
+                    this.stopVisualizer();
+                    
+                    if (event.error === 'not-allowed') {
+                        alert('Microphone access denied. Please allow microphone access to use voice recognition.');
+                    }
+                };
+
+                this.recognition.onend = () => {
+                    this.isListening = false;
+                    this.updateUI(false);
+                    this.stopVisualizer();
+                };
+
+                return true;
+            }
+
+            startListening() {
+                if (!this.recognition) {
+                    if (!this.init()) {
+                        alert('Voice recognition is not supported in this browser.');
+                        return;
+                    }
+                }
+
+                try {
+                    this.recognition.start();
+                } catch (error) {
+                    console.error('Error starting voice recognition:', error);
+                }
+            }
+
+            stopListening() {
+                if (this.recognition && this.isListening) {
+                    this.recognition.stop();
+                }
+            }
+
+            toggleLanguage() {
+                this.currentLanguage = this.currentLanguage === 'en-US' ? 'ml-IN' : 'en-US';
+                if (this.recognition) {
+                    this.recognition.lang = this.currentLanguage;
+                }
+                this.updateLanguageIndicator();
+            }
+
+            updateUI(isListening) {
+                const voiceBtn = document.getElementById('voice-record-btn');
+                if (isListening) {
+                    voiceBtn.innerHTML = '<svg class="w-5 h-5 animate-pulse" fill="currentColor" viewBox="0 0 24 24"><path d="M6 6h12v12H6z"/></svg>';
+                    voiceBtn.classList.add('bg-error', 'hover:bg-error-700');
+                    voiceBtn.classList.remove('bg-secondary', 'hover:bg-secondary-700');
+                    voiceBtn.title = 'Stop Recording';
+                } else {
+                    voiceBtn.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/></svg>';
+                    voiceBtn.classList.remove('bg-error', 'hover:bg-error-700');
+                    voiceBtn.classList.add('bg-secondary', 'hover:bg-secondary-700');
+                    voiceBtn.title = 'Start Voice Recording';
+                }
+            }
+
+            updateLanguageIndicator() {
+                let indicator = document.getElementById('voice-lang-indicator');
+                if (!indicator) {
+                    indicator = document.createElement('div');
+                    indicator.id = 'voice-lang-indicator';
+                    indicator.className = 'absolute -top-8 left-0 text-xs bg-primary text-white px-2 py-1 rounded';
+                    voiceRecordBtn.parentElement.appendChild(indicator);
+                }
+                indicator.textContent = this.currentLanguage === 'en-US' ? 'EN' : 'ML';
+            }
+
+            startVisualizer() {
+                // Create audio visualizer for better UX
+                navigator.mediaDevices.getUserMedia({ audio: true })
+                    .then(stream => {
+                        this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                        this.analyser = this.audioContext.createAnalyser();
+                        this.microphone = this.audioContext.createMediaStreamSource(stream);
+                        
+                        this.microphone.connect(this.analyser);
+                        this.analyser.fftSize = 256;
+                        
+                        const bufferLength = this.analyser.frequencyBinCount;
+                        const dataArray = new Uint8Array(bufferLength);
+                        
+                        const draw = () => {
+                            if (this.isListening) {
+                                requestAnimationFrame(draw);
+                                this.analyser.getByteFrequencyData(dataArray);
+                                this.updateVisualizer(dataArray);
+                            }
+                        };
+                        draw();
+                    })
+                    .catch(err => console.error('Error setting up visualizer:', err));
+            }
+
+            stopVisualizer() {
+                if (this.audioContext) {
+                    this.audioContext.close();
+                    this.audioContext = null;
+                }
+            }
+
+            updateVisualizer(dataArray) {
+                // Simple visualizer - you can enhance this
+                const average = dataArray.reduce((a, b) => a + b) / dataArray.length;
+                const voiceBtn = document.getElementById('voice-record-btn');
+                if (average > 50) {
+                    voiceBtn.style.transform = 'scale(1.1)';
+                } else {
+                    voiceBtn.style.transform = 'scale(1)';
+                }
+            }
+
+            async processVoiceInput(transcript) {
+                // Add language detection and processing
+                const isMalayalam = this.detectMalayalam(transcript);
+                
+                if (isMalayalam && this.currentLanguage === 'en-US') {
+                    // Auto-switch to Malayalam if detected
+                    this.toggleLanguage();
+                }
+
+                // Send to AI with language context
+                queryInput.value = transcript;
+                queryInput.focus();
+                
+                // Auto-submit after a short delay
+                setTimeout(() => {
+                    if (transcript.trim()) {
+                        queryForm.dispatchEvent(new Event('submit'));
+                    }
+                }, 1000);
+            }
+
+            detectMalayalam(text) {
+                // Simple Malayalam detection based on Unicode ranges
+                const malayalamRegex = /[\u0D00-\u0D7F]/;
+                return malayalamRegex.test(text);
+            }
+        }
+
+        // Initialize voice recognition
+        const voiceService = new VoiceRecognitionService();
+        voiceService.init();
+
+        // Voice button event listener
+        voiceRecordBtn.addEventListener('click', function() {
+            if (voiceService.isListening) {
+                voiceService.stopListening();
+            } else {
+                voiceService.startListening();
+            }
+        });
+
+        // Language toggle (double-click)
+        voiceRecordBtn.addEventListener('dblclick', function() {
+            voiceService.toggleLanguage();
+        });
+
+        // Advanced Image Analysis System
+        class ImageAnalysisService {
+            constructor() {
+                this.geminiApiKey = 'YOUR_GEMINI_API_KEY'; // Replace with your actual API key
+                this.geminiApiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
+                this.supportedFormats = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
+                this.maxFileSize = 10 * 1024 * 1024; // 10MB
+            }
+
+            async analyzeImage(imageFile, additionalPrompt = '') {
+                try {
+                    if (!this.validateImageFile(imageFile)) return;
+                    
+                    this.showImageAnalysisLoading();
+                    const base64Image = await this.fileToBase64(imageFile);
+                    const prompt = this.buildAgriculturalPrompt(additionalPrompt);
+                    const analysis = await this.callGeminiVisionAPI(base64Image, prompt);
+                    this.displayImageAnalysis(analysis, imageFile);
+                    
+                } catch (error) {
+                    console.error('Image analysis error:', error);
+                    this.showImageAnalysisError(error.message);
+                }
+            }
+
+            validateImageFile(file) {
+                if (!this.supportedFormats.includes(file.type)) {
+                    alert('Please select a valid image file (JPEG, PNG, WebP, or GIF)');
+                    return false;
+                }
+                if (file.size > this.maxFileSize) {
+                    alert('Image file is too large. Please select an image smaller than 10MB');
+                    return false;
+                }
+                return true;
+            }
+
+            fileToBase64(file) {
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = () => resolve(reader.result.split(',')[1]);
+                    reader.onerror = reject;
+                    reader.readAsDataURL(file);
+                });
+            }
+
+            buildAgriculturalPrompt(additionalPrompt) {
+                return `
+                Analyze this agricultural image and provide detailed insights in both English and Malayalam. Focus on:
+                1. Plant/Crop Identification
+                2. Health Assessment (diseases, pests, nutrient deficiencies)
+                3. Growth Stage Analysis
+                4. Environmental Conditions
+                5. Recommendations for improvement
+                
+                Please provide crop name, health status, diseases/pests, growth stage, soil observations, and specific recommendations for Kerala farming conditions.
+                ${additionalPrompt ? `Additional context: ${additionalPrompt}` : ''}
+                `;
+            }
+
+            async callGeminiVisionAPI(base64Image, prompt) {
+                const requestBody = {
+                    contents: [{
+                        parts: [
+                            { text: prompt },
+                            { inline_data: { mime_type: "image/jpeg", data: base64Image } }
+                        ]
+                    }],
+                    generationConfig: {
+                        temperature: 0.4,
+                        maxOutputTokens: 2048,
+                    }
+                };
+
+                const response = await fetch(`${this.geminiApiUrl}?key=${this.geminiApiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(requestBody)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API request failed: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                return data.candidates[0].content.parts[0].text;
+            }
+
+            showImageAnalysisLoading() {
+                queryInput.value = "🔍 Analyzing image with AI...";
+                queryInput.disabled = true;
+                this.showImagePreview();
+            }
+
+            showImagePreview() {
+                const existingPreview = document.getElementById('image-preview');
+                if (existingPreview) existingPreview.remove();
+
+                const preview = document.createElement('div');
+                preview.id = 'image-preview';
+                preview.className = 'mt-4 p-4 bg-surface-50 rounded-lg border border-border';
+                preview.innerHTML = `
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-primary animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium text-text-primary">Analyzing Image</p>
+                            <p class="text-xs text-text-secondary">Using Gemini Vision AI for agricultural analysis</p>
+                        </div>
+                    </div>
+                `;
+                queryInput.parentElement.appendChild(preview);
+            }
+
+            displayImageAnalysis(analysis, imageFile) {
+                queryInput.value = `Image Analysis: ${analysis.substring(0, 100)}...`;
+                queryInput.disabled = false;
+                
+                const preview = document.getElementById('image-preview');
+                if (preview) {
+                    preview.innerHTML = `
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-12 h-12 bg-success-100 rounded-lg flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-success" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-text-primary">Analysis Complete</p>
+                                    <p class="text-xs text-text-secondary">Agricultural insights ready</p>
+                                </div>
+                            </div>
+                            <div class="mt-3 p-3 bg-white rounded-lg border border-border">
+                                <h4 class="text-sm font-medium text-text-primary mb-2">AI Analysis Preview:</h4>
+                                <p class="text-xs text-text-secondary">${analysis.substring(0, 200)}...</p>
+                                <button onclick="document.getElementById('query-input').value = '${analysis.replace(/'/g, "\\'")}'; document.getElementById('query-input').focus();" class="mt-2 text-xs text-primary hover:text-primary-700 underline">
+                                    Use Full Analysis
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+
+            showImageAnalysisError(message) {
+                queryInput.value = "Image analysis failed. Please try again.";
+                queryInput.disabled = false;
+                
+                const preview = document.getElementById('image-preview');
+                if (preview) {
+                    preview.innerHTML = `
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-error-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-error" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium text-error-700">Analysis Failed</p>
+                                <p class="text-xs text-error-600">${message}</p>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+        }
+
+        // Initialize image analysis service
+        const imageService = new ImageAnalysisService();
+
+        // Enhanced photo upload functionality
+        photoUploadBtn.addEventListener('click', function() {
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+            modal.innerHTML = `
+                <div class="bg-white rounded-lg p-6 max-w-sm w-full mx-4">
+                    <h3 class="text-lg font-semibold text-text-primary mb-4">Add Image</h3>
+                    <div class="space-y-3">
+                        <button id="camera-capture" class="w-full p-4 bg-primary text-white rounded-lg hover:bg-primary-700 transition-colors flex items-center justify-center space-x-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                            <span>📷 Take Photo</span>
+                        </button>
+                        <button id="file-upload" class="w-full p-4 bg-secondary text-white rounded-lg hover:bg-secondary-700 transition-colors flex items-center justify-center space-x-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                            </svg>
+                            <span>📁 Upload File</span>
+                        </button>
+                    </div>
+                    <button onclick="this.closest('.fixed').remove()" class="w-full mt-4 px-4 py-2 text-text-secondary hover:text-text-primary transition-colors">
+                        Cancel
+                    </button>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            modal.querySelector('#camera-capture').addEventListener('click', () => {
+                modal.remove();
+                // Camera capture functionality would go here
+                alert('Camera capture feature - would integrate with camera API');
+            });
+            
+            modal.querySelector('#file-upload').addEventListener('click', () => {
+                modal.remove();
+                const input = document.createElement('input');
+                input.type = 'file';
+                input.accept = 'image/*';
+                input.onchange = function(e) {
+                    const file = e.target.files[0];
+                    if (file) {
+                        imageService.analyzeImage(file);
+                    }
+                };
+                input.click();
+            });
+        });
+
+        // Enhanced form submission with RAG integration
+        queryForm.addEventListener('submit', async function(event) {
+        event.preventDefault();
+
+            const userQuestion = queryInput.value.trim();
+            if (!userQuestion) return;
+            
+            // Show loading state
+            showLoadingState();
+            
+            try {
+                // Prepare enhanced request with context
+                const requestData = {
+                    question: userQuestion,
+                    language: voiceService.currentLanguage,
+                    context: {
+                        timestamp: new Date().toISOString(),
+                        userAgent: navigator.userAgent,
+                        location: 'Kerala, India',
+                        sessionId: getSessionId()
+                    }
+                };
+
+            const response = await fetch('http://127.0.0.1:5000/api/ask', {
+                    method: 'POST',
+                headers: {
+                        'Content-Type': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest'
+                },
+                    body: JSON.stringify(requestData)
+            });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+            const data = await response.json();
+                showAIResponse(data.answer);
+                
+                // Save query to history with enhanced metadata
+                saveQueryToHistory(userQuestion, data.answer, {
+                    language: voiceService.currentLanguage,
+                    timestamp: new Date().toISOString(),
+                    responseTime: data.responseTime || 'N/A'
+                });
+
+        } catch (error) {
+                console.error('Error:', error);
+                showErrorState();
+                
+                // Try offline mode if available
+                if (navigator.onLine === false) {
+                    showOfflineResponse(userQuestion);
+                }
+            }
+        });
+
+        // Generate session ID for tracking
+        function getSessionId() {
+            let sessionId = localStorage.getItem('agriassist_session_id');
+            if (!sessionId) {
+                sessionId = 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+                localStorage.setItem('agriassist_session_id', sessionId);
+            }
+            return sessionId;
+        }
+
+        // Enhanced query history with metadata
+        function saveQueryToHistory(question, answer, metadata = {}) {
+            const history = JSON.parse(localStorage.getItem('agriassist_history') || '[]');
+            history.unshift({
+                question: question,
+                answer: answer,
+                timestamp: new Date().toISOString(),
+                metadata: metadata
+            });
+            
+            // Keep only last 50 queries
+            if (history.length > 50) {
+                history.splice(50);
+            }
+            
+            localStorage.setItem('agriassist_history', JSON.stringify(history));
+        }
+
+        // Offline response fallback
+        function showOfflineResponse(question) {
+            const offlineResponses = {
+                'rice': 'For rice farming in Kerala, consider the monsoon season timing and use organic fertilizers. Check soil moisture levels regularly.',
+                'coconut': 'Coconut trees need well-drained soil and regular watering. Monitor for red palm weevil and apply neem-based pesticides.',
+                'banana': 'Banana plants require rich soil and consistent moisture. Plant during monsoon onset for best results.',
+                'disease': 'For plant diseases, first identify the symptoms, then apply appropriate organic treatments. Consult local agricultural officer.',
+                'pest': 'Use integrated pest management. Start with neem oil and other organic solutions before chemical pesticides.',
+                'weather': 'Monitor weather patterns for Kerala. Monsoon season is crucial for most crops. Check IMD forecasts regularly.',
+                'soil': 'Test your soil pH and nutrient levels. Most Kerala soils are acidic and may need lime application.',
+                'fertilizer': 'Use organic fertilizers like compost, vermicompost, and green manure. Apply based on crop requirements.',
+                'malayalam': 'കേരളത്തിലെ കൃഷിക്ക് മഴക്കാലം വളരെ പ്രധാനമാണ്. ജൈവ വളങ്ങൾ ഉപയോഗിക്കുക.'
+            };
+
+            let response = 'I\'m currently offline, but here are some general farming tips for Kerala: ';
+            
+            // Try to match keywords
+            const lowerQuestion = question.toLowerCase();
+            for (const [keyword, tip] of Object.entries(offlineResponses)) {
+                if (lowerQuestion.includes(keyword)) {
+                    response = tip;
+                    break;
+                }
+            }
+
+            showAIResponse(response + '\n\n(Offline mode - limited responses available)');
+        }
+
+        function showLoadingState() {
+            defaultResponse.classList.add('hidden');
+            errorResponse.classList.add('hidden');
+            aiResponse.classList.add('hidden');
+            loadingResponse.classList.remove('hidden');
+            
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<svg class="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>';
+        }
+
+        function showAIResponse(answer) {
+            loadingResponse.classList.add('hidden');
+            errorResponse.classList.add('hidden');
+            defaultResponse.classList.add('hidden');
+            aiResponse.classList.remove('hidden');
+            
+            responseContent.innerHTML = formatResponse(answer);
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>';
+        }
+
+        function showErrorState() {
+            loadingResponse.classList.add('hidden');
+            aiResponse.classList.add('hidden');
+            defaultResponse.classList.add('hidden');
+            errorResponse.classList.remove('hidden');
+            
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>';
+        }
+
+        function formatResponse(text) {
+            // Format the response with proper line breaks and styling
+            return text.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        }
+
+        function saveQueryToHistory(question, answer) {
+            const history = JSON.parse(localStorage.getItem('agriassist_history') || '[]');
+            history.unshift({
+                question: question,
+                answer: answer,
+                timestamp: new Date().toISOString()
+            });
+            
+            // Keep only last 50 queries
+            if (history.length > 50) {
+                history.splice(50);
+            }
+            
+            localStorage.setItem('agriassist_history', JSON.stringify(history));
+        }
+
+        // Response actions
+        document.getElementById('copy-response').addEventListener('click', function() {
+            navigator.clipboard.writeText(responseContent.textContent);
+            this.textContent = '✅ Copied!';
+            setTimeout(() => {
+                this.textContent = '📋 Copy';
+            }, 2000);
+        });
+
+        document.getElementById('save-response').addEventListener('click', function() {
+            const saved = JSON.parse(localStorage.getItem('agriassist_saved') || '[]');
+            saved.push({
+                question: queryInput.value,
+                answer: responseContent.textContent,
+                timestamp: new Date().toISOString()
+            });
+            localStorage.setItem('agriassist_saved', JSON.stringify(saved));
+            
+            this.textContent = '✅ Saved!';
+            setTimeout(() => {
+                this.textContent = '💾 Save';
+            }, 2000);
+        });
+
+        document.getElementById('share-response').addEventListener('click', function() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'AgriAssist - Farming Advice',
+                    text: responseContent.textContent,
+                    url: window.location.href
+                });
+            } else {
+                // Fallback to copying to clipboard
+                navigator.clipboard.writeText(responseContent.textContent);
+                this.textContent = '✅ Copied!';
+                setTimeout(() => {
+                    this.textContent = '🔗 Share';
+                }, 2000);
+            }
+        });
+
+        document.getElementById('retry-btn').addEventListener('click', function() {
+            queryForm.dispatchEvent(new Event('submit'));
+        });
+
+        // Weather Integration
+        class WeatherService {
+            constructor() {
+                this.apiKey = 'demo_key'; // Replace with actual API key
+                this.baseUrl = 'https://api.openweathermap.org/data/2.5';
+                this.location = { lat: 10.5276, lon: 76.2144 }; // Thrissur coordinates
+                this.updateInterval = 300000; // 5 minutes
+            }
+
+            async getCurrentWeather() {
+                try {
+                    // Simulate API call with demo data
+                    const demoData = this.getDemoWeatherData();
+                    this.updateWeatherWidget(demoData);
+                    return demoData;
+                } catch (error) {
+                    console.error('Weather API error:', error);
+                    this.showWeatherError();
+                }
+            }
+
+            getDemoWeatherData() {
+                const conditions = [
+                    { temp: 28, status: 'Partly Cloudy', icon: '⛅', recommendations: ['Good for rice planting', 'Monitor for pests'] },
+                    { temp: 32, status: 'Sunny', icon: '☀️', recommendations: ['Apply irrigation', 'Check soil moisture'] },
+                    { temp: 26, status: 'Rainy', icon: '🌧️', recommendations: ['Avoid field work', 'Check drainage'] },
+                    { temp: 30, status: 'Cloudy', icon: '☁️', recommendations: ['Good for transplanting', 'Apply fertilizers'] }
+                ];
+                
+                return conditions[Math.floor(Math.random() * conditions.length)];
+            }
+
+            updateWeatherWidget(data) {
+                document.getElementById('current-temp').textContent = `${data.temp}°C`;
+                document.getElementById('weather-status').textContent = data.status;
+                
+                const recommendations = document.getElementById('weather-recommendations');
+                recommendations.innerHTML = data.recommendations.map((rec, index) => `
+                    <div class="flex items-center space-x-2">
+                        <div class="w-2 h-2 bg-${index === 0 ? 'success' : 'warning'} rounded-full"></div>
+                        <span class="text-text-primary">${rec}</span>
+                    </div>
+                `).join('');
+            }
+
+            showWeatherError() {
+                document.getElementById('current-temp').textContent = '--°C';
+                document.getElementById('weather-status').textContent = 'Unable to load';
+                document.getElementById('weather-recommendations').innerHTML = `
+                    <div class="flex items-center space-x-2">
+                        <div class="w-2 h-2 bg-error rounded-full"></div>
+                        <span class="text-text-primary">Weather data unavailable</span>
+                    </div>
+                `;
+            }
+
+            getFarmingRecommendations(weather) {
+                const recommendations = [];
+                
+                if (weather.temp > 30) {
+                    recommendations.push('High temperature - increase irrigation');
+                } else if (weather.temp < 20) {
+                    recommendations.push('Low temperature - protect young plants');
+                }
+                
+                if (weather.status.includes('Rain')) {
+                    recommendations.push('Rainy weather - check drainage systems');
+                } else if (weather.status.includes('Sunny')) {
+                    recommendations.push('Sunny weather - good for harvesting');
+                }
+                
+                return recommendations;
+            }
+
+            startAutoUpdate() {
+                // Initial load
+                this.getCurrentWeather();
+                
+                // Auto-update every 5 minutes
+                setInterval(() => {
+                    this.getCurrentWeather();
+                }, this.updateInterval);
+            }
+        }
+
+        // Initialize weather service
+        const weatherService = new WeatherService();
+        weatherService.startAutoUpdate();
+
+        // Weather widget click handler
+        document.getElementById('weather-widget').addEventListener('click', function() {
+            // Show detailed weather modal or navigate to weather page
+            alert('Detailed weather forecast would open here with 7-day forecast and farming recommendations');
+        });
+
+        // Service Worker Registration for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                        console.log('Service Worker registered successfully:', registration.scope);
+                        
+                        // Check for updates
+                        registration.addEventListener('updatefound', function() {
+                            const newWorker = registration.installing;
+                            newWorker.addEventListener('statechange', function() {
+                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                    // New content is available, show update notification
+                                    showUpdateNotification();
+                                }
+                            });
+                        });
+                    })
+                    .catch(function(error) {
+                        console.log('Service Worker registration failed:', error);
+                    });
+            });
+        }
+
+        // PWA Install Prompt
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', function(e) {
+            e.preventDefault();
+            deferredPrompt = e;
+            showInstallButton();
+        });
+
+        function showInstallButton() {
+            const installButton = document.createElement('button');
+            installButton.textContent = 'Install AgriAssist App';
+            installButton.className = 'fixed bottom-4 right-4 bg-primary text-white px-4 py-2 rounded-lg shadow-lg hover:bg-primary-700 transition-colors z-50';
+            installButton.addEventListener('click', installApp);
+            document.body.appendChild(installButton);
+        }
+
+        function installApp() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then(function(choiceResult) {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the install prompt');
+                    } else {
+                        console.log('User dismissed the install prompt');
+                    }
+                    deferredPrompt = null;
+                });
+            }
+        }
+
+        function showUpdateNotification() {
+            const updateNotification = document.createElement('div');
+            updateNotification.className = 'fixed top-4 right-4 bg-success text-white px-4 py-2 rounded-lg shadow-lg z-50';
+            updateNotification.innerHTML = `
+                <div class="flex items-center space-x-2">
+                    <span>New version available!</span>
+                    <button onclick="window.location.reload()" class="underline">Update</button>
+                    <button onclick="this.parentElement.parentElement.remove()" class="ml-2">×</button>
+                </div>
+            `;
+            document.body.appendChild(updateNotification);
+        }
+
+        // Offline detection
+        function updateOnlineStatus() {
+            const status = navigator.onLine ? 'online' : 'offline';
+            console.log('Connection status:', status);
+            
+            if (!navigator.onLine) {
+                showOfflineIndicator();
+            } else {
+                hideOfflineIndicator();
+            }
+        }
+
+        function showOfflineIndicator() {
+            let indicator = document.getElementById('offline-indicator');
+            if (!indicator) {
+                indicator = document.createElement('div');
+                indicator.id = 'offline-indicator';
+                indicator.className = 'fixed top-0 left-0 right-0 bg-warning text-warning-800 text-center py-2 z-50';
+                indicator.textContent = 'You are offline. Some features may be limited.';
+                document.body.appendChild(indicator);
+            }
+        }
+
+        function hideOfflineIndicator() {
+            const indicator = document.getElementById('offline-indicator');
+            if (indicator) {
+                indicator.remove();
+            }
+        }
+
+        window.addEventListener('online', updateOnlineStatus);
+        window.addEventListener('offline', updateOnlineStatus);
+        updateOnlineStatus();
+
+        // Notification System
+        class NotificationService {
+            constructor() {
+                this.permission = Notification.permission;
+                this.isSupported = 'Notification' in window;
+            }
+
+            async requestPermission() {
+                if (!this.isSupported) {
+                    console.log('Notifications not supported');
+                    return false;
+                }
+
+                if (this.permission === 'default') {
+                    this.permission = await Notification.requestPermission();
+                }
+
+                return this.permission === 'granted';
+            }
+
+            async showNotification(title, options = {}) {
+                if (!await this.requestPermission()) {
+                    console.log('Notification permission denied');
+                    return;
+                }
+
+                const defaultOptions = {
+                    body: 'New farming advice available!',
+                    icon: '/public/favicon.ico',
+                    badge: '/public/favicon.ico',
+                    vibrate: [100, 50, 100],
+                    requireInteraction: false,
+                    actions: [
+                        {
+                            action: 'view',
+                            title: 'View Details',
+                            icon: '/public/favicon.ico'
+                        },
+                        {
+                            action: 'dismiss',
+                            title: 'Dismiss',
+                            icon: '/public/favicon.ico'
+                        }
+                    ]
+                };
+
+                const notification = new Notification(title, { ...defaultOptions, ...options });
+                
+                notification.onclick = function() {
+                    window.focus();
+                    notification.close();
+                };
+
+                return notification;
+            }
+
+            async showWeatherAlert(weatherData) {
+                const title = 'Weather Alert - AgriAssist';
+                const body = `Current: ${weatherData.temp}°C, ${weatherData.status}. ${weatherData.recommendations[0]}`;
+                
+                return this.showNotification(title, {
+                    body: body,
+                    tag: 'weather-alert',
+                    requireInteraction: true
+                });
+            }
+
+            async showFarmingTip() {
+                const tips = [
+                    'Apply organic fertilizers during monsoon for better crop growth',
+                    'Monitor rice fields for blast disease during humid conditions',
+                    'Harvest coconut when the husk turns brown and hard',
+                    'Plant banana suckers during the onset of monsoon',
+                    'Check soil moisture levels before irrigation',
+                    'Use neem-based pesticides for natural pest control'
+                ];
+
+                const randomTip = tips[Math.floor(Math.random() * tips.length)];
+                
+                return this.showNotification('Farming Tip - AgriAssist', {
+                    body: randomTip,
+                    tag: 'farming-tip',
+                    requireInteraction: false
+                });
+            }
+
+            async showMarketPriceAlert(crop, price, change) {
+                const title = `Market Price Update - ${crop}`;
+                const body = `Current price: ₹${price} (${change > 0 ? '+' : ''}${change}%)`;
+                
+                return this.showNotification(title, {
+                    body: body,
+                    tag: 'market-price',
+                    requireInteraction: false
+                });
+            }
+        }
+
+        // Initialize notification service
+        const notificationService = new NotificationService();
+
+        // Request notification permission on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            notificationService.requestPermission();
+        });
+
+        // Weather-based notifications
+        weatherService.getCurrentWeather().then(weatherData => {
+            // Show weather alert if conditions are critical
+            if (weatherData.temp > 35 || weatherData.status.includes('Storm')) {
+                notificationService.showWeatherAlert(weatherData);
+            }
+        });
+
+        // Scheduled farming tips (every 6 hours)
+        setInterval(() => {
+            if (Math.random() > 0.7) { // 30% chance every 6 hours
+                notificationService.showFarmingTip();
+            }
+        }, 6 * 60 * 60 * 1000);
+
+        // Market price alerts (simulate every 2 hours)
+        setInterval(() => {
+            const crops = ['Rice', 'Coconut', 'Banana', 'Pepper'];
+            const randomCrop = crops[Math.floor(Math.random() * crops.length)];
+            const basePrice = Math.floor(Math.random() * 1000) + 1000;
+            const change = (Math.random() - 0.5) * 10; // -5% to +5%
+            
+            if (Math.abs(change) > 3) { // Only alert for significant changes
+                notificationService.showMarketPriceAlert(randomCrop, basePrice, change.toFixed(1));
+            }
+        }, 2 * 60 * 60 * 1000);
+
+        // Add notification settings to the page
+        function addNotificationSettings() {
+            const settingsButton = document.createElement('button');
+            settingsButton.innerHTML = '🔔 Notification Settings';
+            settingsButton.className = 'fixed bottom-4 left-4 bg-secondary text-white px-3 py-2 rounded-lg shadow-lg hover:bg-secondary-700 transition-colors z-50 text-sm';
+            settingsButton.addEventListener('click', showNotificationSettings);
+            document.body.appendChild(settingsButton);
+        }
+
+        function showNotificationSettings() {
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+            modal.innerHTML = `
+                <div class="bg-white rounded-lg p-6 max-w-md w-full mx-4">
+                    <h3 class="text-lg font-semibold text-text-primary mb-4">Notification Settings</h3>
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3">
+                            <input type="checkbox" id="weather-alerts" checked class="rounded">
+                            <span class="text-sm text-text-primary">Weather Alerts</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="checkbox" id="farming-tips" checked class="rounded">
+                            <span class="text-sm text-text-primary">Farming Tips</span>
+                        </label>
+                        <label class="flex items-center space-x-3">
+                            <input type="checkbox" id="market-prices" checked class="rounded">
+                            <span class="text-sm text-text-primary">Market Price Updates</span>
+                        </label>
+                    </div>
+                    <div class="flex justify-end space-x-2 mt-6">
+                        <button onclick="this.closest('.fixed').remove()" class="px-4 py-2 text-text-secondary hover:text-text-primary transition-colors">Cancel</button>
+                        <button onclick="saveNotificationSettings(); this.closest('.fixed').remove()" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-700 transition-colors">Save</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        function saveNotificationSettings() {
+            const settings = {
+                weatherAlerts: document.getElementById('weather-alerts').checked,
+                farmingTips: document.getElementById('farming-tips').checked,
+                marketPrices: document.getElementById('market-prices').checked
+            };
+            
+            localStorage.setItem('agriassist_notification_settings', JSON.stringify(settings));
+            console.log('Notification settings saved:', settings);
+        }
+
+        // Load notification settings
+        function loadNotificationSettings() {
+            const settings = JSON.parse(localStorage.getItem('agriassist_notification_settings') || '{}');
+            return {
+                weatherAlerts: settings.weatherAlerts !== false,
+                farmingTips: settings.farmingTips !== false,
+                marketPrices: settings.marketPrices !== false
+            };
+        }
+
+        // Add notification settings button
+        addNotificationSettings();
+
+    </script>
+</body>
+</html>
+</html>

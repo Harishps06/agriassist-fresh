@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="ml" dir="ltr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Knowledge Base - AgriAssist | കൃഷി വിജ്ഞാന കേന്ദ്രം</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <meta name="description" content="Comprehensive farming guides for Kerala crops - Rice, Coconut, Banana, Cardamom, Rubber & Spices" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232D5016'%3E%3Cpath d='M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z'/%3E%3C/svg%3E" />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fagriassist1295back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+<body class="bg-background font-sans">
+    <!-- Header Navigation -->
+    <header class="bg-white shadow-sm border-b border-border sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-poppins font-bold text-primary">AgriAssist</h1>
+                        <p class="text-xs text-text-secondary font-malayalam">ഡിജിറ്റൽ കൃഷി ഓഫീസർ</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="homepage_ai_query_interface.html" class="text-text-secondary hover:text-primary transition-colors">Home</a>
+                    <a href="knowledge_base_crop_season_guide.html" class="text-primary font-medium border-b-2 border-primary pb-1">Knowledge Base</a>
+                    <a href="community_hub_farmer_network.html" class="text-text-secondary hover:text-primary transition-colors">Community</a>
+                    <a href="expert_network_agricultural_officer_connect.html" class="text-text-secondary hover:text-primary transition-colors">Experts</a>
+                    <a href="my_farm_dashboard_personalized_advisor.html" class="text-text-secondary hover:text-primary transition-colors">My Farm</a>
+                    <a href="help_support_multilingual_assistance.html" class="text-text-secondary hover:text-primary transition-colors">Help</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden p-2 rounded-lg hover:bg-surface-100 transition-colors" id="mobile-menu-btn">
+                    <svg class="w-6 h-6 text-text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div class="md:hidden hidden" id="mobile-menu">
+                <div class="py-4 space-y-2 border-t border-border">
+                    <a href="homepage_ai_query_interface.html" class="block px-4 py-2 text-text-secondary hover:text-primary hover:bg-surface-100 rounded-lg transition-colors">Home</a>
+                    <a href="knowledge_base_crop_season_guide.html" class="block px-4 py-2 text-primary font-medium bg-primary-50 rounded-lg">Knowledge Base</a>
+                    <a href="community_hub_farmer_network.html" class="block px-4 py-2 text-text-secondary hover:text-primary hover:bg-surface-100 rounded-lg transition-colors">Community</a>
+                    <a href="expert_network_agricultural_officer_connect.html" class="block px-4 py-2 text-text-secondary hover:text-primary hover:bg-surface-100 rounded-lg transition-colors">Experts</a>
+                    <a href="my_farm_dashboard_personalized_advisor.html" class="block px-4 py-2 text-text-secondary hover:text-primary hover:bg-surface-100 rounded-lg transition-colors">My Farm</a>
+                    <a href="help_support_multilingual_assistance.html" class="block px-4 py-2 text-text-secondary hover:text-primary hover:bg-surface-100 rounded-lg transition-colors">Help</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section with Search -->
+    <section class="relative bg-gradient-to-br from-primary-50 to-secondary-50 py-12">
+        <div class="absolute inset-0 opacity-5">
+            <img src="https://images.pexels.com/photos/1595104/pexels-photo-1595104.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Kerala agricultural knowledge" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+        </div>
+        
+        <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h1 class="text-3xl lg:text-4xl font-poppins font-bold text-primary mb-4">
+                    Knowledge Base
+                </h1>
+                <p class="text-xl text-text-secondary mb-2 font-malayalam">
+                    കൃഷി വിജ്ഞാന കേന്ദ്രം
+                </p>
+                <p class="text-base text-text-tertiary max-w-2xl mx-auto">
+                    Comprehensive farming guides for Kerala's crops with traditional wisdom backed by modern science
+                </p>
+            </div>
+
+            <!-- Search Interface -->
+            <div class="bg-white rounded-2xl shadow-card p-6 mb-8 max-w-2xl mx-auto">
+                <div class="relative">
+                    <input type="text" placeholder="Search crops, diseases, or farming tips... (നെല്ല്, തെങ്ങ്, വാഴ)" class="w-full pl-12 pr-20 py-4 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent font-malayalam text-lg" id="knowledge-search" />
+                    <svg class="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-text-tertiary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                    <button class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-primary text-white p-2 rounded-lg hover:bg-primary-700 transition-colors" id="voice-search-btn">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Quick Search Tags -->
+                <div class="flex flex-wrap gap-2 mt-4">
+                    <button class="px-3 py-1 bg-primary-50 text-primary text-sm rounded-full hover:bg-primary-100 transition-colors font-malayalam">നെല്ല്</button>
+                    <button class="px-3 py-1 bg-secondary-50 text-secondary text-sm rounded-full hover:bg-secondary-100 transition-colors font-malayalam">തെങ്ങ്</button>
+                    <button class="px-3 py-1 bg-accent-50 text-accent-700 text-sm rounded-full hover:bg-accent-100 transition-colors font-malayalam">വാഴ</button>
+                    <button class="px-3 py-1 bg-success-50 text-success text-sm rounded-full hover:bg-success-100 transition-colors">Pest Control</button>
+                    <button class="px-3 py-1 bg-warning-50 text-warning text-sm rounded-full hover:bg-warning-100 transition-colors">Monsoon Tips</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                <!-- Sidebar Navigation -->
+                <div class="lg:col-span-1">
+                    <div class="bg-surface-50 rounded-2xl p-6 sticky top-24">
+                        <h3 class="text-lg font-poppins font-semibold text-text-primary mb-4">Browse by Category</h3>
+                        
+                        <!-- Crop Categories -->
+                        <div class="space-y-2 mb-6">
+                            <button class="w-full text-left px-4 py-3 rounded-lg hover:bg-primary-50 hover:text-primary transition-colors flex items-center justify-between group" data-category="rice">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 bg-primary-100 rounded-lg flex items-center justify-center">
+                                        <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-text-primary">Rice</p>
+                                        <p class="text-xs text-text-secondary font-malayalam">നെല്ല്</p>
+                                    </div>
+                                </div>
+                                <svg class="w-4 h-4 text-text-tertiary group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </button>
+
+                            <button class="w-full text-left px-4 py-3 rounded-lg hover:bg-secondary-50 hover:text-secondary transition-colors flex items-center justify-between group" data-category="coconut">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 bg-secondary-100 rounded-lg flex items-center justify-center">
+                                        <svg class="w-4 h-4 text-secondary" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-text-primary">Coconut</p>
+                                        <p class="text-xs text-text-secondary font-malayalam">തെങ്ങ്</p>
+                                    </div>
+                                </div>
+                                <svg class="w-4 h-4 text-text-tertiary group-hover:text-secondary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </button>
+
+                            <button class="w-full text-left px-4 py-3 rounded-lg hover:bg-accent-50 hover:text-accent-700 transition-colors flex items-center justify-between group" data-category="banana">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 bg-accent-100 rounded-lg flex items-center justify-center">
+                                        <svg class="w-4 h-4 text-accent-700" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-text-primary">Banana</p>
+                                        <p class="text-xs text-text-secondary font-malayalam">വാഴ</p>
+                                    </div>
+                                </div>
+                                <svg class="w-4 h-4 text-text-tertiary group-hover:text-accent-700 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </button>
+
+                            <button class="w-full text-left px-4 py-3 rounded-lg hover:bg-success-50 hover:text-success transition-colors flex items-center justify-between group" data-category="spices">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 bg-success-100 rounded-lg flex items-center justify-center">
+                                        <svg class="w-4 h-4 text-success" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M9 11H7v9a2 2 0 002 2h8a2 2 0 002-2v-9h-2m-4 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v2h2m4 0h2v2h-2v-2z"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-text-primary">Spices</p>
+                                        <p class="text-xs text-text-secondary font-malayalam">മസാല വിളകൾ</p>
+                                    </div>
+                                </div>
+                                <svg class="w-4 h-4 text-text-tertiary group-hover:text-success transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <!-- Quick Tools -->
+                        <div class="border-t border-border pt-4">
+                            <h4 class="text-sm font-medium text-text-primary mb-3">Quick Tools</h4>
+                            <div class="space-y-2">
+                                <button class="w-full text-left px-3 py-2 text-sm text-text-secondary hover:text-primary hover:bg-primary-50 rounded-lg transition-colors" id="seasonal-calendar-btn">
+                                    📅 Seasonal Calendar
+                                </button>
+                                <button class="w-full text-left px-3 py-2 text-sm text-text-secondary hover:text-primary hover:bg-primary-50 rounded-lg transition-colors" id="pest-identifier-btn">
+                                    🔍 Pest Identifier
+                                </button>
+                                <button class="w-full text-left px-3 py-2 text-sm text-text-secondary hover:text-primary hover:bg-primary-50 rounded-lg transition-colors" id="weather-advisory-btn">
+                                    🌦️ Weather Advisory
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div class="lg:col-span-3">
+                    <!-- Featured Crop Guides -->
+                    <div class="mb-12" id="crop-guides">
+                        <div class="flex items-center justify-between mb-6">
+                            <h2 class="text-2xl font-poppins font-bold text-text-primary">Featured Crop Guides</h2>
+                            <span class="text-sm text-text-secondary">Updated for 2025 season</span>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Rice Guide -->
+                            <div class="bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl p-6 hover:shadow-lg transition-all duration-300 cursor-pointer" data-crop="rice">
+                                <div class="flex items-start justify-between mb-4">
+                                    <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center">
+                                        <img src="https://images.pexels.com/photos/1595104/pexels-photo-1595104.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&dpr=2" alt="Rice farming" class="w-10 h-10 rounded-lg object-cover" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'white\'%3E%3Cpath d=\'M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z\'/%3E%3C/svg%3E'; this.onerror=null;" />
+                                    </div>
+                                    <span class="bg-primary text-white text-xs px-2 py-1 rounded-full">Most Popular</span>
+                                </div>
+                                <h3 class="text-xl font-poppins font-semibold text-text-primary mb-2">Rice Farming Guide</h3>
+                                <p class="text-sm text-text-secondary mb-3 font-malayalam">നെല്ല് കൃഷി സമ്പൂർണ്ണ ഗൈഡ്</p>
+                                <p class="text-sm text-text-tertiary mb-4">Complete guide covering varieties, planting, pest management, and harvesting for Kerala's rice cultivation</p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-2 text-xs text-text-secondary">
+                                        <span>12 chapters</span>
+                                        <span>•</span>
+                                        <span>45 min read</span>
+                                    </div>
+                                    <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <!-- Coconut Guide -->
+                            <div class="bg-gradient-to-br from-secondary-50 to-secondary-100 rounded-2xl p-6 hover:shadow-lg transition-all duration-300 cursor-pointer" data-crop="coconut">
+                                <div class="flex items-start justify-between mb-4">
+                                    <div class="w-16 h-16 bg-secondary rounded-2xl flex items-center justify-center">
+                                        <img src="https://images.pixabay.com/photo-2016/08/03/16/12/coconut-1566197_1280.jpg?auto=compress&cs=tinysrgb&w=100&h=100&dpr=2" alt="Coconut farming" class="w-10 h-10 rounded-lg object-cover" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'white\'%3E%3Cpath d=\'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z\'/%3E%3C/svg%3E'; this.onerror=null;" />
+                                    </div>
+                                    <span class="bg-secondary text-white text-xs px-2 py-1 rounded-full">Updated</span>
+                                </div>
+                                <h3 class="text-xl font-poppins font-semibold text-text-primary mb-2">Coconut Cultivation</h3>
+                                <p class="text-sm text-text-secondary mb-3 font-malayalam">തെങ്ങ് കൃഷി മാർഗ്ഗനിർദ്ദേശങ്ങൾ</p>
+                                <p class="text-sm text-text-tertiary mb-4">Comprehensive coconut farming techniques including variety selection, planting, and disease management</p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-2 text-xs text-text-secondary">
+                                        <span>8 chapters</span>
+                                        <span>•</span>
+                                        <span>30 min read</span>
+                                    </div>
+                                    <svg class="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <!-- Banana Guide -->
+                            <div class="bg-gradient-to-br from-accent-50 to-accent-100 rounded-2xl p-6 hover:shadow-lg transition-all duration-300 cursor-pointer" data-crop="banana">
+                                <div class="flex items-start justify-between mb-4">
+                                    <div class="w-16 h-16 bg-accent rounded-2xl flex items-center justify-center">
+                                        <img src="https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=compress&cs=tinysrgb&w=100&h=100&dpr=2" alt="Banana farming" class="w-10 h-10 rounded-lg object-cover" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'white\'%3E%3Cpath d=\'M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z\'/%3E%3C/svg%3E'; this.onerror=null;" />
+                                    </div>
+                                    <span class="bg-accent text-white text-xs px-2 py-1 rounded-full">Trending</span>
+                                </div>
+                                <h3 class="text-xl font-poppins font-semibold text-text-primary mb-2">Banana Cultivation</h3>
+                                <p class="text-sm text-text-secondary mb-3 font-malayalam">വാഴ കൃഷി സാങ്കേതിക വിദ്യകൾ</p>
+                                <p class="text-sm text-text-tertiary mb-4">Modern banana farming methods with traditional Kerala practices for maximum yield</p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-2 text-xs text-text-secondary">
+                                        <span>10 chapters</span>
+                                        <span>•</span>
+                                        <span>35 min read</span>
+                                    </div>
+                                    <svg class="w-5 h-5 text-accent-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <!-- Spices Guide -->
+                            <div class="bg-gradient-to-br from-success-50 to-success-100 rounded-2xl p-6 hover:shadow-lg transition-all duration-300 cursor-pointer" data-crop="spices">
+                                <div class="flex items-start justify-between mb-4">
+                                    <div class="w-16 h-16 bg-success rounded-2xl flex items-center justify-center">
+                                        <img src="https://images.pexels.com/photos/531446/pexels-photo-531446.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&dpr=2" alt="Spice farming" class="w-10 h-10 rounded-lg object-cover" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'white\'%3E%3Cpath d=\'M9 11H7v9a2 2 0 002 2h8a2 2 0 002-2v-9h-2m-4 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v2h2m4 0h2v2h-2v-2z\'/%3E%3C/svg%3E'; this.onerror=null;" />
+                                    </div>
+                                    <span class="bg-success text-white text-xs px-2 py-1 rounded-full">Premium</span>
+                                </div>
+                                <h3 class="text-xl font-poppins font-semibold text-text-primary mb-2">Spice Cultivation</h3>
+                                <p class="text-sm text-text-secondary mb-3 font-malayalam">മസാല വിള കൃഷി രീതികൾ</p>
+                                <p class="text-sm text-text-tertiary mb-4">Cardamom, pepper, and other spice cultivation techniques for Kerala's hill regions</p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-2 text-xs text-text-secondary">
+                                        <span>15 chapters</span>
+                                        <span>•</span>
+                                        <span>60 min read</span>
+                                    </div>
+                                    <svg class="w-5 h-5 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Seasonal Calendar Section -->
+                    <div class="mb-12" id="seasonal-calendar">
+                        <div class="flex items-center justify-between mb-6">
+                            <h2 class="text-2xl font-poppins font-bold text-text-primary">Kerala Seasonal Calendar</h2>
+                            <div class="flex items-center space-x-2 text-sm text-text-secondary">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                                <span>Monsoon-integrated planting guide</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl shadow-card p-6 mb-6">
+                            <!-- Region Selector -->
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <button class="px-4 py-2 bg-primary text-white rounded-lg text-sm font-medium" data-region="all">All Kerala</button>
+                                <button class="px-4 py-2 bg-surface-100 text-text-secondary rounded-lg text-sm hover:bg-primary-50 hover:text-primary transition-colors" data-region="malabar">Malabar</button>
+                                <button class="px-4 py-2 bg-surface-100 text-text-secondary rounded-lg text-sm hover:bg-primary-50 hover:text-primary transition-colors" data-region="kochi">Kochi</button>
+                                <button class="px-4 py-2 bg-surface-100 text-text-secondary rounded-lg text-sm hover:bg-primary-50 hover:text-primary transition-colors" data-region="travancore">Travancore</button>
+                            </div>
+
+                            <!-- Calendar Grid -->
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <!-- Current Month - September -->
+                                <div class="bg-primary-50 rounded-xl p-4 border-2 border-primary">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <h3 class="font-poppins font-semibold text-primary">September 2025</h3>
+                                        <span class="text-xs bg-primary text-white px-2 py-1 rounded-full">Current</span>
+                                    </div>
+                                    <div class="space-y-2">
+                                        <div class="flex items-center space-x-2 text-sm">
+                                            <div class="w-2 h-2 bg-success rounded-full"></div>
+                                            <span class="text-text-primary font-malayalam">നെല്ല് നടീൽ (Rice planting)</span>
+                                        </div>
+                                        <div class="flex items-center space-x-2 text-sm">
+                                            <div class="w-2 h-2 bg-warning rounded-full"></div>
+                                            <span class="text-text-primary">Coconut harvesting</span>
+                                        </div>
+                                        <div class="flex items-center space-x-2 text-sm">
+                                            <div class="w-2 h-2 bg-accent rounded-full"></div>
+                                            <span class="text-text-primary font-malayalam">വാഴ പരിചരണം</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Next Month - October -->
+                                <div class="bg-surface-50 rounded-xl p-4">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <h3 class="font-poppins font-semibold text-text-primary">October 2025</h3>
+                                        <span class="text-xs bg-surface-200 text-text-secondary px-2 py-1 rounded-full">Next</span>
+                                    </div>
+                                    <div class="space-y-2">
+                                        <div class="flex items-center space-x-2 text-sm">
+                                            <div class="w-2 h-2 bg-secondary rounded-full"></div>
+                                            <span class="text-text-secondary">Post-monsoon care</span>
+                                        </div>
+                                        <div class="flex items-center space-x-2 text-sm">
+                                            <div class="w-2 h-2 bg-success rounded-full"></div>
+                                            <span class="text-text-secondary font-malayalam">കുരുമുളക് വിളവെടുപ്പ്</span>
+                                        </div>
+                                        <div class="flex items-center space-x-2 text-sm">
+                                            <div class="w-2 h-2 bg-accent rounded-full"></div>
+                                            <span class="text-text-secondary">Banana maintenance</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Future Month - November -->
+                                <div class="bg-surface-50 rounded-xl p-4">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <h3 class="font-poppins font-semibold text-text-primary">November 2025</h3>
+                                        <span class="text-xs bg-surface-200 text-text-secondary px-2 py-1 rounded-full">Plan</span>
+                                    </div>
+                                    <div class="space-y-2">
+                                        <div class="flex items-center space-x-2 text-sm">
+                                            <div class="w-2 h-2 bg-primary rounded-full"></div>
+                                            <span class="text-text-secondary">Winter crop prep</span>
+                                        </div>
+                                        <div class="flex items-center space-x-2 text-sm">
+                                            <div class="w-2 h-2 bg-success rounded-full"></div>
+                                            <span class="text-text-secondary font-malayalam">തെങ്ങ് പരിചരണം</span>
+                                        </div>
+                                        <div class="flex items-center space-x-2 text-sm">
+                                            <div class="w-2 h-2 bg-warning rounded-full"></div>
+                                            <span class="text-text-secondary">Spice harvesting</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 p-4 bg-accent-50 rounded-xl">
+                                <div class="flex items-start space-x-3">
+                                    <svg class="w-5 h-5 text-accent-700 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                    <div>
+                                        <h4 class="font-medium text-accent-700 mb-1">September Farming Tips</h4>
+                                        <p class="text-sm text-accent-600">Post-monsoon is ideal for rice transplanting. Ensure proper drainage and apply organic fertilizers. Monitor for pest activity as humidity levels remain high.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pest Identification Tool -->
+                    <div class="mb-12" id="pest-identifier">
+                        <div class="flex items-center justify-between mb-6">
+                            <h2 class="text-2xl font-poppins font-bold text-text-primary">Pest Identification Tool</h2>
+                            <span class="text-sm text-success bg-success-50 px-3 py-1 rounded-full">AI-Powered</span>
+                        </div>
+
+                        <div class="bg-white rounded-2xl shadow-card p-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <!-- Upload Interface -->
+                                <div>
+                                    <h3 class="text-lg font-poppins font-semibold text-text-primary mb-4">Upload Plant Photo</h3>
+                                    <div class="border-2 border-dashed border-border rounded-xl p-8 text-center hover:border-primary transition-colors cursor-pointer" id="photo-upload-area">
+                                        <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                            </svg>
+                                        </div>
+                                        <h4 class="font-medium text-text-primary mb-2">Take or Upload Photo</h4>
+                                        <p class="text-sm text-text-secondary mb-4 font-malayalam">ചെടിയുടെ ഫോട്ടോ എടുക്കുക അല്ലെങ്കിൽ അപ്‌ലോഡ് ചെയ്യുക</p>
+                                        <div class="flex flex-col sm:flex-row gap-2 justify-center">
+                                            <button class="px-4 py-2 bg-primary text-white rounded-lg text-sm hover:bg-primary-700 transition-colors">
+                                                📷 Take Photo
+                                            </button>
+                                            <button class="px-4 py-2 bg-surface-100 text-text-primary rounded-lg text-sm hover:bg-surface-200 transition-colors">
+                                                📁 Upload File
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Tips -->
+                                    <div class="mt-4 p-4 bg-surface-50 rounded-xl">
+                                        <h4 class="font-medium text-text-primary mb-2">Photo Tips</h4>
+                                        <ul class="text-sm text-text-secondary space-y-1">
+                                            <li>• Clear, well-lit photos work best</li>
+                                            <li>• Focus on affected plant parts</li>
+                                            <li>• Include leaves, stems, or fruits</li>
+                                            <li class="font-malayalam">• വ്യക്തമായ ഫോട്ടോകൾ മാത്രം അപ്‌ലോഡ് ചെയ്യുക</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Common Issues -->
+                                <div>
+                                    <h3 class="text-lg font-poppins font-semibold text-text-primary mb-4">Common Issues</h3>
+                                    <div class="space-y-3">
+                                        <!-- Rice Issues -->
+                                        <div class="p-4 bg-primary-50 rounded-xl cursor-pointer hover:bg-primary-100 transition-colors">
+                                            <div class="flex items-center space-x-3">
+                                                <img src="https://images.pexels.com/photos/1595104/pexels-photo-1595104.jpeg?auto=compress&cs=tinysrgb&w=60&h=60&dpr=2" alt="Rice blast disease" class="w-12 h-12 rounded-lg object-cover" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'%23059669\'%3E%3Cpath d=\'M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z\'/%3E%3C/svg%3E'; this.onerror=null;" />
+                                                <div>
+                                                    <h4 class="font-medium text-text-primary">Rice Blast Disease</h4>
+                                                    <p class="text-sm text-text-secondary font-malayalam">നെല്ലിന്റെ ബ്ലാസ്റ്റ് രോഗം</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Coconut Issues -->
+                                        <div class="p-4 bg-secondary-50 rounded-xl cursor-pointer hover:bg-secondary-100 transition-colors">
+                                            <div class="flex items-center space-x-3">
+                                                <img src="https://images.pixabay.com/photo-2016/08/03/16/12/coconut-1566197_1280.jpg?auto=compress&cs=tinysrgb&w=60&h=60&dpr=2" alt="Coconut palm weevil" class="w-12 h-12 rounded-lg object-cover" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'%234A7C59\'%3E%3Cpath d=\'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z\'/%3E%3C/svg%3E'; this.onerror=null;" />
+                                                <div>
+                                                    <h4 class="font-medium text-text-primary">Red Palm Weevil</h4>
+                                                    <p class="text-sm text-text-secondary font-malayalam">ചുവന്ന ഈന്തപ്പന വണ്ട്</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Banana Issues -->
+                                        <div class="p-4 bg-accent-50 rounded-xl cursor-pointer hover:bg-accent-100 transition-colors">
+                                            <div class="flex items-center space-x-3">
+                                                <img src="https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=compress&cs=tinysrgb&w=60&h=60&dpr=2" alt="Banana leaf spot" class="w-12 h-12 rounded-lg object-cover" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'%23FFB000\'%3E%3Cpath d=\'M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z\'/%3E%3C/svg%3E'; this.onerror=null;" />
+                                                <div>
+                                                    <h4 class="font-medium text-text-primary">Banana Leaf Spot</h4>
+                                                    <p class="text-sm text-text-secondary font-malayalam">വാഴയിലയിലെ പുള്ളി രോഗം</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mt-4 p-4 bg-success-50 rounded-xl">
+                                        <div class="flex items-center space-x-2 mb-2">
+                                            <svg class="w-4 h-4 text-success" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                            </svg>
+                                            <span class="text-sm font-medium text-success">Quick Diagnosis</span>
+                                        </div>
+                                        <p class="text-sm text-success-700">Get instant identification and treatment recommendations with links to local suppliers</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Weather Advisory -->
+                    <div class="mb-12" id="weather-advisory">
+                        <div class="flex items-center justify-between mb-6">
+                            <h2 class="text-2xl font-poppins font-bold text-text-primary">Weather Advisory</h2>
+                            <span class="text-sm text-text-secondary">Updated 2 hours ago</span>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Current Weather -->
+                            <div class="bg-gradient-to-br from-secondary-50 to-secondary-100 rounded-2xl p-6">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h3 class="text-lg font-poppins font-semibold text-text-primary">Current Conditions</h3>
+                                    <div class="text-right">
+                                        <p class="text-2xl font-bold text-secondary">28°C</p>
+                                        <p class="text-sm text-text-secondary">Partly Cloudy</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="grid grid-cols-2 gap-4 mb-4">
+                                    <div class="text-center">
+                                        <p class="text-sm text-text-secondary">Humidity</p>
+                                        <p class="text-lg font-semibold text-text-primary">78%</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <p class="text-sm text-text-secondary">Rainfall</p>
+                                        <p class="text-lg font-semibold text-text-primary">12mm</p>
+                                    </div>
+                                </div>
+
+                                <div class="p-3 bg-white rounded-lg">
+                                    <p class="text-sm text-text-primary font-malayalam">
+                                        <strong>കൃഷി ഉപദേശം:</strong> ഇന്ന് നെല്ല് നടീലിന് അനുകൂല കാലാവസ്ഥയാണ്. മണ്ണിലെ ഈർപ്പം നല്ലതാണ്.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- 7-Day Forecast -->
+                            <div class="bg-white rounded-2xl shadow-card p-6">
+                                <h3 class="text-lg font-poppins font-semibold text-text-primary mb-4">7-Day Forecast</h3>
+                                
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between py-2 border-b border-border">
+                                        <div class="flex items-center space-x-3">
+                                            <span class="text-sm font-medium text-text-primary">Today</span>
+                                            <span class="text-xs text-text-secondary">Sep 5</span>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <span class="text-sm text-text-secondary">⛅</span>
+                                            <span class="text-sm text-text-primary">28°/24°</span>
+                                            <span class="text-xs text-secondary">12mm</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex items-center justify-between py-2 border-b border-border">
+                                        <div class="flex items-center space-x-3">
+                                            <span class="text-sm font-medium text-text-primary">Tomorrow</span>
+                                            <span class="text-xs text-text-secondary">Sep 6</span>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <span class="text-sm text-text-secondary">🌧️</span>
+                                            <span class="text-sm text-text-primary">26°/22°</span>
+                                            <span class="text-xs text-secondary">25mm</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex items-center justify-between py-2">
+                                        <div class="flex items-center space-x-3">
+                                            <span class="text-sm font-medium text-text-primary">Saturday</span>
+                                            <span class="text-xs text-text-secondary">Sep 7</span>
+                                        </div>
+                                        <div class="flex items-center space-x-3">
+                                            <span class="text-sm text-text-secondary">☀️</span>
+                                            <span class="text-sm text-text-primary">30°/25°</span>
+                                            <span class="text-xs text-text-tertiary">0mm</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-4 p-3 bg-warning-50 rounded-lg">
+                                    <div class="flex items-start space-x-2">
+                                        <svg class="w-4 h-4 text-warning mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                                        </svg>
+                                        <div>
+                                            <p class="text-sm font-medium text-warning-700">Heavy Rain Alert</p>
+                                            <p class="text-xs text-warning-600">Expected tomorrow - avoid field work</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Brand -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-poppins font-bold">AgriAssist</h3>
+                            <p class="text-sm opacity-80 font-malayalam">നിങ്ങളുടെ ഡിജിറ്റൽ കൃഷി ഓഫീസർ</p>
+                        </div>
+                    </div>
+                    <p class="text-sm opacity-80 mb-4 max-w-md">
+                        Kerala's first AI-powered agricultural advisory platform, bridging traditional farming wisdom with modern technology.
+                    </p>
+                    <div class="flex space-x-4">
+                        <div class="flex items-center space-x-2 text-sm">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                            <span>Available 24/7</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                            </svg>
+                            <span>Trusted & Secure</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-poppins font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm opacity-80">
+                        <li><a href="homepage_ai_query_interface.html" class="hover:opacity-100 transition-opacity">Home</a></li>
+                        <li><a href="community_hub_farmer_network.html" class="hover:opacity-100 transition-opacity">Community</a></li>
+                        <li><a href="expert_network_agricultural_officer_connect.html" class="hover:opacity-100 transition-opacity">Expert Network</a></li>
+                        <li><a href="my_farm_dashboard_personalized_advisor.html" class="hover:opacity-100 transition-opacity">My Farm</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div>
+                    <h4 class="font-poppins font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2 text-sm opacity-80">
+                        <li><a href="help_support_multilingual_assistance.html" class="hover:opacity-100 transition-opacity">Help Center</a></li>
+                        <li><a href="javascript:void(0)" class="hover:opacity-100 transition-opacity">Contact Us</a></li>
+                        <li><a href="javascript:void(0)" class="hover:opacity-100 transition-opacity">Privacy Policy</a></li>
+                        <li><a href="javascript:void(0)" class="hover:opacity-100 transition-opacity">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-primary-500 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm opacity-80">© 2025 AgriAssist. All Rights Reserved.</p>
+                <div class="flex items-center space-x-4 mt-4 md:mt-0">
+                    <span class="text-sm opacity-80">Powered by Kerala Agricultural University</span>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-2 h-2 bg-success rounded-full animate-pulse"></div>
+                        <span class="text-xs opacity-60">System Online</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Voice search functionality
+        document.getElementById('voice-search-btn').addEventListener('click', function() {
+            alert('Voice search feature - would integrate with Web Speech API for Malayalam and English');
+        });
+
+        // Category navigation
+        document.querySelectorAll('[data-category]').forEach(button => {
+            button.addEventListener('click', function() {
+                const category = this.dataset.category;
+                // Highlight selected category
+                document.querySelectorAll('[data-category]').forEach(btn => {
+                    btn.classList.remove('bg-primary-50', 'text-primary', 'bg-secondary-50', 'text-secondary', 'bg-accent-50', 'text-accent-700', 'bg-success-50', 'text-success');
+                });
+                
+                // Add appropriate styling based on category
+                if (category === 'rice') {
+                    this.classList.add('bg-primary-50', 'text-primary');
+                } else if (category === 'coconut') {
+                    this.classList.add('bg-secondary-50', 'text-secondary');
+                } else if (category === 'banana') {
+                    this.classList.add('bg-accent-50', 'text-accent-700');
+                } else if (category === 'spices') {
+                    this.classList.add('bg-success-50', 'text-success');
+                }
+                
+                // Filter content (would implement actual filtering)
+                console.log('Filtering content for:', category);
+            });
+        });
+
+        // Crop guide cards
+        document.querySelectorAll('[data-crop]').forEach(card => {
+            card.addEventListener('click', function() {
+                const crop = this.dataset.crop;
+                alert(`Opening ${crop} farming guide - would navigate to detailed guide page`);
+            });
+        });
+
+        // Region selector for seasonal calendar
+        document.querySelectorAll('[data-region]').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active state from all buttons
+                document.querySelectorAll('[data-region]').forEach(btn => {
+                    btn.classList.remove('bg-primary', 'text-white');
+                    btn.classList.add('bg-surface-100', 'text-text-secondary');
+                });
+                
+                // Add active state to clicked button
+                this.classList.remove('bg-surface-100', 'text-text-secondary');
+                this.classList.add('bg-primary', 'text-white');
+                
+                const region = this.dataset.region;
+                console.log('Filtering calendar for region:', region);
+            });
+        });
+
+        // Photo upload functionality
+        document.getElementById('photo-upload-area').addEventListener('click', function() {
+            alert('Photo upload feature - would integrate with camera API and AI identification service');
+        });
+
+        // Quick tools
+        document.getElementById('seasonal-calendar-btn').addEventListener('click', function() {
+            document.getElementById('seasonal-calendar').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        document.getElementById('pest-identifier-btn').addEventListener('click', function() {
+            document.getElementById('pest-identifier').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        document.getElementById('weather-advisory-btn').addEventListener('click', function() {
+            document.getElementById('weather-advisory').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Search functionality
+        document.getElementById('knowledge-search').addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            // Would implement actual search functionality
+            console.log('Searching for:', query);
+        });
+
+        // Quick search tags
+        document.querySelectorAll('button[class*="bg-primary-50"], button[class*="bg-secondary-50"], button[class*="bg-accent-50"], button[class*="bg-success-50"], button[class*="bg-warning-50"]').forEach(tag => {
+            tag.addEventListener('click', function() {
+                document.getElementById('knowledge-search').value = this.textContent.trim();
+                console.log('Quick search for:', this.textContent.trim());
+            });
+        });
+    </script>
+</body>
+</html>
