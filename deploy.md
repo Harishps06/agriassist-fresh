@@ -12,7 +12,7 @@
    ```
 3. Go to repository Settings > Pages
 4. Select "Deploy from a branch" > main > / (root)
-5. Your site will be live at: `https://YOUR_USERNAME.github.io/agriassist`
+5. Your site will be live at: `?https://YOUR_USERNAME.github.io/agriassist`
 
 ### Option 2: Netlify (Easy Drag & Drop)
 1. Go to https://netlify.com
