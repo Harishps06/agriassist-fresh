@@ -1146,8 +1146,9 @@
                     }
                 };
 
-                const config = window.AgriAssistConfig.getConfig();
-                const response = await fetch(`${config.api.baseUrl}/api/ask`, {
+                // Direct backend URL for testing
+                const backendUrl = 'https://agriassist-fresh.onrender.com';
+                const response = await fetch(`${backendUrl}/api/ask`, {
                     method: 'POST',
                 headers: {
                         'Content-Type': 'application/json',
