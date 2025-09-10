@@ -83,7 +83,7 @@ def get_agricultural_advice(question, language):
     is_malayalam = any(char in question for char in 'അആഇഈഉഊഋഎഏഐഒഓഔകഖഗഘങചഛജഝഞടഠഡഢണതഥദധനപഫബഭമയരലവശഷസഹളഴറ')
     
     # Check for rice-related questions
-    if any(word in question for word in ['rice', 'നെല്ല്', 'paddy', 'അരി', 'നെല്ലിന്റെ', 'അരി കൃഷി']):
+    if any(word in question for word in ['rice', 'നെല്ല്', 'paddy', 'അരി', 'നെല്ലിന്റെ', 'അരി കൃഷി', 'നെല്ലിന്റെ രോഗങ്ങൾ', 'നെല്ല് രോഗം']):
         if 'planting' in question or 'plant' in question or 'നടുക' in question:
             if is_malayalam:
                 return "കേരളത്തിൽ നെല്ല് നടാനുള്ള ഉത്തമ സമയം മഴക്കാലമാണ് (ജൂൺ-സെപ്റ്റംബർ). ഹെക്ടറിന് 25-30 കിലോ വിത്ത് ഉപയോഗിക്കുക. 20cm x 20cm ഇടവേള കാത്തുസൂക്ഷിക്കുക."
@@ -99,7 +99,7 @@ def get_agricultural_advice(question, language):
                 return "നെല്ലിന് വളം: 3 ഭാഗങ്ങളായി NPK ചെലുത്തുക - 1/3 നടുമ്പോൾ, 1/3 കുറ്റി വളരുമ്പോൾ, 1/3 പൂങ്കുല ഉണ്ടാകുമ്പോൾ. കമ്പോസ്റ്റ് പോലുള്ള ജൈവ വളങ്ങൾ ഉപയോഗിക്കുക."
             else:
                 return "Rice fertilizer: Apply NPK in 3 splits - 1/3 at planting, 1/3 at tillering, 1/3 at panicle initiation. Use organic fertilizers like compost."
-        elif 'pest' in question or 'disease' in question or 'രോഗം' in question:
+        elif 'pest' in question or 'disease' in question or 'രോഗം' in question or 'രോഗങ്ങൾ' in question or 'diseases' in question:
             if is_malayalam:
                 return "നെല്ലിന്റെ രോഗങ്ങൾ: പൊതുവായ രോഗങ്ങൾ - ബ്രൗൺ പ്ലാന്റ്ഹോപ്പർ, ഗ്രീൻ ലീഫ്ഹോപ്പർ. ജൈവ നിയന്ത്രണത്തിന് നീം അടിസ്ഥാന പ്രതിരോധകങ്ങൾ ഉപയോഗിക്കുക. നിരന്തരം നിരീക്ഷിക്കുക."
             else:
