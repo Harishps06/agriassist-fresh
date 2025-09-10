@@ -6,7 +6,12 @@ from datetime import datetime
 
 # Initialize the Flask application
 app = Flask(__name__)
-CORS(app)  # This allows your frontend to connect
+CORS(app, origins=[
+    "https://agriassisttt.netlify.app",
+    "https://agriassist-fresh.netlify.app", 
+    "http://localhost:3000",
+    "http://127.0.0.1:5000"
+])  # This allows your frontend to connect
 
 # Set up Google API Key
 os.environ["GOOGLE_API_KEY"] = "AIzaSyCWK3gI22NlZXOqNFSpj8ag3yR752uj6tU"
