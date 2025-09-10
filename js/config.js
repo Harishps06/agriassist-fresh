@@ -3,7 +3,7 @@
 
 const CONFIG = {
     // Environment: 'development' or 'production'
-    environment: 'development',
+    environment: 'production',
     
     // API Configuration
     api: {
@@ -13,7 +13,7 @@ const CONFIG = {
             retryAttempts: 3
         },
         production: {
-            baseUrl: 'https://your-backend-domain.railway.app', // Replace with your actual backend URL
+            baseUrl: 'https://your-backend-name.railway.app', // Replace with your actual Railway URL
             timeout: 30000,
             retryAttempts: 3
         }
@@ -22,7 +22,7 @@ const CONFIG = {
     // External API Keys
     apis: {
         gemini: {
-            apiKey: 'YOUR_GEMINI_API_KEY', // Get from https://makersuite.google.com/app/apikey
+            apiKey: 'AIzaSyCWK3gI22NlZXOqNFSpj8ag3yR752uj6tU', // Your Gemini API key
             model: 'gemini-1.5-flash',
             maxTokens: 2048
         },
