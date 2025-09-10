@@ -1,0 +1,177 @@
+Irrigation and Water Management in Kerala
+
+WATER SOURCES IN KERALA:
+- Rivers: Periyar, Bharathapuzha, Pamba
+- Wells: Open wells, bore wells
+- Tanks: Traditional water storage
+- Ponds: Village level storage
+- Rainwater: Primary source during monsoon
+
+IRRIGATION METHODS:
+
+SURFACE IRRIGATION:
+- Flood Irrigation: For rice fields
+- Furrow Irrigation: For row crops
+- Border Irrigation: For field crops
+- Basin Irrigation: For tree crops
+
+DRIP IRRIGATION:
+- Water efficiency: 90-95%
+- Suitable for: Vegetables, fruits, spices
+- Components: Main line, sub-main, laterals, emitters
+- Pressure: 1-2 kg/cm²
+- Flow rate: 2-8 liters/hour
+
+SPRINKLER IRRIGATION:
+- Water efficiency: 80-85%
+- Suitable for: All crops
+- Components: Pump, pipes, sprinklers
+- Pressure: 2-3 kg/cm²
+- Coverage: 10-15 meter radius
+
+MICRO IRRIGATION:
+- Drip + Sprinkler combination
+- High efficiency: 95%
+- Suitable for: High-value crops
+- Cost: Higher initial investment
+- Maintenance: Regular cleaning required
+
+WATER REQUIREMENTS:
+
+RICE CULTIVATION:
+- Total water: 1000-1500mm
+- Growing season: 120-150 days
+- Water depth: 2-5 cm during growth
+- Critical stages: Tillering, flowering
+- Drainage: 15 days before harvest
+
+COCONUT CULTIVATION:
+- Young palms: 40-50 liters/week
+- Bearing palms: 200-300 liters/week
+- Frequency: 2-3 times per week
+- Method: Basin irrigation
+- Mulching: Reduce water needs
+
+VEGETABLE CULTIVATION:
+- Water needs: 500-800mm
+- Frequency: Daily for young plants
+- Method: Drip irrigation preferred
+- Timing: Early morning or evening
+- Avoid: Midday watering
+
+SPICE CULTIVATION:
+- Water needs: 1000-1200mm
+- Frequency: 2-3 times per week
+- Method: Drip or sprinkler
+- Shade: Reduces water needs
+- Mulching: Conserves moisture
+
+WATER CONSERVATION:
+
+RAINWATER HARVESTING:
+- Roof collection: 1000 sq ft = 1000 liters
+- Storage tanks: 5000-10000 liters
+- Groundwater recharge: Percolation pits
+- Community tanks: Village level
+- Government schemes: Subsidies available
+
+MULCHING:
+- Materials: Dry leaves, straw, plastic
+- Benefits: Reduces evaporation
+- Thickness: 5-10 cm
+- Coverage: 80-90% of soil surface
+- Replacement: Every 2-3 months
+
+COVER CROPS:
+- Legumes: Fix nitrogen, add organic matter
+- Grasses: Prevent erosion
+- Mixtures: Multiple benefits
+- Timing: Plant after main crop
+- Incorporation: Before next planting
+
+EFFICIENT WATER USE:
+- Right timing: Early morning
+- Right amount: Based on crop needs
+- Right method: Drip for vegetables
+- Right frequency: Based on soil type
+- Right quality: Check water source
+
+WATER QUALITY:
+
+TESTING PARAMETERS:
+- pH: 6.5-8.5 ideal
+- EC: Less than 1.0 dS/m
+- SAR: Less than 10
+- RSC: Less than 2.5
+- Heavy metals: Within limits
+
+PROBLEM WATERS:
+- Saline water: EC > 2.0 dS/m
+- Alkaline water: pH > 8.5
+- Hard water: High calcium, magnesium
+- Contaminated water: Industrial waste
+- Treatment: Filtration, chemical treatment
+
+WATER MANAGEMENT SCHEDULE:
+
+MONSOON SEASON (June-September):
+- Water storage: Fill all tanks
+- Groundwater recharge: Percolation pits
+- Flood control: Proper drainage
+- Crop planning: Water-intensive crops
+
+SUMMER SEASON (March-May):
+- Water conservation: Mulching, shade
+- Efficient irrigation: Drip systems
+- Crop selection: Drought-tolerant varieties
+- Water rationing: Priority to high-value crops
+
+WINTER SEASON (October-February):
+- Moderate water needs
+- Regular irrigation: 2-3 times per week
+- Crop rotation: Plan for next season
+- Maintenance: Clean irrigation systems
+
+GOVERNMENT SCHEMES:
+
+PADDY DEVELOPMENT SCHEME:
+- Subsidy: 50% for drip irrigation
+- Target: Rice farmers
+- Application: Through agriculture office
+- Documents: Land records, bank details
+
+MICRO IRRIGATION SCHEME:
+- Subsidy: 60% for small farmers
+- Components: Drip, sprinkler systems
+- Eligibility: Up to 5 hectares
+- Implementation: Through agencies
+
+WATER USER ASSOCIATIONS:
+- Community management
+- Water sharing agreements
+- Maintenance: Collective responsibility
+- Dispute resolution: Local committees
+- Government support: Technical guidance
+
+MONITORING AND MAINTENANCE:
+
+REGULAR CHECKS:
+- Water pressure: Maintain optimal levels
+- Emitter flow: Check for blockages
+- Filter cleaning: Weekly basis
+- Pipe inspection: Monthly
+- System efficiency: Quarterly
+
+TROUBLESHOOTING:
+- Low pressure: Check filters, valves
+- Blocked emitters: Clean or replace
+- Leakage: Repair immediately
+- Uneven distribution: Adjust pressure
+- High costs: Optimize schedule
+
+RECORD KEEPING:
+- Water usage: Daily records
+- Crop response: Growth monitoring
+- Costs: Input and maintenance
+- Yields: Before and after
+- Problems: Pest, disease, nutrient issues
