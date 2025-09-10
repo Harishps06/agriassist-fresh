@@ -79,41 +79,80 @@ def ask_question():
 def get_agricultural_advice(question, language):
     """Simple keyword-based agricultural advice"""
     
+    # Detect if question is in Malayalam
+    is_malayalam = any(char in question for char in 'അആഇഈഉഊഋഎഏഐഒഓഔകഖഗഘങചഛജഝഞടഠഡഢണതഥദധനപഫബഭമയരലവശഷസഹളഴറ')
+    
     # Check for rice-related questions
-    if any(word in question for word in ['rice', 'നെല്ല്', 'paddy', 'അരി']):
+    if any(word in question for word in ['rice', 'നെല്ല്', 'paddy', 'അരി', 'നെല്ലിന്റെ', 'അരി കൃഷി']):
         if 'planting' in question or 'plant' in question or 'നടുക' in question:
-            return "For rice planting in Kerala: Plant during monsoon season (June-September). Use 25-30 kg seeds per hectare. Maintain proper spacing of 20cm x 20cm."
+            if is_malayalam:
+                return "കേരളത്തിൽ നെല്ല് നടാനുള്ള ഉത്തമ സമയം മഴക്കാലമാണ് (ജൂൺ-സെപ്റ്റംബർ). ഹെക്ടറിന് 25-30 കിലോ വിത്ത് ഉപയോഗിക്കുക. 20cm x 20cm ഇടവേള കാത്തുസൂക്ഷിക്കുക."
+            else:
+                return "For rice planting in Kerala: Plant during monsoon season (June-September). Use 25-30 kg seeds per hectare. Maintain proper spacing of 20cm x 20cm."
         elif 'watering' in question or 'water' in question or 'വെള്ളം' in question:
-            return "Rice watering: Maintain 2-5 cm water depth during vegetative stage. Increase to 5-10 cm during flowering. Drain water 15 days before harvest."
+            if is_malayalam:
+                return "നെല്ലിന് വെള്ളം: വളർച്ചാ ഘട്ടത്തിൽ 2-5 സെ.മീ. വെള്ളത്തിന്റെ ആഴം കാത്തുസൂക്ഷിക്കുക. പൂക്കാലത്ത് 5-10 സെ.മീ. വരെ വർദ്ധിപ്പിക്കുക. വിളവെടുപ്പിന് 15 ദിവസം മുമ്പ് വെള്ളം കളയുക."
+            else:
+                return "Rice watering: Maintain 2-5 cm water depth during vegetative stage. Increase to 5-10 cm during flowering. Drain water 15 days before harvest."
         elif 'fertilizer' in question or 'manure' in question or 'വളം' in question:
-            return "Rice fertilizer: Apply NPK in 3 splits - 1/3 at planting, 1/3 at tillering, 1/3 at panicle initiation. Use organic fertilizers like compost."
+            if is_malayalam:
+                return "നെല്ലിന് വളം: 3 ഭാഗങ്ങളായി NPK ചെലുത്തുക - 1/3 നടുമ്പോൾ, 1/3 കുറ്റി വളരുമ്പോൾ, 1/3 പൂങ്കുല ഉണ്ടാകുമ്പോൾ. കമ്പോസ്റ്റ് പോലുള്ള ജൈവ വളങ്ങൾ ഉപയോഗിക്കുക."
+            else:
+                return "Rice fertilizer: Apply NPK in 3 splits - 1/3 at planting, 1/3 at tillering, 1/3 at panicle initiation. Use organic fertilizers like compost."
         elif 'pest' in question or 'disease' in question or 'രോഗം' in question:
-            return "Rice pests: Common pests include Brown planthopper, Green leafhopper. Use neem-based pesticides for organic control. Monitor regularly."
+            if is_malayalam:
+                return "നെല്ലിന്റെ രോഗങ്ങൾ: പൊതുവായ രോഗങ്ങൾ - ബ്രൗൺ പ്ലാന്റ്ഹോപ്പർ, ഗ്രീൻ ലീഫ്ഹോപ്പർ. ജൈവ നിയന്ത്രണത്തിന് നീം അടിസ്ഥാന പ്രതിരോധകങ്ങൾ ഉപയോഗിക്കുക. നിരന്തരം നിരീക്ഷിക്കുക."
+            else:
+                return "Rice pests: Common pests include Brown planthopper, Green leafhopper. Use neem-based pesticides for organic control. Monitor regularly."
         else:
-            return "Rice farming in Kerala: Plant during monsoon, maintain proper water level, apply fertilizers in splits, control pests organically. Harvest when 80-85% grains are mature."
+            if is_malayalam:
+                return "കേരളത്തിലെ നെല്ല് കൃഷി: മഴക്കാലത്ത് നടുക, ശരിയായ വെള്ളനില കാത്തുസൂക്ഷിക്കുക, വളങ്ങൾ ഭാഗങ്ങളായി ചെലുത്തുക, രോഗങ്ങൾ ജൈവമായി നിയന്ത്രിക്കുക. 80-85% ധാന്യങ്ങൾ പക്വമാകുമ്പോൾ വിളവെടുക്കുക."
+            else:
+                return "Rice farming in Kerala: Plant during monsoon, maintain proper water level, apply fertilizers in splits, control pests organically. Harvest when 80-85% grains are mature."
     
     # Check for coconut-related questions
-    elif any(word in question for word in ['coconut', 'തെങ്ങ്', 'coco']):
-        if 'planting' in question or 'plant' in question:
-            return "Coconut planting: Plant during May-June or September-October. Spacing: 7.5m x 7.5m. Fill pit with topsoil + 50kg FYM + 1kg bone meal."
-        elif 'watering' in question or 'water' in question:
-            return "Coconut watering: Young palms need 40-50 liters per week. Bearing palms need 200-300 liters per week. Use drip irrigation for water conservation."
-        elif 'fertilizer' in question or 'manure' in question:
-            return "Coconut fertilizer: Apply 1.3kg urea, 2kg superphosphate, 1.7kg muriate of potash per palm per year. Split into 3 applications."
+    elif any(word in question for word in ['coconut', 'തെങ്ങ്', 'coco', 'തെങ്ങിന്റെ', 'തെങ്ങ് കൃഷി']):
+        if 'planting' in question or 'plant' in question or 'നടുക' in question:
+            if is_malayalam:
+                return "തെങ്ങ് നടാനുള്ള ഉത്തമ സമയം മേയ്-ജൂൺ അല്ലെങ്കിൽ സെപ്റ്റംബർ-ഒക്ടോബർ. ഇടവേള: 7.5m x 7.5m. കുഴിയിൽ മുകൾ മണ്ണ് + 50kg FYM + 1kg bone meal നിറയ്ക്കുക."
+            else:
+                return "Coconut planting: Plant during May-June or September-October. Spacing: 7.5m x 7.5m. Fill pit with topsoil + 50kg FYM + 1kg bone meal."
+        elif 'watering' in question or 'water' in question or 'വെള്ളം' in question:
+            if is_malayalam:
+                return "തെങ്ങിന് വെള്ളം: ചെറിയ തെങ്ങുകൾക്ക് ആഴ്ചയിൽ 40-50 ലിറ്റർ. കായ്ക്കുന്ന തെങ്ങുകൾക്ക് ആഴ്ചയിൽ 200-300 ലിറ്റർ. വെള്ള സംരക്ഷണത്തിന് ഡ്രിപ്പ് ജലസേചനം ഉപയോഗിക്കുക."
+            else:
+                return "Coconut watering: Young palms need 40-50 liters per week. Bearing palms need 200-300 liters per week. Use drip irrigation for water conservation."
+        elif 'fertilizer' in question or 'manure' in question or 'വളം' in question:
+            if is_malayalam:
+                return "തെങ്ങിന് വളം: ഒരു വർഷത്തിൽ ഒരു തെങ്ങിന് 1.3kg യൂറിയ, 2kg സൂപ്പർഫോസ്ഫേറ്റ്, 1.7kg മ്യൂറിയേറ്റ് ഓഫ് പൊട്ടാഷ് ചെലുത്തുക. 3 ഭാഗങ്ങളായി ചെലുത്തുക."
+            else:
+                return "Coconut fertilizer: Apply 1.3kg urea, 2kg superphosphate, 1.7kg muriate of potash per palm per year. Split into 3 applications."
         else:
-            return "Coconut cultivation: Plant in well-drained soil, maintain proper spacing, apply balanced fertilizers, control pests like rhinoceros beetle with neem cake."
+            if is_malayalam:
+                return "തെങ്ങ് കൃഷി: നന്നായി വാരിനീക്കുന്ന മണ്ണിൽ നടുക, ശരിയായ ഇടവേള കാത്തുസൂക്ഷിക്കുക, സമതുലിത വളങ്ങൾ ചെലുത്തുക, കൊമ്പൻ കുതിരപ്പുഴു പോലുള്ള രോഗങ്ങൾ നീം കേക്ക് കൊണ്ട് നിയന്ത്രിക്കുക."
+            else:
+                return "Coconut cultivation: Plant in well-drained soil, maintain proper spacing, apply balanced fertilizers, control pests like rhinoceros beetle with neem cake."
     
     # Check for weather-related questions
-    elif any(word in question for word in ['weather', 'rain', 'monsoon', 'കാലാവസ്ഥ', 'മഴ']):
-        return "Weather for farming in Kerala: Southwest Monsoon (June-September) is good for rice. Summer (March-May) needs irrigation. Monitor IMD forecasts regularly."
+    elif any(word in question for word in ['weather', 'rain', 'monsoon', 'കാലാവസ്ഥ', 'മഴ', 'മഴക്കാലം']):
+        if is_malayalam:
+            return "കേരളത്തിലെ കൃഷിക്ക് കാലാവസ്ഥ: തെക്കുപടിഞ്ഞാറൻ മഴക്കാലം (ജൂൺ-സെപ്റ്റംബർ) നെല്ലിന് നല്ലതാണ്. വേനൽക്കാലം (മാർച്ച്-മേയ്) ജലസേചനം ആവശ്യമാണ്. IMD പ്രവചനങ്ങൾ നിരന്തരം നിരീക്ഷിക്കുക."
+        else:
+            return "Weather for farming in Kerala: Southwest Monsoon (June-September) is good for rice. Summer (March-May) needs irrigation. Monitor IMD forecasts regularly."
     
     # General farming advice
-    elif any(word in question for word in ['farming', 'agriculture', 'കൃഷി', 'കർഷകൻ']):
-        return "General farming advice: Use organic methods, practice crop rotation, maintain soil health, monitor weather, use integrated pest management. Consult local agricultural officer for specific guidance."
+    elif any(word in question for word in ['farming', 'agriculture', 'കൃഷി', 'കർഷകൻ', 'കൃഷി സഹായി']):
+        if is_malayalam:
+            return "പൊതുവായ കൃഷി ഉപദേശം: ജൈവ രീതികൾ ഉപയോഗിക്കുക, വിള ഭ്രമണം പ്രയോഗിക്കുക, മണ്ണിന്റെ ആരോഗ്യം കാത്തുസൂക്ഷിക്കുക, കാലാവസ്ഥ നിരീക്ഷിക്കുക, സംയോജിത രോഗനിയന്ത്രണം ഉപയോഗിക്കുക. പ്രത്യേക മാർഗദർശനത്തിന് പ്രാദേശിക കാർഷിക ഉദ്യോഗസ്ഥനെ കണ്ടുമുട്ടുക."
+        else:
+            return "General farming advice: Use organic methods, practice crop rotation, maintain soil health, monitor weather, use integrated pest management. Consult local agricultural officer for specific guidance."
     
     # Default response
     else:
-        return "I can help you with rice farming, coconut cultivation, weather guidance, and general agricultural advice. Please ask specific questions about crops, pests, diseases, or farming practices."
+        if is_malayalam:
+            return "നിങ്ങളെ നെല്ല് കൃഷി, തെങ്ങ് കൃഷി, കാലാവസ്ഥ മാർഗദർശനം, പൊതുവായ കാർഷിക ഉപദേശം എന്നിവയിൽ സഹായിക്കാം. വിളകൾ, രോഗങ്ങൾ, കൃഷി രീതികൾ എന്നിവയെക്കുറിച്ച് പ്രത്യേക ചോദ്യങ്ങൾ ചോദിക്കുക."
+        else:
+            return "I can help you with rice farming, coconut cultivation, weather guidance, and general agricultural advice. Please ask specific questions about crops, pests, diseases, or farming practices."
 
 # Health check endpoint
 @app.route('/api/health', methods=['GET'])
