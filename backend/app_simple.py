@@ -46,7 +46,7 @@ def ask_question():
         data = request.get_json()
         
         # Extract data from frontend
-        question = data.get('question', '').lower()
+        question = data.get('question', '')
         language = data.get('language', 'en-US')
         context = data.get('context', {})
         
@@ -79,8 +79,18 @@ def ask_question():
 def get_agricultural_advice(question, language):
     """Enhanced agricultural advice with comprehensive knowledge base"""
     
-    # Detect if question is in Malayalam
-    is_malayalam = any(char in question for char in 'അആഇഈഉഊഋഎഏഐഒഓഔകഖഗഘങചഛജഝഞടഠഡഢണതഥദധനപഫബഭമയരലവശഷസഹളഴറ')
+    # Detect if question is in Malayalam - improved detection
+    malayalam_chars = 'അആഇഈഉഊഋഎഏഐഒഓഔകഖഗഘങചഛജഝഞടഠഡഢണതഥദധനപഫബഭമയരലവശഷസഹളഴറ'
+    is_malayalam = any(char in question for char in malayalam_chars)
+    
+    # Also check for common Malayalam words
+    malayalam_words = ['നെല്ല്', 'തെങ്ങ്', 'കൃഷി', 'വളം', 'വെള്ളം', 'രോഗം', 'കീടം', 'മണ്ണ്', 'വിപണി', 'കാലാവസ്ഥ']
+    if not is_malayalam:
+        is_malayalam = any(word in question for word in malayalam_words)
+    
+    print(f"Malayalam detection: {is_malayalam}")
+    print(f"Question contains Malayalam chars: {any(char in question for char in malayalam_chars)}")
+    print(f"Question contains Malayalam words: {any(word in question for word in malayalam_words)}")
     
     # Check for rice-related questions
     if any(word in question for word in ['rice', 'നെല്ല്', 'paddy', 'അരി', 'നെല്ലിന്റെ', 'അരി കൃഷി', 'നെല്ലിന്റെ രോഗങ്ങൾ', 'നെല്ല് രോഗം', 'rice farming', 'rice cultivation']):
@@ -204,6 +214,29 @@ def health_check():
         'timestamp': datetime.now().isoformat(),
         'ai_ready': True,
         'knowledge_base': 'Simple keyword-based system'
+    })
+
+# Test Malayalam detection endpoint
+@app.route('/api/test-malayalam', methods=['POST'])
+def test_malayalam():
+    data = request.get_json()
+    question = data.get('question', '')
+    
+    # Test Malayalam detection
+    malayalam_chars = 'അആഇഈഉഊഋഎഏഐഒഓഔകഖഗഘങചഛജഝഞടഠഡഢണതഥദധനപഫബഭമയരലവശഷസഹളഴറ'
+    malayalam_words = ['നെല്ല്', 'തെങ്ങ്', 'കൃഷി', 'വളം', 'വെള്ളം', 'രോഗം', 'കീടം', 'മണ്ണ്', 'വിപണി', 'കാലാവസ്ഥ']
+    
+    has_malayalam_chars = any(char in question for char in malayalam_chars)
+    has_malayalam_words = any(word in question for word in malayalam_words)
+    is_malayalam = has_malayalam_chars or has_malayalam_words
+    
+    return jsonify({
+        'question': question,
+        'has_malayalam_chars': has_malayalam_chars,
+        'has_malayalam_words': has_malayalam_words,
+        'is_malayalam': is_malayalam,
+        'detected_chars': [char for char in question if char in malayalam_chars],
+        'detected_words': [word for word in malayalam_words if word in question]
     })
 
 # Voice-specific endpoint
