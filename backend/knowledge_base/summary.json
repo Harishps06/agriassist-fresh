@@ -1,0 +1,33 @@
+{
+  "processed_files": 16,
+  "total_entries": 78,
+  "sections": {
+    "crop_cultivation": 9,
+    "pest_diseases": 8,
+    "fertilizer_management": 9,
+    "irrigation": 11,
+    "harvesting": 8,
+    "soil_management": 11,
+    "weather_guidance": 10,
+    "market_information": 8,
+    "general_advice": 4
+  },
+  "files": [
+    "Farmguide-2024.pdf",
+    "AGRICULTURAL-STATISTICS-2023.pdf",
+    "AGMARK.pdf",
+    "SEED RATE FOR IMPORTANT CROPES OF KERALA.pdf",
+    "IPM-Schedule-for-vegetables.pdf",
+    "CCKerala.pdf",
+    "664.pdf",
+    "kerala database.pdf",
+    "kerala malayalam database.pdf",
+    "kerala database 2.pdf",
+    "Medicinal plants.pdf",
+    "Rice.pdf",
+    "FUNGICIDES.pdf",
+    "BIOCONTROL AGENTS.pdf",
+    "SPACING RECOMMENDATIONS AND PLANT POPULATION OF IMPORTANT CROPS IN KERALA.pdf",
+    "coconut processing technologies.pdf"
+  ]
+}
