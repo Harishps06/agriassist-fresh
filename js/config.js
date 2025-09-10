@@ -13,7 +13,7 @@ const CONFIG = {
             retryAttempts: 3
         },
         production: {
-            baseUrl: 'https://your-backend-name.railway.app', // Replace with your actual Railway URL
+            baseUrl: 'https://agriassist-fresh.onrender.com', // Your actual Render backend URL
             timeout: 30000,
             retryAttempts: 3
         }
