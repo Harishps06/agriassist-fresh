@@ -1837,7 +1837,7 @@
                     throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
                 }
 
-            const data = await response.json();
+                const data = await response.json();
                 showAIResponse(data.answer);
                 
                 // Save query to history with enhanced metadata

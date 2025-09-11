@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriAssist - Simple Version</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .main-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .input-section {
+            margin-bottom: 30px;
+        }
+        
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        input[type="text"] {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus {
+            border-color: #2d5016;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+        
+        .btn-primary {
+            background: #2d5016;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #1e3a0f;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+        
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+        
+        .response-section {
+            margin-top: 30px;
+        }
+        
+        .response {
+            background: #f8f9fa;
+            border-left: 4px solid #2d5016;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            white-space: pre-line;
+            line-height: 1.6;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+        
+        .error {
+            background: #ffe8e8;
+            border-left-color: #dc3545;
+            color: #721c24;
+        }
+        
+        .success {
+            background: #e8f5e8;
+            border-left-color: #28a745;
+        }
+        
+        .suggestions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .suggestion {
+            background: #e9ecef;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+        
+        .suggestion:hover {
+            background: #2d5016;
+            color: white;
+        }
+        
+        .status {
+            text-align: center;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+        
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌾 AgriAssist</h1>
+            <p>Your Digital Krishi Officer - Available 24/7</p>
+        </div>
+        
+        <div class="main-card">
+            <div class="input-section">
+                <div class="input-group">
+                    <input type="text" id="questionInput" placeholder="Ask any agricultural question..." value="How to grow rice in Kerala?">
+                    <button class="btn btn-primary" onclick="askQuestion()">Ask Question</button>
+                </div>
+                
+                <div class="suggestions">
+                    <div class="suggestion" onclick="setQuestion('How to grow rice in Kerala?')">Rice Cultivation</div>
+                    <div class="suggestion" onclick="setQuestion('Coconut care tips')">Coconut Care</div>
+                    <div class="suggestion" onclick="setQuestion('How to control pests in vegetables?')">Pest Control</div>
+                    <div class="suggestion" onclick="setQuestion('Weather-based farming advice')">Weather Farming</div>
+                </div>
+            </div>
+            
+            <div id="status" class="status info" style="display: none;"></div>
+            
+            <div class="response-section" id="responseSection" style="display: none;">
+                <div id="response" class="response"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const BACKEND_URL = 'http://localhost:8888';
+        
+        function setQuestion(question) {
+            document.getElementById('questionInput').value = question;
+        }
+        
+        function showStatus(message, type = 'info') {
+            const status = document.getElementById('status');
+            status.textContent = message;
+            status.className = `status ${type}`;
+            status.style.display = 'block';
+        }
+        
+        function hideStatus() {
+            document.getElementById('status').style.display = 'none';
+        }
+        
+        function showResponse(content, type = 'success') {
+            const response = document.getElementById('response');
+            const responseSection = document.getElementById('responseSection');
+            
+            response.textContent = content;
+            response.className = `response ${type}`;
+            responseSection.style.display = 'block';
+        }
+        
+        async function askQuestion() {
+            const question = document.getElementById('questionInput').value.trim();
+            
+            if (!question) {
+                showStatus('Please enter a question.', 'error');
+                return;
+            }
+            
+            hideStatus();
+            showStatus('Getting agricultural advice...', 'info');
+            
+            try {
+                const response = await fetch(`${BACKEND_URL}/api/ask`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        query: question,
+                        language: 'en'
+                    })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    hideStatus();
+                    showResponse(data.answer, 'success');
+                } else {
+                    const errorText = await response.text();
+                    hideStatus();
+                    showResponse(`Error: ${response.status} - ${errorText}`, 'error');
+                }
+            } catch (error) {
+                hideStatus();
+                showResponse(`Connection Error: ${error.message}\n\nPlease make sure the backend is running on port 8888.`, 'error');
+            }
+        }
+        
+        // Allow Enter key to submit
+        document.getElementById('questionInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                askQuestion();
+            }
+        });
+        
+        // Auto-test on load
+        window.onload = function() {
+            showStatus('Ready to help with your agricultural questions!', 'success');
+        };
+    </script>
+</body>
+</html>
