@@ -1,6 +1,6 @@
 import os
 from flask import Flask, request, jsonify
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 import json
 from datetime import datetime
 from pdf_processor import AgriculturalPDFProcessor
@@ -12,12 +12,11 @@ logger = logging.getLogger(__name__)
 
 # Initialize the Flask application
 app = Flask(__name__)
-CORS(app, origins=[
-    "https://agriassisttt.netlify.app",
-    "https://agriassist-fresh.netlify.app", 
-    "http://localhost:3000",
-    "http://127.0.0.1:5000"
-])
+CORS(app, 
+     origins="*", 
+     allow_headers=["Content-Type", "Authorization", "Access-Control-Allow-Origin", "Access-Control-Allow-Headers", "Access-Control-Allow-Methods"],
+     methods=["GET", "POST", "OPTIONS", "PUT", "DELETE"],
+     supports_credentials=False)
 
 # Set up Google API Key
 os.environ["GOOGLE_API_KEY"] = "AIzaSyCWK3gI22NlZXOqNFSpj8ag3yR752uj6tU"
@@ -25,6 +24,14 @@ os.environ["GOOGLE_API_KEY"] = "AIzaSyCWK3gI22NlZXOqNFSpj8ag3yR752uj6tU"
 # Initialize PDF processor
 pdf_processor = AgriculturalPDFProcessor("knowledge_base")
 knowledge_base = None
+
+# Add CORS headers to all responses
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type, Authorization, Access-Control-Allow-Origin, Access-Control-Allow-Headers, Access-Control-Allow-Methods')
+    response.headers.add('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE')
+    return response
 
 def load_knowledge_base():
     """Load knowledge base from processed PDFs"""
@@ -93,8 +100,17 @@ def get_simple_agricultural_advice(question: str, language: str, is_malayalam: b
         else:
             return "I can help you with rice farming, coconut cultivation, vegetable farming, spice cultivation, soil management, pest control, irrigation, market information, weather guidance, and general agricultural advice. Please ask specific questions about crops, pests, diseases, or farming practices."
 
-@app.route('/api/ask', methods=['POST'])
+@app.route('/api/ask', methods=['POST', 'OPTIONS'])
+@cross_origin(origins="*", allow_headers=["Content-Type", "Authorization"])
 def ask_question():
+    # Handle CORS preflight request
+    if request.method == 'OPTIONS':
+        response = jsonify({'status': 'ok'})
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization, Access-Control-Allow-Origin, Access-Control-Allow-Headers, Access-Control-Allow-Methods'
+        response.headers['Access-Control-Allow-Methods'] = 'POST, OPTIONS, GET'
+        response.headers['Access-Control-Max-Age'] = '86400'
+        return response
     try:
         data = request.get_json()
         
@@ -113,7 +129,7 @@ def ask_question():
         response_time = 1.23
         
         # Return enhanced response
-        return jsonify({
+        response = jsonify({
             'answer': response_text,
             'responseTime': response_time,
             'language': language,
@@ -121,6 +137,10 @@ def ask_question():
             'sources': ['Agricultural Knowledge Base + PDF Documents'],
             'confidence': 0.95
         })
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        response.headers.add('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+        response.headers.add('Access-Control-Allow-Methods', 'POST, OPTIONS')
+        return response
         
     except Exception as e:
         logger.error(f"Error processing request: {str(e)}")
@@ -227,8 +247,8 @@ if __name__ == '__main__':
     # Load knowledge base on startup
     load_knowledge_base()
     
-    print("🌐 Server starting on http://127.0.0.1:5000")
+    print("🌐 Server starting on http://127.0.0.1:3000")
     print("📱 Frontend can now connect to this backend")
     print("📄 PDF processing capabilities enabled")
     
-    app.run(debug=True, port=5000, host='0.0.0.0')
+    app.run(debug=True, port=3000, host='0.0.0.0')

@@ -1,6 +1,6 @@
 // AgriAssist Configuration
 // Update these settings for different environments
-// Version: 2025-09-11-v5 - Fixed backend connection to port 8888
+// Version: 2025-09-11-v8 - Fixed backend connection to port 3000
 
 const CONFIG = {
     // Environment: 'development' or 'production'
@@ -9,7 +9,7 @@ const CONFIG = {
     // API Configuration
     api: {
         development: {
-            baseUrl: 'http://localhost:8888',
+            baseUrl: 'http://localhost:3000',
             timeout: 30000,
             retryAttempts: 3
         },

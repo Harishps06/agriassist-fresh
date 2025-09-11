@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <title>AgriAssist - നിങ്ങളുടെ ഡിജിറ്റൽ കൃഷി ഓഫീസർ</title>
     <link rel="stylesheet" href="../css/main.css" />
     <meta name="description" content="Kerala's AI-powered agricultural advisory platform - Your Digital Krishi Officer available 24/7" />
@@ -76,7 +79,7 @@
             }
         }
     </style>
-<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fagriassist1295back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+<script src="../js/config.js?v=2025-09-11"></script>
         <!-- Config removed - using direct connection -->
 </head>
 <body class="bg-background font-sans">
@@ -1814,8 +1817,11 @@
                     }
                 };
 
-                // Direct connection - bypass config
-                const backendUrl = 'http://localhost:8888';
+                // Use config for backend URL
+                const config = window.AgriAssistConfig ? window.AgriAssistConfig.getConfig() : null;
+                const backendUrl = config ? config.api.baseUrl : 'http://localhost:3000';
+                console.log('Config loaded:', config);
+                console.log('Backend URL:', backendUrl);
                 console.log('Sending request to:', `${backendUrl}/api/ask`);
                 console.log('Request data:', requestData);
                 
@@ -2236,7 +2242,7 @@
             if (weatherData && weatherData.main && weatherData.main.temp > 35) {
                 // Check for storm conditions in weather description
                 const weatherDesc = weatherData.weather && weatherData.weather[0] && weatherData.weather[0].description;
-                if (weatherDesc && weatherDesc.toLowerCase().includes('storm')) {
+                if (weatherDesc && typeof weatherDesc === 'string' && typeof weatherDesc.toLowerCase === 'function' && weatherDesc.toLowerCase().includes('storm')) {
                     notificationService.showWeatherAlert(weatherData);
                 }
             }
