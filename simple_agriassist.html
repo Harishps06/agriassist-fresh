@@ -208,7 +208,8 @@
     </div>
 
     <script>
-        const BACKEND_URL = 'http://localhost:8888';
+        const BACKEND_URL = 'http://localhost:3000';
+        // TestSprite-compatible backend with enhanced CORS and headers
         
         function setQuestion(question) {
             document.getElementById('questionInput').value = question;
@@ -252,8 +253,9 @@
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        query: question,
-                        language: 'en'
+                        question: question,
+                        language: 'en-US',
+                        context: {}
                     })
                 });
                 
@@ -268,7 +270,7 @@
                 }
             } catch (error) {
                 hideStatus();
-                showResponse(`Connection Error: ${error.message}\n\nPlease make sure the backend is running on port 8888.`, 'error');
+                showResponse(`Connection Error: ${error.message}\n\nPlease make sure the backend is running on port 3000.`, 'error');
             }
         }
         
