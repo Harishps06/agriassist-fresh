@@ -8,13 +8,13 @@ const CONFIG = {
     
     // API Configuration
     api: {
-        development: {
-            baseUrl: 'http://localhost:3000',
+    development: {
+        baseUrl: 'http://172.20.10.3:3000',
             timeout: 30000,
             retryAttempts: 3
         },
         production: {
-            baseUrl: 'https://agriassist-fresh.onrender.com', // Your actual Render backend URL
+            baseUrl: 'http://172.20.10.3:3000', // Local MacBook host for project submission
             timeout: 30000,
             retryAttempts: 3
         }

@@ -7,7 +7,7 @@
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
     <title>AgriAssist - നിങ്ങളുടെ ഡിജിറ്റൽ കൃഷി ഓഫീസർ</title>
-    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/main.css?v=202509112216" />
     <meta name="description" content="Kerala's AI-powered agricultural advisory platform - Your Digital Krishi Officer available 24/7" />
     <!-- Custom favicon - Replace with your logo image URL -->
     <link rel="icon" type="image/png" href="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=64&h=64&fit=crop&crop=center" />
@@ -79,7 +79,7 @@
             }
         }
     </style>
-<script src="../js/config.js?v=2025-09-11"></script>
+    <script src="../js/config.js?v=202509112300"></script>
         <!-- Config removed - using direct connection -->
 </head>
 <body class="bg-background font-sans">
@@ -1819,7 +1819,7 @@
 
                 // Use config for backend URL
                 const config = window.AgriAssistConfig ? window.AgriAssistConfig.getConfig() : null;
-                const backendUrl = config ? config.api.baseUrl : 'http://localhost:3000';
+                const backendUrl = config ? config.api.baseUrl : 'http://172.20.10.3:3000';
                 console.log('Config loaded:', config);
                 console.log('Backend URL:', backendUrl);
                 console.log('Sending request to:', `${backendUrl}/api/ask`);
@@ -1829,7 +1829,7 @@
                     method: 'POST',
                 headers: {
                         'Content-Type': 'application/json',
-                        'X-Requested-With': 'XMLHttpRequest'
+                        'x-requested-with': 'XMLHttpRequest'
                     },
                     body: JSON.stringify(requestData)
                 });
