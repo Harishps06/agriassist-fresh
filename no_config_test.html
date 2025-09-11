@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No Config Test - Direct Connection</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f0f8ff; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .test-box { padding: 20px; margin: 20px 0; border-radius: 8px; }
+        .success { background-color: #d4edda; border: 1px solid #c3e6cb; color: #155724; }
+        .error { background-color: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; }
+        .info { background-color: #d1ecf1; border: 1px solid #bee5eb; color: #0c5460; }
+        button { padding: 15px 30px; background: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; margin: 10px; font-size: 16px; }
+        button:hover { background: #218838; }
+        input { padding: 10px; width: 100%; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; }
+        .result { margin-top: 20px; padding: 15px; border-radius: 4px; }
+        iframe { width: 100%; height: 600px; border: 1px solid #ccc; border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 No Config Test - Direct Connection</h1>
+        <p>This bypasses ALL config files and connects directly to the backend.</p>
+        
+        <div class="test-box info">
+            <h3>Direct Backend Test (No Config)</h3>
+            <input type="text" id="question" placeholder="Ask a question about farming..." value="How to grow rice in Kerala?">
+            <button onclick="askQuestion()">Ask Question (Direct)</button>
+            <div id="result"></div>
+        </div>
+
+        <div class="test-box info">
+            <h3>Backend Status Check</h3>
+            <button onclick="checkBackend()">Check Backend Status</button>
+            <div id="backend-status"></div>
+        </div>
+
+        <div class="test-box info">
+            <h3>Main Website (Iframe)</h3>
+            <p>This shows the main website. Try asking a question here:</p>
+            <iframe src="pages/homepage_ai_query_interface.html" id="main-iframe"></iframe>
+        </div>
+    </div>
+
+    <script>
+        // NO CONFIG LOADING - Direct connection only
+        const BACKEND_URL = 'http://localhost:3333';
+
+        async function askQuestion() {
+            const question = document.getElementById('question').value;
+            const resultDiv = document.getElementById('result');
+            
+            resultDiv.className = 'result info';
+            resultDiv.innerHTML = '<p>Asking question directly to backend...</p>';
+            
+            try {
+                const response = await fetch(`${BACKEND_URL}/api/ask`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        query: question,
+                        language: 'en'
+                    })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    resultDiv.className = 'result success';
+                    resultDiv.innerHTML = `
+                        <h4>✅ Question Answered Successfully!</h4>
+                        <p><strong>Question:</strong> ${question}</p>
+                        <p><strong>Answer:</strong> ${data.answer}</p>
+                        <p><strong>Language:</strong> ${data.language}</p>
+                        <p><strong>Response Time:</strong> ${data.responseTime}s</p>
+                        <p><strong>Backend URL:</strong> ${BACKEND_URL}</p>
+                    `;
+                } else {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+            } catch (error) {
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = `
+                    <h4>❌ Error</h4>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                    <p><strong>Backend URL:</strong> ${BACKEND_URL}</p>
+                    <p>This means the backend is not reachable from your browser.</p>
+                `;
+            }
+        }
+
+        async function checkBackend() {
+            const statusDiv = document.getElementById('backend-status');
+            statusDiv.className = 'result info';
+            statusDiv.innerHTML = '<p>Checking backend status...</p>';
+            
+            try {
+                const response = await fetch(`${BACKEND_URL}/health`);
+                const data = await response.json();
+                
+                statusDiv.className = 'result success';
+                statusDiv.innerHTML = `
+                    <h4>✅ Backend is Running!</h4>
+                    <p><strong>Status:</strong> ${data.status}</p>
+                    <p><strong>Version:</strong> ${data.version}</p>
+                    <p><strong>Message:</strong> ${data.message}</p>
+                    <p><strong>Backend URL:</strong> ${BACKEND_URL}</p>
+                `;
+            } catch (error) {
+                statusDiv.className = 'result error';
+                statusDiv.innerHTML = `
+                    <h4>❌ Backend Not Reachable</h4>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                    <p><strong>Backend URL:</strong> ${BACKEND_URL}</p>
+                    <p>This means there's a network issue or the backend is not running.</p>
+                `;
+            }
+        }
+
+        // Auto-check backend on page load
+        window.onload = function() {
+            checkBackend();
+        };
+    </script>
+</body>
+</html>

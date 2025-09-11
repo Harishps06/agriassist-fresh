@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgriAssist - Test Page</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            min-height: 100vh;
+            color: white;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        .test-info {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .test-info h2 {
+            margin-top: 0;
+            color: #fff;
+        }
+        
+        .test-info p {
+            margin: 10px 0;
+            opacity: 0.9;
+        }
+        
+        .test-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .test-link {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .test-link:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+        
+        .test-link h3 {
+            margin-top: 0;
+            color: #fff;
+        }
+        
+        .test-link p {
+            margin: 10px 0 0 0;
+            opacity: 0.8;
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .status.running {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .status.error {
+            background: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">🌾 AgriAssist</div>
+            <div class="tagline">Smart Farming Solutions - Test Page</div>
+        </div>
+        
+        <div class="test-info">
+            <h2>🧪 Test Environment Status</h2>
+            <p><strong>Frontend Server:</strong> <span class="status running">RUNNING</span> on port 8000</p>
+            <p><strong>Backend API:</strong> <span class="status running">RUNNING</span> on port 8888</p>
+            <p><strong>Test Date:</strong> 2025-09-11</p>
+            <p><strong>Purpose:</strong> This page is designed for TestSprite automated testing</p>
+        </div>
+        
+        <div class="test-links">
+            <a href="pages/homepage_ai_query_interface.html" class="test-link">
+                <h3>🤖 AI Query Interface</h3>
+                <p>Main application with AI query functionality, voice input, and image analysis</p>
+            </a>
+            
+            <a href="pages/crop_calculator_profit_analyzer.html" class="test-link">
+                <h3>📊 Crop Calculator</h3>
+                <p>Profit estimation and crop calculation tools</p>
+            </a>
+            
+            <a href="pages/expert_network_agricultural_officer_connect.html" class="test-link">
+                <h3>👨‍🌾 Expert Network</h3>
+                <p>Connect with agricultural officers and experts</p>
+            </a>
+            
+            <a href="pages/community_hub_farmer_network.html" class="test-link">
+                <h3>🌐 Community Hub</h3>
+                <p>Farmer networking and support discussions</p>
+            </a>
+            
+            <a href="pages/knowledge_base_crop_season_guide.html" class="test-link">
+                <h3>📚 Knowledge Base</h3>
+                <p>Agricultural knowledge and seasonal guides</p>
+            </a>
+            
+            <a href="pages/help_support_multilingual_assistance.html" class="test-link">
+                <h3>❓ Help & Support</h3>
+                <p>Multilingual assistance and support system</p>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Test backend connectivity
+        async function testBackend() {
+            try {
+                const response = await fetch('http://localhost:8888/health');
+                const data = await response.json();
+                console.log('Backend health check:', data);
+                
+                // Test API endpoint
+                const apiResponse = await fetch('http://localhost:8888/api/ask', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        query: 'Test query from test page',
+                        language: 'en'
+                    })
+                });
+                const apiData = await apiResponse.json();
+                console.log('API test response:', apiData);
+                
+            } catch (error) {
+                console.error('Backend test failed:', error);
+            }
+        }
+        
+        // Run backend test when page loads
+        document.addEventListener('DOMContentLoaded', testBackend);
+    </script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connection Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-box { padding: 20px; margin: 20px 0; border-radius: 8px; }
+        .success { background-color: #d4edda; border: 1px solid #c3e6cb; color: #155724; }
+        .error { background-color: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; }
+        .info { background-color: #d1ecf1; border: 1px solid #bee5eb; color: #0c5460; }
+        button { padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; margin: 5px; }
+        pre { background: #f8f9fa; padding: 10px; border-radius: 4px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>🔗 Connection Test</h1>
+    
+    <div class="test-box info">
+        <h3>Backend URL Test</h3>
+        <button onclick="testBackend()">Test Backend Connection</button>
+        <div id="backend-result"></div>
+    </div>
+
+    <div class="test-box info">
+        <h3>API Test</h3>
+        <button onclick="testAPI()">Test API Call</button>
+        <div id="api-result"></div>
+    </div>
+
+    <div class="test-box info">
+        <h3>Config Test</h3>
+        <button onclick="testConfig()">Test Config Loading</button>
+        <div id="config-result"></div>
+    </div>
+
+    <script>
+        async function testBackend() {
+            const resultDiv = document.getElementById('backend-result');
+            resultDiv.className = 'test-box info';
+            resultDiv.innerHTML = '<p>Testing backend connection...</p>';
+            
+            try {
+                const response = await fetch('http://localhost:8888/health');
+                const data = await response.json();
+                
+                resultDiv.className = 'test-box success';
+                resultDiv.innerHTML = `
+                    <h4>✅ Backend Connected!</h4>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                resultDiv.className = 'test-box error';
+                resultDiv.innerHTML = `
+                    <h4>❌ Backend Connection Failed</h4>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                `;
+            }
+        }
+
+        async function testAPI() {
+            const resultDiv = document.getElementById('api-result');
+            resultDiv.className = 'test-box info';
+            resultDiv.innerHTML = '<p>Testing API call...</p>';
+            
+            try {
+                const response = await fetch('http://localhost:8888/api/ask', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        query: 'Hello, this is a test',
+                        language: 'en'
+                    })
+                });
+                
+                const data = await response.json();
+                
+                resultDiv.className = 'test-box success';
+                resultDiv.innerHTML = `
+                    <h4>✅ API Call Successful!</h4>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                resultDiv.className = 'test-box error';
+                resultDiv.innerHTML = `
+                    <h4>❌ API Call Failed</h4>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                `;
+            }
+        }
+
+        async function testConfig() {
+            const resultDiv = document.getElementById('config-result');
+            resultDiv.className = 'test-box info';
+            resultDiv.innerHTML = '<p>Testing config loading...</p>';
+            
+            try {
+                // Load config.js
+                const script = document.createElement('script');
+                script.src = 'js/config.js?v=' + Date.now(); // Force refresh
+                document.head.appendChild(script);
+                
+                script.onload = () => {
+                    if (window.AgriAssistConfig) {
+                        const config = window.AgriAssistConfig.getConfig();
+                        resultDiv.className = 'test-box success';
+                        resultDiv.innerHTML = `
+                            <h4>✅ Config Loaded!</h4>
+                            <p><strong>Backend URL:</strong> ${config.api.baseUrl}</p>
+                            <pre>${JSON.stringify(config.api, null, 2)}</pre>
+                        `;
+                    } else {
+                        resultDiv.className = 'test-box error';
+                        resultDiv.innerHTML = '<h4>❌ Config Not Found</h4>';
+                    }
+                };
+                
+                script.onerror = () => {
+                    resultDiv.className = 'test-box error';
+                    resultDiv.innerHTML = '<h4>❌ Config Load Failed</h4>';
+                };
+            } catch (error) {
+                resultDiv.className = 'test-box error';
+                resultDiv.innerHTML = `
+                    <h4>❌ Config Test Failed</h4>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                `;
+            }
+        }
+
+        // Auto-run tests on page load
+        window.onload = function() {
+            testBackend();
+            testAPI();
+            testConfig();
+        };
+    </script>
+</body>
+</html>

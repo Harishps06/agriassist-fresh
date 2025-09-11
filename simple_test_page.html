@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgriAssist - Simple Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            color: white;
+            min-height: 100vh;
+        }
+        
+        .container {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .test-section {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .test-section h3 {
+            margin-top: 0;
+            color: #fff;
+        }
+        
+        .form-group {
+            margin: 15px 0;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        
+        .btn {
+            background: #2D5016;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        
+        .btn:hover {
+            background: #1e3a0f;
+        }
+        
+        .response {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            min-height: 50px;
+        }
+        
+        .status {
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .status.success {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .status.error {
+            background: #f44336;
+            color: white;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">🌾 AgriAssist</div>
+            <div class="tagline">Smart Farming Solutions - Simple Test Page</div>
+        </div>
+        
+        <div class="test-section">
+            <h3>🤖 AI Query Interface</h3>
+            <form id="queryForm">
+                <div class="form-group">
+                    <label for="query">Ask a farming question:</label>
+                    <textarea id="query" rows="3" placeholder="e.g., How to grow rice in Kerala?"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="language">Language:</label>
+                    <select id="language">
+                        <option value="en">English</option>
+                        <option value="ml">Malayalam</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn">Ask Question</button>
+                <button type="button" class="btn" onclick="testVoiceInput()">🎤 Voice Input</button>
+            </form>
+            
+            <div class="response" id="response">
+                <p>Your AI response will appear here...</p>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h3>📷 Image Analysis</h3>
+            <div class="form-group">
+                <label for="imageUpload">Upload plant image for disease analysis:</label>
+                <input type="file" id="imageUpload" accept="image/*">
+            </div>
+            <button class="btn" onclick="testImageUpload()">Analyze Image</button>
+            
+            <div class="response" id="imageResponse">
+                <p>Image analysis results will appear here...</p>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h3>🌤️ Weather Information</h3>
+            <button class="btn" onclick="testWeather()">Get Weather</button>
+            <div class="response" id="weatherResponse">
+                <p>Weather information will appear here...</p>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h3>📊 System Status</h3>
+            <div id="systemStatus">
+                <p>Checking system status...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const backendUrl = 'http://localhost:8888';
+        
+        // Test backend connectivity
+        async function checkSystemStatus() {
+            const statusDiv = document.getElementById('systemStatus');
+            
+            try {
+                // Test backend health
+                const healthResponse = await fetch(`${backendUrl}/health`);
+                const healthData = await healthResponse.json();
+                
+                statusDiv.innerHTML = `
+                    <p><strong>Backend Status:</strong> <span class="status success">RUNNING</span></p>
+                    <p><strong>Backend Version:</strong> ${healthData.version || 'N/A'}</p>
+                    <p><strong>Frontend Status:</strong> <span class="status success">RUNNING</span></p>
+                    <p><strong>Test Page:</strong> <span class="status success">LOADED</span></p>
+                `;
+            } catch (error) {
+                statusDiv.innerHTML = `
+                    <p><strong>Backend Status:</strong> <span class="status error">ERROR</span></p>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                `;
+            }
+        }
+        
+        // Handle form submission
+        document.getElementById('queryForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const query = document.getElementById('query').value;
+            const language = document.getElementById('language').value;
+            const responseDiv = document.getElementById('response');
+            
+            if (!query.trim()) {
+                responseDiv.innerHTML = '<p style="color: #ffeb3b;">Please enter a question.</p>';
+                return;
+            }
+            
+            responseDiv.innerHTML = '<p>Processing your question...</p>';
+            
+            try {
+                const response = await fetch(`${backendUrl}/api/ask`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        query: query,
+                        language: language
+                    })
+                });
+                
+                const data = await response.json();
+                
+                responseDiv.innerHTML = `
+                    <p><strong>Question:</strong> ${query}</p>
+                    <p><strong>Language:</strong> ${language}</p>
+                    <p><strong>Answer:</strong> ${data.answer}</p>
+                    <p><strong>Confidence:</strong> ${data.confidence}</p>
+                    <p><strong>Response Time:</strong> ${data.responseTime}s</p>
+                `;
+            } catch (error) {
+                responseDiv.innerHTML = `<p style="color: #f44336;">Error: ${error.message}</p>`;
+            }
+        });
+        
+        // Test voice input
+        function testVoiceInput() {
+            const responseDiv = document.getElementById('response');
+            responseDiv.innerHTML = '<p>Voice input test - This would normally start voice recording...</p>';
+        }
+        
+        // Test image upload
+        function testImageUpload() {
+            const fileInput = document.getElementById('imageUpload');
+            const responseDiv = document.getElementById('imageResponse');
+            
+            if (!fileInput.files[0]) {
+                responseDiv.innerHTML = '<p style="color: #ffeb3b;">Please select an image file first.</p>';
+                return;
+            }
+            
+            responseDiv.innerHTML = '<p>Image upload test - This would normally process the image...</p>';
+        }
+        
+        // Test weather
+        function testWeather() {
+            const responseDiv = document.getElementById('weatherResponse');
+            responseDiv.innerHTML = '<p>Weather test - This would normally fetch weather data...</p>';
+        }
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            checkSystemStatus();
+        });
+    </script>
+</body>
+</html>

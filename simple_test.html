@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-box { padding: 20px; margin: 20px 0; border-radius: 8px; }
+        .success { background-color: #d4edda; border: 1px solid #c3e6cb; color: #155724; }
+        .error { background-color: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; }
+        input { padding: 10px; width: 300px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; }
+        button { padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Simple AI Test</h1>
+    
+    <div class="test-box">
+        <h3>Test AI Question-Answering</h3>
+        <input type="text" id="question" placeholder="Ask a question about farming..." value="How to grow rice in Kerala?">
+        <button onclick="askQuestion()">Ask Question</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        async function askQuestion() {
+            const question = document.getElementById('question').value;
+            const resultDiv = document.getElementById('result');
+            
+            resultDiv.className = 'test-box';
+            resultDiv.innerHTML = '<p>Asking question...</p>';
+            
+            try {
+                const response = await fetch('http://localhost:8888/api/ask', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    body: JSON.stringify({
+                        question: question,
+                        language: 'en-US'
+                    })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    resultDiv.className = 'test-box success';
+                    resultDiv.innerHTML = `
+                        <h4>✅ AI Response Received!</h4>
+                        <p><strong>Question:</strong> ${question}</p>
+                        <p><strong>Answer:</strong> ${data.answer.substring(0, 200)}...</p>
+                        <p><strong>Language:</strong> ${data.language}</p>
+                        <p><strong>Timestamp:</strong> ${data.timestamp}</p>
+                    `;
+                } else {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+            } catch (error) {
+                resultDiv.className = 'test-box error';
+                resultDiv.innerHTML = `
+                    <h4>❌ Error</h4>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                    <p>Make sure the backend is running on port 8888</p>
+                `;
+            }
+        }
+
+        // Auto-test on page load
+        window.onload = function() {
+            askQuestion();
+        };
+    </script>
+</body>
+</html>

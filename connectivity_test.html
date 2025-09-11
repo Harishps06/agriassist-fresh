@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgriAssist - Connectivity Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-result {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 4px solid #ccc;
+        }
+        .test-result.success {
+            border-left-color: #4CAF50;
+        }
+        .test-result.error {
+            border-left-color: #f44336;
+        }
+        .test-result h3 {
+            margin-top: 0;
+        }
+        .test-result pre {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 3px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔧 AgriAssist Connectivity Test</h1>
+    <p>Testing all components for TestSprite compatibility...</p>
+    
+    <div id="results"></div>
+
+    <script>
+        const resultsDiv = document.getElementById('results');
+        
+        function addResult(title, success, details) {
+            const div = document.createElement('div');
+            div.className = `test-result ${success ? 'success' : 'error'}`;
+            div.innerHTML = `
+                <h3>${success ? '✅' : '❌'} ${title}</h3>
+                <pre>${JSON.stringify(details, null, 2)}</pre>
+            `;
+            resultsDiv.appendChild(div);
+        }
+        
+        async function testFrontendResources() {
+            try {
+                const response = await fetch('css/main.css');
+                const css = await response.text();
+                addResult('Frontend CSS Loading', true, {
+                    status: response.status,
+                    size: css.length,
+                    preview: css.substring(0, 100) + '...'
+                });
+            } catch (error) {
+                addResult('Frontend CSS Loading', false, { error: error.message });
+            }
+        }
+        
+        async function testBackendHealth() {
+            try {
+                const response = await fetch('http://localhost:8888/health');
+                const data = await response.json();
+                addResult('Backend Health Check', true, data);
+            } catch (error) {
+                addResult('Backend Health Check', false, { error: error.message });
+            }
+        }
+        
+        async function testBackendAPI() {
+            try {
+                const response = await fetch('http://localhost:8888/api/ask', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        query: 'Test query for connectivity',
+                        language: 'en'
+                    })
+                });
+                const data = await response.json();
+                addResult('Backend API Test', true, data);
+            } catch (error) {
+                addResult('Backend API Test', false, { error: error.message });
+            }
+        }
+        
+        async function testMainPage() {
+            try {
+                const response = await fetch('pages/homepage_ai_query_interface.html');
+                const html = await response.text();
+                addResult('Main Page Loading', true, {
+                    status: response.status,
+                    size: html.length,
+                    hasTitle: html.includes('AgriAssist'),
+                    hasCSS: html.includes('main.css')
+                });
+            } catch (error) {
+                addResult('Main Page Loading', false, { error: error.message });
+            }
+        }
+        
+        async function runAllTests() {
+            addResult('Test Suite Started', true, { timestamp: new Date().toISOString() });
+            
+            await testFrontendResources();
+            await testBackendHealth();
+            await testBackendAPI();
+            await testMainPage();
+            
+            addResult('Test Suite Completed', true, { timestamp: new Date().toISOString() });
+        }
+        
+        // Run tests when page loads
+        document.addEventListener('DOMContentLoaded', runAllTests);
+    </script>
+</body>
+</html>

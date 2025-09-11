@@ -1,0 +1,491 @@
+[
+  {
+    "id": "TC001",
+    "title": "AI Query Interface - Text Query in English",
+    "description": "Verify that the AI query interface accepts text input in English and returns accurate AI-generated responses within 2 seconds.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the AI Query Interface page."
+      },
+      {
+        "type": "action",
+        "description": "Enter a valid farming-related query in English in the text input field."
+      },
+      {
+        "type": "action",
+        "description": "Submit the query."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that a relevant AI-generated answer is returned within 2 seconds."
+      }
+    ]
+  },
+  {
+    "id": "TC002",
+    "title": "AI Query Interface - Text Query in Malayalam",
+    "description": "Verify that the AI query interface accepts text input in Malayalam language and returns accurate AI-generated responses within 2 seconds.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the AI Query Interface page."
+      },
+      {
+        "type": "action",
+        "description": "Enter a valid farming-related query in Malayalam in the text input field."
+      },
+      {
+        "type": "action",
+        "description": "Submit the query."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that a relevant AI-generated answer in Malayalam is returned within 2 seconds."
+      }
+    ]
+  },
+  {
+    "id": "TC003",
+    "title": "AI Query Interface - Voice Input in English",
+    "description": "Verify that users can submit farming-related queries via voice input in English and receive accurate responses timely.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the AI Query Interface page."
+      },
+      {
+        "type": "action",
+        "description": "Activate voice input and speak a farming-related query in English."
+      },
+      {
+        "type": "action",
+        "description": "Submit the voice query."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that a relevant AI-generated answer is displayed within 2 seconds."
+      }
+    ]
+  },
+  {
+    "id": "TC004",
+    "title": "AI Query Interface - Voice Input in Malayalam",
+    "description": "Verify that users can submit farming-related queries via voice input in Malayalam and receive accurate responses timely.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the AI Query Interface page."
+      },
+      {
+        "type": "action",
+        "description": "Activate voice input and speak a farming-related query in Malayalam."
+      },
+      {
+        "type": "action",
+        "description": "Submit the voice query."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that a relevant AI-generated answer in Malayalam is displayed within 2 seconds."
+      }
+    ]
+  },
+  {
+    "id": "TC005",
+    "title": "Image Upload for Plant Disease Diagnosis - Valid Image",
+    "description": "Verify that uploading a clear image of a plant returns a valid disease diagnosis from the AI with high accuracy.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the Image Analysis feature."
+      },
+      {
+        "type": "action",
+        "description": "Upload a clear, correctly oriented image of a diseased plant."
+      },
+      {
+        "type": "action",
+        "description": "Submit the image for analysis."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that the system returns an accurate disease diagnosis with relevant details."
+      }
+    ]
+  },
+  {
+    "id": "TC006",
+    "title": "Image Upload for Plant Disease Diagnosis - Invalid Image Format",
+    "description": "Verify that uploading an unsupported image format prompts an appropriate error message and no analysis is done.",
+    "category": "error handling",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the Image Analysis feature."
+      },
+      {
+        "type": "action",
+        "description": "Attempt to upload an unsupported or corrupted file (e.g., .txt or corrupted image)."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the system rejects the file and displays a user-friendly error message."
+      }
+    ]
+  },
+  {
+    "id": "TC007",
+    "title": "Image Capture Using WebRTC Camera Integration",
+    "description": "Verify that the camera integration allows users to capture plant images directly within the app and submit for disease diagnosis.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Allow camera permissions when prompted."
+      },
+      {
+        "type": "action",
+        "description": "Use the WebRTC camera interface to capture an image of a plant."
+      },
+      {
+        "type": "action",
+        "description": "Submit the captured image for disease analysis."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that the system returns the disease diagnosis result successfully."
+      }
+    ]
+  },
+  {
+    "id": "TC008",
+    "title": "Real-time Weather Data Display and Alerts",
+    "description": "Verify that the application displays current weather data for Kerala, updates in real-time, and triggers weather alerts correctly.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Open the Weather Integration section from the app."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify current weather conditions match the data from OpenWeatherMap API for Kerala."
+      },
+      {
+        "type": "assertion",
+        "description": "Simulate a weather alert and verify the application displays an alert notification."
+      }
+    ]
+  },
+  {
+    "id": "TC009",
+    "title": "Notification System for Weather and Farming Tips",
+    "description": "Verify that browser notifications for weather alerts and farming tips are delivered promptly and allow user interaction.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Grant browser permissions to receive notifications."
+      },
+      {
+        "type": "action",
+        "description": "Trigger a weather alert event in the backend."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that a browser notification is displayed with correct alert message."
+      },
+      {
+        "type": "action",
+        "description": "Trigger a farming tip notification from the agricultural calendar."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that the farming tip notification is displayed and clickable if applicable."
+      }
+    ]
+  },
+  {
+    "id": "TC010",
+    "title": "Agricultural Calendar - Seasonal and Crop-specific Guidance",
+    "description": "Verify that the agricultural calendar displays correct seasonal farming guidance and daily tips, and updates according to crop selection.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the Agricultural Calendar page."
+      },
+      {
+        "type": "action",
+        "description": "Select different crops and seasons."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that the calendar shows relevant crop-specific guidance and updated daily tips according to selections."
+      }
+    ]
+  },
+  {
+    "id": "TC011",
+    "title": "PDF Knowledge Base - Integration and Query Enhancement",
+    "description": "Verify that the system integrates PDF agricultural documents and enhances AI query responses using retrieval augmented generation.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Submit an agricultural query related to information covered in included PDFs."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the AI response contains information derived from the PDF knowledge base for improved accuracy."
+      }
+    ]
+  },
+  {
+    "id": "TC012",
+    "title": "Crop Calculator - Profit Estimation Accuracy",
+    "description": "Verify that the crop calculator accurately calculates profit estimates based on user input for crop choice, costs, and expected yield.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the Crop Calculator tool."
+      },
+      {
+        "type": "action",
+        "description": "Input valid values for crop type, planting area, cost, and expected yield."
+      },
+      {
+        "type": "action",
+        "description": "Submit the inputs."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that the displayed profit estimate matches the expected calculated result."
+      }
+    ]
+  },
+  {
+    "id": "TC013",
+    "title": "Expert Network - Connecting with Agricultural Officers",
+    "description": "Verify that farmers can connect and interact with agricultural officers via the Expert Network feature.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the Expert Network page."
+      },
+      {
+        "type": "action",
+        "description": "Attempt to search and contact an agricultural officer."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that contact requests or messages are sent and received properly."
+      }
+    ]
+  },
+  {
+    "id": "TC014",
+    "title": "Community Hub - Farmer Networking and Support",
+    "description": "Verify that farmers can join discussions, post queries, and respond to others in the Community Hub.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the Community Hub page."
+      },
+      {
+        "type": "action",
+        "description": "Post a new topic or question related to farming."
+      },
+      {
+        "type": "action",
+        "description": "Submit the post."
+      },
+      {
+        "type": "action",
+        "description": "Reply to an existing post."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify all posts and replies appear correctly and are persistent."
+      }
+    ]
+  },
+  {
+    "id": "TC015",
+    "title": "Multilingual Support Consistency Across Application",
+    "description": "Verify that all UI elements, notifications, AI responses, and help content appear correctly in both English and Malayalam when language is switched.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Switch the application language from English to Malayalam."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify all UI texts, buttons, notifications, and help/support content are translated and displayed properly."
+      },
+      {
+        "type": "action",
+        "description": "Switch back from Malayalam to English."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify UI returns to English correctly with all elements visible."
+      }
+    ]
+  },
+  {
+    "id": "TC016",
+    "title": "Responsive Design Verification on Desktop and Mobile",
+    "description": "Verify that the interface is fully responsive and functional across common desktop browsers and mobile devices using Tailwind CSS.",
+    "category": "ui",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Open the application on desktop browsers (Chrome, Firefox, Edge)."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify UI elements are correctly laid out, navigation works, and no overlap or broken content exists."
+      },
+      {
+        "type": "action",
+        "description": "Open the application on mobile devices and mobile browser emulators."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify touch interface is responsive, navigation menus collapse properly, and no content is clipped or inaccessible."
+      }
+    ]
+  },
+  {
+    "id": "TC017",
+    "title": "Error Handling - Backend API Failure During Query Processing",
+    "description": "Verify that the application shows an appropriate error message if the backend API fails or is unreachable when submitting AI queries.",
+    "category": "error handling",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Simulate backend API unavailability or failure."
+      },
+      {
+        "type": "action",
+        "description": "Submit an AI query."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the application displays a user-friendly error notification without crashing."
+      }
+    ]
+  },
+  {
+    "id": "TC018",
+    "title": "Help & Support - Access and Multilingual Assistance",
+    "description": "Verify that users can access the help and support system at any point, and receive assistance in both English and Malayalam.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Access the Help & Support section from various pages."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify help content and FAQ displays in selected language."
+      },
+      {
+        "type": "action",
+        "description": "Switch language and verify help content updates accordingly."
+      }
+    ]
+  },
+  {
+    "id": "TC019",
+    "title": "Crop Calculator - Handling Invalid Input Data",
+    "description": "Verify that the crop calculator handles invalid or missing input data gracefully with clear error messages.",
+    "category": "error handling",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the Crop Calculator."
+      },
+      {
+        "type": "action",
+        "description": "Input invalid values such as negative numbers, letters in numeric fields, or leave required fields blank."
+      },
+      {
+        "type": "action",
+        "description": "Attempt to calculate profit."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify appropriate validation error messages appear that guide correct input."
+      }
+    ]
+  },
+  {
+    "id": "TC020",
+    "title": "Security - Prevent Cross-Site Scripting (XSS) in User Inputs",
+    "description": "Verify that all user inputs in query text, community posts, and expert network messages are sanitized to prevent XSS attacks.",
+    "category": "security",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Enter input containing HTML/script tags in AI query, community posts, and expert messages."
+      },
+      {
+        "type": "action",
+        "description": "Submit each input."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that displayed output escapes or removes scripts preventing code execution or UI break."
+      }
+    ]
+  },
+  {
+    "id": "TC021",
+    "title": "Performance - AI Response Time Under Load",
+    "description": "Verify that AI query responses maintain sub-2-second response times when multiple simultaneous requests are made.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Simulate multiple (10+) simultaneous AI queries from different users or sessions."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify all AI responses complete within 2 seconds without errors."
+      }
+    ]
+  }
+]

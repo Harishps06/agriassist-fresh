@@ -1,0 +1,193 @@
+{
+  "meta": {
+    "project": "AgriAssist",
+    "date": "2025-09-10",
+    "prepared_by": "Software Development Manager"
+  },
+  "product_overview": "AgriAssist is an AI-powered web application designed to provide real-time, multilingual agricultural assistance to farmers in Kerala, India. It integrates advanced AI query handling, image analysis for plant disease diagnosis, real-time weather data, and a comprehensive agricultural knowledge base to support farming decisions.",
+  "core_goals": [
+    "Deliver accurate and timely AI-powered answers to farming-related queries in English and Malayalam.",
+    "Provide real-time weather updates and agricultural alerts specific to Kerala region.",
+    "Enable farmers to identify plant diseases through photo uploads and AI image analysis.",
+    "Offer seasonal and crop-specific farming guidance via an interactive agricultural calendar and knowledge base.",
+    "Ensure a user-friendly, responsive interface accessible on both desktop and mobile devices."
+  ],
+  "key_features": [
+    "AI Query Interface with multilingual (English and Malayalam) support and real-time voice input.",
+    "Image Analysis Service leveraging Google Gemini API for plant disease identification through photo uploads.",
+    "Weather Integration with current weather data, alerts, and an agricultural calendar.",
+    "Comprehensive Knowledge Base including PDF agricultural documents integration and retrieval augmented generation (RAG) for enhanced responses.",
+    "Responsive design using Tailwind CSS with intuitive navigation and real-time feedback.",
+    "Backend services powered by Flask for handling queries, image processing, and PDF knowledge base integration.",
+    "Camera integration using WebRTC for capturing plant images directly within the app.",
+    "Notification system delivering browser alerts for weather and farming tips.",
+    "Crop Calculator tool for profit analysis and crop planning.",
+    "Expert Network connecting farmers with agricultural officers and experts.",
+    "Community Hub providing a platform for farmer networking and support.",
+    "Multilingual help and support system embedded throughout the application."
+  ],
+  "user_flow_summary": [
+    "Users start at the AI Query Interface to submit questions either by text or voice in English or Malayalam.",
+    "Users can capture or upload images of plants for disease diagnosis via the image analysis feature.",
+    "The system provides instant AI-generated answers powered by Google Gemini API and enriched with PDF-based knowledge.",
+    "Users access real-time weather updates and receive notifications for weather alerts or farming tips.",
+    "Farmers consult the agricultural calendar for seasonal guidance and crop-specific information.",
+    "Users utilize the crop calculator for profit estimation and planning.",
+    "Farmers engage with experts through the expert network and participate in community discussions via the community hub.",
+    "Help and support are accessible at any point in the app for multilingual assistance and troubleshooting."
+  ],
+  "validation_criteria": [
+    "AI responses to agricultural queries must be accurate with response times under 2 seconds.",
+    "Image analysis correctly identifies plant diseases with high accuracy.",
+    "Weather data and alerts are reliably updated in real-time.",
+    "The app interface is fully responsive and functions correctly on both desktop and mobile devices.",
+    "Voice input for queries works reliably in supported languages.",
+    "PDF knowledge base integration enhances response quality and relevance.",
+    "Crop calculator provides accurate profit estimates based on input data.",
+    "Expert network and community features facilitate meaningful farmer engagement.",
+    "All multilingual features (English and Malayalam) are consistent and user-friendly throughout the application."
+  ],
+  "code_summary": {
+    "tech_stack": [
+      "HTML5",
+      "CSS3",
+      "JavaScript (ES6)",
+      "Python",
+      "Flask",
+      "Tailwind CSS",
+      "WebRTC",
+      "Fetch API",
+      "Google Gemini API",
+      "OpenWeatherMap API",
+      "PDF Processing",
+      "CORS"
+    ],
+    "features": [
+      {
+        "name": "AI Query Interface",
+        "description": "Main interface for asking agricultural questions with multilingual support (English/Malayalam)",
+        "files": [
+          "pages/homepage_ai_query_interface.html",
+          "js/config.js"
+        ]
+      },
+      {
+        "name": "Voice Input System",
+        "description": "Voice recording and processing for hands-free query input",
+        "files": [
+          "pages/homepage_ai_query_interface.html"
+        ]
+      },
+      {
+        "name": "Image Analysis Service",
+        "description": "Photo upload and analysis using Google Gemini API for plant disease identification",
+        "files": [
+          "pages/homepage_ai_query_interface.html"
+        ]
+      },
+      {
+        "name": "Weather Integration",
+        "description": "Real-time weather data display and agricultural weather alerts",
+        "files": [
+          "pages/homepage_ai_query_interface.html"
+        ]
+      },
+      {
+        "name": "Agricultural Calendar",
+        "description": "Seasonal farming guidance and daily agricultural tips",
+        "files": [
+          "pages/homepage_ai_query_interface.html"
+        ]
+      },
+      {
+        "name": "Backend API Service",
+        "description": "Flask-based REST API for processing queries and serving responses",
+        "files": [
+          "backend/simple_backend.py",
+          "backend/app_with_pdf.py"
+        ]
+      },
+      {
+        "name": "PDF Knowledge Base",
+        "description": "Integration with agricultural PDF documents for enhanced responses",
+        "files": [
+          "backend/app_with_pdf.py",
+          "backend/agricultural_pdfs/"
+        ]
+      },
+      {
+        "name": "Multilingual Support",
+        "description": "Support for English and Malayalam languages throughout the application",
+        "files": [
+          "pages/homepage_ai_query_interface.html",
+          "backend/simple_backend.py"
+        ]
+      },
+      {
+        "name": "Responsive Design",
+        "description": "Mobile-friendly interface using Tailwind CSS",
+        "files": [
+          "pages/homepage_ai_query_interface.html",
+          "css/main.css",
+          "css/tailwind.css"
+        ]
+      },
+      {
+        "name": "Camera Integration",
+        "description": "WebRTC-based camera access for taking photos of crops/plants",
+        "files": [
+          "pages/homepage_ai_query_interface.html"
+        ]
+      },
+      {
+        "name": "Notification System",
+        "description": "Browser notifications for weather alerts and farming tips",
+        "files": [
+          "pages/homepage_ai_query_interface.html"
+        ]
+      },
+      {
+        "name": "Configuration Management",
+        "description": "Centralized configuration for API keys and environment settings",
+        "files": [
+          "js/config.js"
+        ]
+      },
+      {
+        "name": "Crop Calculator",
+        "description": "Profit analysis and crop calculation tools",
+        "files": [
+          "pages/crop_calculator_profit_analyzer.html"
+        ]
+      },
+      {
+        "name": "Expert Network",
+        "description": "Connection to agricultural officers and experts",
+        "files": [
+          "pages/expert_network_agricultural_officer_connect.html"
+        ]
+      },
+      {
+        "name": "Knowledge Base",
+        "description": "Comprehensive agricultural knowledge base with seasonal guides",
+        "files": [
+          "pages/knowledge_base_crop_season_guide.html"
+        ]
+      },
+      {
+        "name": "Community Hub",
+        "description": "Farmer network and community features",
+        "files": [
+          "pages/community_hub_farmer_network.html"
+        ]
+      },
+      {
+        "name": "Help & Support",
+        "description": "Multilingual assistance and support system",
+        "files": [
+          "pages/help_support_multilingual_assistance.html"
+        ]
+      }
+    ]
+  }
+}

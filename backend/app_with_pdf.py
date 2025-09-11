@@ -3,7 +3,13 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import json
 from datetime import datetime
-from pdf_processor import AgriculturalPDFProcessor
+try:
+    from pdf_processor import AgriculturalPDFProcessor
+    PDF_PROCESSOR_AVAILABLE = True
+except ImportError:
+    print("⚠️ PDF processor not available, using fallback mode")
+    PDF_PROCESSOR_AVAILABLE = False
+    AgriculturalPDFProcessor = None
 import logging
 
 # Set up logging
@@ -16,22 +22,33 @@ CORS(app, origins=[
     "https://agriassisttt.netlify.app",
     "https://agriassist-fresh.netlify.app", 
     "http://localhost:3000",
-    "http://127.0.0.1:5000"
+    "http://localhost:8000",
+    "http://127.0.0.1:5000",
+    "http://127.0.0.1:8000",
+    "http://127.0.0.1:8888",
+    "http://localhost:8888"
 ])
 
 # Set up Google API Key
 os.environ["GOOGLE_API_KEY"] = "AIzaSyCWK3gI22NlZXOqNFSpj8ag3yR752uj6tU"
 
 # Initialize PDF processor
-pdf_processor = AgriculturalPDFProcessor("knowledge_base")
+if PDF_PROCESSOR_AVAILABLE:
+    pdf_processor = AgriculturalPDFProcessor("knowledge_base")
+else:
+    pdf_processor = None
 knowledge_base = None
 
 def load_knowledge_base():
     """Load knowledge base from processed PDFs"""
     global knowledge_base
     try:
-        knowledge_base = pdf_processor.load_all_knowledge()
-        logger.info("Knowledge base loaded successfully")
+        if PDF_PROCESSOR_AVAILABLE and pdf_processor:
+            knowledge_base = pdf_processor.load_all_knowledge()
+            logger.info("Knowledge base loaded successfully")
+        else:
+            knowledge_base = {}
+            logger.info("PDF processor not available, using empty knowledge base")
     except Exception as e:
         logger.error(f"Error loading knowledge base: {str(e)}")
         knowledge_base = {}
@@ -46,7 +63,7 @@ def get_enhanced_agricultural_advice(question: str, language: str) -> str:
     is_malayalam = any(char in question for char in malayalam_chars) or any(word in question for word in malayalam_words)
     
     # Search knowledge base
-    if knowledge_base:
+    if knowledge_base and PDF_PROCESSOR_AVAILABLE and pdf_processor:
         search_results = pdf_processor.search_knowledge(question, knowledge_base)
         
         if search_results:
@@ -93,14 +110,23 @@ def get_simple_agricultural_advice(question: str, language: str, is_malayalam: b
         else:
             return "I can help you with rice farming, coconut cultivation, vegetable farming, spice cultivation, soil management, pest control, irrigation, market information, weather guidance, and general agricultural advice. Please ask specific questions about crops, pests, diseases, or farming practices."
 
+@app.route('/health', methods=['GET'])
+def health_check():
+    return jsonify({
+        'status': 'Backend is running',
+        'timestamp': datetime.now().isoformat(),
+        'version': '2.0.0',
+        'features': ['PDF Knowledge Base', 'RAG Processing', 'Multilingual Support']
+    })
+
 @app.route('/api/ask', methods=['POST'])
 def ask_question():
     try:
         data = request.get_json()
         
         # Extract data from frontend
-        question = data.get('question', '')
-        language = data.get('language', 'en-US')
+        question = data.get('query', data.get('question', ''))
+        language = data.get('language', 'en')
         context = data.get('context', {})
         
         logger.info(f"Server received question: {question}")
@@ -133,6 +159,12 @@ def ask_question():
 def process_pdfs():
     """Endpoint to process PDFs and update knowledge base"""
     try:
+        if not PDF_PROCESSOR_AVAILABLE or not pdf_processor:
+            return jsonify({
+                'success': False,
+                'error': 'PDF processor not available'
+            }), 500
+            
         data = request.get_json()
         pdf_directory = data.get('pdf_directory', 'agricultural_pdfs')
         
@@ -186,16 +218,7 @@ def get_knowledge_stats():
             'error': str(e)
         }), 500
 
-# Health check endpoint
-@app.route('/api/health', methods=['GET'])
-def health_check():
-    return jsonify({
-        'status': 'healthy',
-        'timestamp': datetime.now().isoformat(),
-        'ai_ready': True,
-        'knowledge_base': 'PDF-enhanced system',
-        'pdf_processor_ready': True
-    })
+# Health check endpoint - removed duplicate
 
 # Test Malayalam detection endpoint
 @app.route('/api/test-malayalam', methods=['POST'])
@@ -227,8 +250,8 @@ if __name__ == '__main__':
     # Load knowledge base on startup
     load_knowledge_base()
     
-    print("🌐 Server starting on http://127.0.0.1:5000")
+    print("🌐 Server starting on http://127.0.0.1:8888")
     print("📱 Frontend can now connect to this backend")
     print("📄 PDF processing capabilities enabled")
     
-    app.run(debug=True, port=5000, host='0.0.0.0')
+    app.run(debug=True, port=8888, host='0.0.0.0')

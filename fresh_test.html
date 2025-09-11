@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresh Connection Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .test-box { padding: 20px; margin: 20px 0; border-radius: 8px; }
+        .success { background-color: #d4edda; border: 1px solid #c3e6cb; color: #155724; }
+        .error { background-color: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; }
+        .info { background-color: #d1ecf1; border: 1px solid #bee5eb; color: #0c5460; }
+        button { padding: 15px 30px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; margin: 10px; font-size: 16px; }
+        button:hover { background: #0056b3; }
+        pre { background: #f8f9fa; padding: 15px; border-radius: 4px; overflow-x: auto; font-size: 14px; }
+        .status { font-size: 18px; font-weight: bold; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔄 Fresh Connection Test</h1>
+        <p>This test uses the exact same configuration as the main website.</p>
+        
+        <div class="test-box info">
+            <h3>Step 1: Test Backend Direct Connection</h3>
+            <button onclick="testBackendDirect()">Test Backend (Port 8888)</button>
+            <div id="backend-result"></div>
+        </div>
+
+        <div class="test-box info">
+            <h3>Step 2: Test API Call (Same as Main Website)</h3>
+            <button onclick="testAPICall()">Test API Call</button>
+            <div id="api-result"></div>
+        </div>
+
+        <div class="test-box info">
+            <h3>Step 3: Test with Config (Exact Same as Main Website)</h3>
+            <button onclick="testWithConfig()">Test with Config</button>
+            <div id="config-result"></div>
+        </div>
+
+        <div class="test-box info">
+            <h3>Step 4: Test Main Website Query Form</h3>
+            <button onclick="testMainWebsiteForm()">Test Main Website Form</button>
+            <div id="main-form-result"></div>
+        </div>
+    </div>
+
+    <script>
+        // Load the exact same config as the main website
+        const configScript = document.createElement('script');
+        configScript.src = 'js/config.js?v=2025-09-10-v3';
+        document.head.appendChild(configScript);
+
+        async function testBackendDirect() {
+            const resultDiv = document.getElementById('backend-result');
+            resultDiv.innerHTML = '<div class="status">Testing backend connection...</div>';
+            
+            try {
+                const response = await fetch('http://localhost:8888/health');
+                const data = await response.json();
+                
+                resultDiv.innerHTML = `
+                    <div class="status" style="color: #155724;">✅ Backend Connected Successfully!</div>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="status" style="color: #721c24;">❌ Backend Connection Failed</div>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                `;
+            }
+        }
+
+        async function testAPICall() {
+            const resultDiv = document.getElementById('api-result');
+            resultDiv.innerHTML = '<div class="status">Testing API call...</div>';
+            
+            try {
+                const response = await fetch('http://localhost:8888/api/ask', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        query: 'Test question from fresh test',
+                        language: 'en'
+                    })
+                });
+                
+                const data = await response.json();
+                
+                resultDiv.innerHTML = `
+                    <div class="status" style="color: #155724;">✅ API Call Successful!</div>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="status" style="color: #721c24;">❌ API Call Failed</div>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                `;
+            }
+        }
+
+        async function testWithConfig() {
+            const resultDiv = document.getElementById('config-result');
+            resultDiv.innerHTML = '<div class="status">Testing with config...</div>';
+            
+            try {
+                // Wait for config to load
+                await new Promise(resolve => {
+                    if (window.AgriAssistConfig) {
+                        resolve();
+                    } else {
+                        configScript.onload = resolve;
+                    }
+                });
+
+                const config = window.AgriAssistConfig.getConfig();
+                const backendUrl = config.api.baseUrl;
+                
+                resultDiv.innerHTML = `
+                    <div class="status" style="color: #155724;">✅ Config Loaded Successfully!</div>
+                    <p><strong>Backend URL from config:</strong> ${backendUrl}</p>
+                    <pre>${JSON.stringify(config.api, null, 2)}</pre>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="status" style="color: #721c24;">❌ Config Test Failed</div>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                `;
+            }
+        }
+
+        async function testMainWebsiteForm() {
+            const resultDiv = document.getElementById('main-form-result');
+            resultDiv.innerHTML = '<div class="status">Testing main website form logic...</div>';
+            
+            try {
+                // Wait for config to load
+                await new Promise(resolve => {
+                    if (window.AgriAssistConfig) {
+                        resolve();
+                    } else {
+                        configScript.onload = resolve;
+                    }
+                });
+
+                const config = window.AgriAssistConfig.getConfig();
+                const backendUrl = config.api.baseUrl;
+                
+                // Simulate the exact same request as the main website
+                const requestData = {
+                    query: 'Test question from main website form',
+                    language: 'en'
+                };
+                
+                console.log('Sending request to:', `${backendUrl}/api/ask`);
+                console.log('Request data:', requestData);
+                
+                const response = await fetch(`${backendUrl}/api/ask`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestData)
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                
+                resultDiv.innerHTML = `
+                    <div class="status" style="color: #155724;">✅ Main Website Form Test Successful!</div>
+                    <p><strong>Backend URL:</strong> ${backendUrl}</p>
+                    <p><strong>Response:</strong></p>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="status" style="color: #721c24;">❌ Main Website Form Test Failed</div>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                    <p><strong>This is the same error you're seeing in the main website!</strong></p>
+                `;
+            }
+        }
+
+        // Auto-run all tests on page load
+        window.onload = function() {
+            testBackendDirect();
+            testAPICall();
+            testWithConfig();
+            testMainWebsiteForm();
+        };
+    </script>
+</body>
+</html>
