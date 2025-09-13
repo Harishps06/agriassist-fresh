@@ -79,7 +79,7 @@
             }
         }
     </style>
-    <script src="../js/config.js?v=202509112300"></script>
+    <script src="../js/config.js?v=202509121815"></script>
         <!-- Config removed - using direct connection -->
 </head>
 <body class="bg-background font-sans">
@@ -1817,12 +1817,42 @@
                     }
                 };
 
-                // Use config for backend URL
+                // Use config for backend URL with aggressive localhost fallback
                 const config = window.AgriAssistConfig ? window.AgriAssistConfig.getConfig() : null;
-                const backendUrl = config ? config.api.baseUrl : 'http://172.20.10.3:3000';
+                let backendUrl = config ? config.api.baseUrl : 'http://localhost:3000';
+                
+                // Force localhost if any Render URL is detected
+                if (backendUrl.includes('onrender.com') || backendUrl.includes('render.com')) {
+                    console.warn('Detected Render URL, forcing localhost');
+                    backendUrl = 'http://localhost:3000';
+                }
                 console.log('Config loaded:', config);
                 console.log('Backend URL:', backendUrl);
                 console.log('Sending request to:', `${backendUrl}/api/ask`);
+                
+                // Force localhost if config is wrong
+                if (backendUrl.includes('onrender.com')) {
+                    console.warn('Detected Render URL, forcing localhost');
+                    const correctedUrl = 'http://localhost:3000';
+                    console.log('Corrected URL:', correctedUrl);
+                    const response = await fetch(`${correctedUrl}/api/ask`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'x-requested-with': 'XMLHttpRequest'
+                        },
+                        body: JSON.stringify(requestData)
+                    });
+                    // ... rest of the response handling
+                    if (!response.ok) {
+                        const errorText = await response.text();
+                        console.error('Error response:', errorText);
+                        throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+                    }
+                    const data = await response.json();
+                    showAIResponse(data.answer);
+                    return;
+                }
                 console.log('Request data:', requestData);
                 
                 const response = await fetch(`${backendUrl}/api/ask`, {

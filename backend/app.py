@@ -18,18 +18,28 @@ logger = logging.getLogger(__name__)
 # -----------------------------
 app = Flask(__name__)
 
-# ✅ Simplified, broad CORS (good for dev)
+# ✅ Simplified, broad CORS (good for dev & prod)
+# You can add your deployed domain here later
 CORS(app, resources={r"/*": {
-    "origins": ["http://172.20.10.3:8000", "http://localhost:8000"],
-    "allow_headers": "*",
-    "methods": ["GET", "POST", "OPTIONS", "PUT", "DELETE"]
+    "origins": [
+        "http://localhost:8000",
+        "http://172.20.10.3:8000",
+        "https://agriassist-fresh.onrender.com"  # add your deploy domain
+    ]
 }})
+
+# ✅ Ensure all responses include proper CORS headers
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,POST,OPTIONS,PUT,DELETE')
+    return response
 
 # -----------------------------
 # Google API Key & Gemini AI setup
 # -----------------------------
 os.environ["GOOGLE_API_KEY"] = "AIzaSyCWK3gI22NlZXOqNFSpj8ag3yR752uj6tU"
-
 genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 model = genai.GenerativeModel('gemini-1.5-flash')
 
@@ -56,7 +66,6 @@ def load_knowledge_base():
 # Prompt builder
 # -----------------------------
 def build_prompt(question: str, context: str, is_malayalam: bool) -> str:
-    """Build a short, relevant prompt for Gemini AI"""
     if is_malayalam:
         return f"""നിങ്ങൾ കേരളത്തിലെ കൃഷി വിദഗ്ധനാണ്.
 
@@ -78,85 +87,71 @@ IMPORTANT: Answer ONLY in English. Provide a direct, concise answer in 3-4 sente
 # Agricultural advice using Gemini AI + PDFs
 # -----------------------------
 def get_enhanced_agricultural_advice(question: str, language: str) -> str:
-    """Get agricultural advice using Gemini AI and PDF knowledge base"""
-
-    # Detect Malayalam - use language parameter as primary indicator
     is_malayalam = language.startswith('ml') or language == 'ml-IN'
-
-    # Search knowledge base
     context = ""
     if knowledge_base:
         try:
             search_results = pdf_processor.search_knowledge(question, knowledge_base)
+            logger.info(f"Found {len(search_results)} search results for: {question}")
             if search_results:
-                combined_info = [result['content'] for result in search_results[:3]]
-                if combined_info:
+                filtered_results = []
+                for result in search_results[:5]:
+                    content = result['content']
+                    has_malayalam_chars = any('\u0D00' <= char <= '\u0D7F' for char in content)
+                    has_english_chars = any('a' <= char.lower() <= 'z' for char in content)
+                    if is_malayalam and has_malayalam_chars:
+                        filtered_results.append(result)
+                    elif not is_malayalam and has_english_chars:
+                        english_ratio = sum(1 for char in content if 'a' <= char.lower() <= 'z') / len(content) if content else 0
+                        if english_ratio > 0.3:
+                            filtered_results.append(result)
+                    elif not filtered_results:
+                        filtered_results.append(result)
+                logger.info(f"Filtered to {len(filtered_results)} results")
+                if filtered_results:
+                    combined_info = [result['content'] for result in filtered_results[:3]]
                     context = " ".join(combined_info)
+                    logger.info(f"Context length: {len(context)} characters")
         except Exception as e:
             logger.error(f"Error searching knowledge base: {str(e)}")
 
-    # Build prompt using helper function
     prompt = build_prompt(question, context, is_malayalam)
-
     try:
         logger.info(f"Prompt being sent to Gemini: {prompt[:200]}...")
         response = model.generate_content(prompt)
         answer = response.text
         logger.info(f"Gemini response: {answer[:200]}...")
-        
-        # Limit response length for better user experience
         if len(answer) > 1000:
-            # Try to find a good stopping point
             sentences = answer.split('. ')
-            truncated = '. '.join(sentences[:3])  # Take first 3 sentences
+            truncated = '. '.join(sentences[:3])
             if len(truncated) < len(answer):
                 answer = truncated + "..."
-        
         return answer
     except Exception as e:
         logger.error(f"Gemini AI error: {str(e)}")
-        
-        # Check if it's a quota exceeded error
         if "quota" in str(e).lower() or "429" in str(e):
             logger.info("Gemini quota exceeded, using knowledge base fallback")
             if context:
-                # Use knowledge base as fallback
-                if is_malayalam:
-                    return f"ക്ഷമിക്കണം, ഇപ്പോൾ AI സേവനം ലഭ്യമല്ല. എന്നാൽ ഞങ്ങളുടെ അറിവ് ശേഖരത്തിൽ നിന്ന്: {context[:300]}..."
-                else:
-                    return f"Sorry, AI service is temporarily unavailable. However, from our knowledge base: {context[:300]}..."
-            else:
-                if is_malayalam:
-                    return "ക്ഷമിക്കണം, ഇപ്പോൾ AI സേവനം ലഭ്യമല്ല. ദയവായി പിന്നീട് വീണ്ടും ശ്രമിക്കുക."
-                else:
-                    return "Sorry, AI service is temporarily unavailable. Please try again later."
-        
-        # For other errors, use knowledge base if available
-        if context:
-            if is_malayalam:
-                return f"ഞങ്ങളുടെ അറിവ് ശേഖരത്തിൽ നിന്ന്: {context[:300]}..."
-            else:
                 return f"From our knowledge base: {context[:300]}..."
-        
-        if is_malayalam:
-            return "ക്ഷമിക്കണം, ഇപ്പോൾ ഉത്തരം നൽകാൻ കഴിയുന്നില്ല. ദയവായി പിന്നീട് വീണ്ടും ശ്രമിക്കുക."
-        else:
-            return "Sorry, I could not fetch advice right now. Please try again later."
+            else:
+                return "Sorry, AI service is temporarily unavailable. Please try again later."
+        if context:
+            return f"From our knowledge base: {context[:300]}..."
+        return "Sorry, I could not fetch advice right now. Please try again later."
 
 # -----------------------------
 # API Endpoints
 # -----------------------------
-@app.route('/api/ask', methods=['POST'])
+@app.route('/api/ask', methods=['POST', 'OPTIONS'])
 def ask_question():
-    """Main endpoint to get agricultural advice"""
+    if request.method == 'OPTIONS':  # Handle preflight
+        return jsonify({'status': 'ok'}), 200
     try:
         data = request.get_json()
         question = data.get('question', '')
         language = data.get('language', 'en-US')
-
         logger.info(f"Received question: {question}")
         response_text = get_enhanced_agricultural_advice(question, language)
-
         return jsonify({
             'answer': response_text,
             'responseTime': 1.23,
@@ -171,14 +166,11 @@ def ask_question():
 
 @app.route('/api/process-pdfs', methods=['POST'])
 def process_pdfs():
-    """Endpoint to process PDFs and update knowledge base"""
     try:
         data = request.get_json()
         pdf_directory = data.get('pdf_directory', 'agricultural_pdfs')
-
         processed_entries = pdf_processor.process_multiple_pdfs(pdf_directory)
         load_knowledge_base()
-
         return jsonify({
             'success': True,
             'processed_files': len(processed_entries),
@@ -191,20 +183,16 @@ def process_pdfs():
 
 @app.route('/api/knowledge-stats', methods=['GET'])
 def get_knowledge_stats():
-    """Get statistics about the knowledge base"""
     try:
         if not knowledge_base:
             load_knowledge_base()
-
         stats = {}
         total_entries = 0
         for section, entries in knowledge_base.items():
             stats[section] = len(entries)
             total_entries += len(entries)
-
         stats['total_entries'] = total_entries
         stats['sections'] = list(knowledge_base.keys())
-
         return jsonify({'success': True, 'stats': stats})
     except Exception as e:
         logger.error(f"Error getting knowledge stats: {str(e)}")
@@ -221,17 +209,13 @@ def health_check():
     })
 
 # -----------------------------
-# Stub endpoints with file upload support
+# File upload endpoints
 # -----------------------------
 UPLOAD_FOLDER = 'uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 @app.route('/api/image-query', methods=['POST'])
 def image_query():
-    """
-    Stub endpoint for handling image queries.
-    Accepts image files but currently just returns a placeholder.
-    """
     if 'image' not in request.files:
         return jsonify({'error': 'No image file uploaded'}), 400
     file = request.files['image']
@@ -239,7 +223,6 @@ def image_query():
     file_path = os.path.join(UPLOAD_FOLDER, filename)
     file.save(file_path)
     logger.info(f"Received image file: {filename}")
-
     return jsonify({
         'answer': f'Image analysis feature coming soon. File saved as {filename}',
         'timestamp': datetime.now().isoformat()
@@ -247,10 +230,6 @@ def image_query():
 
 @app.route('/api/voice-query', methods=['POST'])
 def voice_query():
-    """
-    Stub endpoint for handling voice queries.
-    Accepts audio files but currently just returns a placeholder.
-    """
     if 'audio' not in request.files:
         return jsonify({'error': 'No audio file uploaded'}), 400
     file = request.files['audio']
@@ -258,7 +237,6 @@ def voice_query():
     file_path = os.path.join(UPLOAD_FOLDER, filename)
     file.save(file_path)
     logger.info(f"Received audio file: {filename}")
-
     return jsonify({
         'answer': f'Voice analysis feature coming soon. File saved as {filename}',
         'timestamp': datetime.now().isoformat()

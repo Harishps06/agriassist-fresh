@@ -1,184 +1,197 @@
-import os
-import PyPDF2
-import fitz  # PyMuPDF
-from pathlib import Path
-import json
-import re
-from typing import List, Dict, Any
-import logging
+#!/usr/bin/env python3
+"""
+Agricultural Document Processor – Clean Architecture
+Handles:
+  - PDF + TXT text extraction
+  - Text cleaning & classification into sections
+  - Configurable keywords from JSON
+  - Knowledge base saving/loading/searching with advanced relevance ranking
+"""
 
-# Set up logging
-logging.basicConfig(level=logging.INFO)
+from pathlib import Path
+from datetime import datetime
+from typing import List, Dict, Any, Union
+import json
+import logging
+import re
+
+# Primary extraction libraries
+import fitz  # PyMuPDF
+import PyPDF2  # Fallback if fitz fails
+
+# -----------------------------
+# Logging setup
+# -----------------------------
+logging.basicConfig(level=logging.INFO, format='[%(levelname)s] %(message)s')
 logger = logging.getLogger(__name__)
 
-class AgriculturalPDFProcessor:
-    def __init__(self, knowledge_base_dir: str = "knowledge_base"):
+
+class AgriculturalDocumentProcessor:
+    def __init__(self,
+                 knowledge_base_dir: str = "knowledge_base",
+                 keyword_config_file: str = "keywords_config.json"):
+        """
+        :param knowledge_base_dir: directory to store JSON knowledge files
+        :param keyword_config_file: path to JSON config of keywords
+        """
         self.knowledge_base_dir = Path(knowledge_base_dir)
         self.knowledge_base_dir.mkdir(exist_ok=True)
-        self.processed_files = []
-        
+        self.keyword_config_file = Path(keyword_config_file)
+        self.section_keywords = self._load_keywords()
+        self.processed_files: List[str] = []
+
+    # ---------- CONFIG LOADING ----------
+    def _load_keywords(self) -> Dict[str, List[str]]:
+        """Load section keywords from JSON config"""
+        if self.keyword_config_file.exists():
+            try:
+                with open(self.keyword_config_file, 'r', encoding='utf-8') as f:
+                    return json.load(f)
+            except Exception as e:
+                logger.error(f"Error loading keyword config {self.keyword_config_file}: {e}")
+        logger.warning("Keyword config missing or unreadable. Using default minimal sections.")
+        return {
+            'general': ['advice', 'guidance', 'tip', 'information']
+        }
+
+    # ---------- FILE TYPE HANDLING ----------
+    def _is_pdf(self, path: str) -> bool:
+        return Path(path).suffix.lower() == '.pdf'
+
+    def _is_txt(self, path: str) -> bool:
+        return Path(path).suffix.lower() == '.txt'
+
+    # ---------- TEXT EXTRACTION ----------
     def extract_text_from_pdf(self, pdf_path: str) -> str:
-        """Extract text from PDF using PyMuPDF for better accuracy"""
+        """Extract text from PDF using PyMuPDF first, then PyPDF2 as fallback"""
         try:
-            doc = fitz.open(pdf_path)
-            text = ""
-            
-            for page_num in range(len(doc)):
-                page = doc.load_page(page_num)
-                text += page.get_text()
-                text += "\n"  # Add page break
-            
-            doc.close()
-            return text
+            with fitz.open(pdf_path) as doc:
+                text = "\n".join(page.get_text() for page in doc)
+            return text.strip()
         except Exception as e:
-            logger.error(f"Error extracting text from {pdf_path}: {str(e)}")
+            logger.warning(f"PyMuPDF failed for {pdf_path}: {e}")
+
+        try:
+            with open(pdf_path, 'rb') as f:
+                reader = PyPDF2.PdfReader(f)
+                text = "\n".join(page.extract_text() or '' for page in reader.pages)
+            return text.strip()
+        except Exception as e:
+            logger.error(f"Both extraction methods failed for {pdf_path}: {e}")
             return ""
-    
+
+    def extract_text_from_txt(self, txt_path: str) -> str:
+        """Extract text from a .txt file"""
+        try:
+            with open(txt_path, 'r', encoding='utf-8') as f:
+                text = f.read()
+            return text.strip()
+        except Exception as e:
+            logger.error(f"Error reading TXT file {txt_path}: {e}")
+            return ""
+
+    # ---------- CLEAN TEXT ----------
     def clean_text(self, text: str) -> str:
-        """Clean and preprocess extracted text"""
-        # Remove extra whitespace and normalize
+        """Clean and normalize extracted text"""
         text = re.sub(r'\s+', ' ', text)
-        text = re.sub(r'\n+', '\n', text)
-        
-        # Remove page numbers and headers/footers
-        text = re.sub(r'^\d+\s*$', '', text, flags=re.MULTILINE)
         text = re.sub(r'Page \d+ of \d+', '', text, flags=re.IGNORECASE)
-        
-        # Remove special characters but keep Malayalam and English
-        text = re.sub(r'[^\w\s\u0D00-\u0D7F.,!?;:()\-]', ' ', text)
-        
+        text = re.sub(r'^\d+\s*$', '', text, flags=re.MULTILINE)
+        text = re.sub(r'[^\w\s\u0D00-\u0D7F.,!?;:/%+\-]', ' ', text)
         return text.strip()
-    
-    def extract_agricultural_sections(self, text: str) -> Dict[str, str]:
-        """Extract specific agricultural sections from text"""
-        sections = {
-            'crop_cultivation': '',
-            'pest_diseases': '',
-            'fertilizer_management': '',
-            'irrigation': '',
-            'harvesting': '',
-            'soil_management': '',
-            'weather_guidance': '',
-            'market_information': '',
-            'general_advice': ''
-        }
-        
-        # Keywords for different sections
-        keywords = {
-            'crop_cultivation': ['cultivation', 'planting', 'sowing', 'കൃഷി', 'നടുക', 'വിത്ത്', 'വളരുക'],
-            'pest_diseases': ['pest', 'disease', 'insect', 'രോഗം', 'കീടം', 'പ്രതിരോധം', 'നിയന്ത്രണം'],
-            'fertilizer_management': ['fertilizer', 'manure', 'nutrient', 'വളം', 'ഊർജ്ജം', 'ഭക്ഷണം'],
-            'irrigation': ['irrigation', 'watering', 'water', 'ജലസേചനം', 'വെള്ളം', 'ജലം'],
-            'harvesting': ['harvest', 'yield', 'collection', 'വിളവെടുക്കുക', 'വിളവ്', 'ശേഖരണം'],
-            'soil_management': ['soil', 'land', 'മണ്ണ്', 'ഭൂമി', 'ഭൂമിശാസ്ത്രം'],
-            'weather_guidance': ['weather', 'climate', 'rain', 'കാലാവസ്ഥ', 'മഴ', 'താപനില'],
-            'market_information': ['market', 'price', 'selling', 'വിപണി', 'വില', 'വിൽപ്പന'],
-            'general_advice': ['advice', 'tips', 'guidance', 'ഉപദേശം', 'സഹായം', 'മാർഗദർശനം']
-        }
-        
-        # Split text into sentences
+
+    # ---------- CLASSIFY SECTIONS ----------
+    def extract_sections(self, text: str) -> Dict[str, str]:
+        """Classify text sentences into agricultural sections"""
+        sections = {k: '' for k in self.section_keywords.keys()}
         sentences = re.split(r'[.!?]+', text)
-        
+
         for sentence in sentences:
             sentence = sentence.strip()
-            if len(sentence) < 10:  # Skip very short sentences
+            if len(sentence) < 8:
                 continue
-                
-            for section, section_keywords in keywords.items():
-                if any(keyword.lower() in sentence.lower() for keyword in section_keywords):
-                    sections[section] += sentence + ". "
-        
+            for section, keywords in self.section_keywords.items():
+                for kw in keywords:
+                    if re.search(r'\b' + re.escape(kw.lower()) + r'\b', sentence.lower()):
+                        sections[section] += sentence + ". "
+                        break
         return sections
-    
-    def process_pdf(self, pdf_path: str) -> Dict[str, Any]:
-        """Process a single PDF file and extract agricultural knowledge"""
-        logger.info(f"Processing PDF: {pdf_path}")
-        
-        # Extract text
-        raw_text = self.extract_text_from_pdf(pdf_path)
+
+    # ---------- PROCESS FILE ----------
+    def process_file(self, file_path: str) -> Dict[str, Any]:
+        """Extract, clean, classify one file (PDF or TXT)"""
+        logger.info(f"Processing file: {file_path}")
+        if self._is_pdf(file_path):
+            raw_text = self.extract_text_from_pdf(file_path)
+        elif self._is_txt(file_path):
+            raw_text = self.extract_text_from_txt(file_path)
+        else:
+            return {"error": f"Unsupported file type: {file_path}"}
+
         if not raw_text:
-            return {"error": "Could not extract text from PDF"}
-        
-        # Clean text
+            return {"error": "Could not extract text"}
+
         cleaned_text = self.clean_text(raw_text)
-        
-        # Extract sections
-        sections = self.extract_agricultural_sections(cleaned_text)
-        
-        # Create knowledge entry
+        sections = self.extract_sections(cleaned_text)
+
+        processed_at = datetime.fromtimestamp(Path(file_path).stat().st_mtime).isoformat()
+
         knowledge_entry = {
-            'file_name': Path(pdf_path).name,
-            'file_path': pdf_path,
-            'processed_at': str(Path(pdf_path).stat().st_mtime),
+            'file_name': Path(file_path).name,
+            'file_path': file_path,
+            'processed_at': processed_at,
             'total_text_length': len(cleaned_text),
             'sections': sections,
-            'full_text': cleaned_text[:5000]  # Store first 5000 chars for reference
+            'full_text': cleaned_text[:5000]
         }
-        
         return knowledge_entry
-    
-    def save_knowledge_entry(self, knowledge_entry: Dict[str, Any]) -> str:
-        """Save processed knowledge to JSON file"""
+
+    # ---------- SAVE ----------
+    def save_entry(self, knowledge_entry: Dict[str, Any]) -> str:
+        """Save processed knowledge entry as JSON"""
         filename = f"{Path(knowledge_entry['file_name']).stem}_knowledge.json"
         filepath = self.knowledge_base_dir / filename
-        
         with open(filepath, 'w', encoding='utf-8') as f:
             json.dump(knowledge_entry, f, ensure_ascii=False, indent=2)
-        
         logger.info(f"Saved knowledge entry: {filepath}")
         return str(filepath)
-    
-    def process_multiple_pdfs(self, pdf_directory: str) -> List[Dict[str, Any]]:
-        """Process all PDFs in a directory"""
-        pdf_dir = Path(pdf_directory)
-        if not pdf_dir.exists():
-            logger.error(f"Directory not found: {pdf_directory}")
+
+    # ---------- PROCESS MULTIPLE ----------
+    def process_multiple_files(self, directory: str) -> List[Dict[str, Any]]:
+        """Process all PDFs and TXTs in a directory"""
+        dir_path = Path(directory)
+        if not dir_path.exists():
+            logger.error(f"Directory not found: {directory}")
             return []
-        
-        pdf_files = list(pdf_dir.glob("*.pdf"))
-        if not pdf_files:
-            logger.warning(f"No PDF files found in {pdf_directory}")
+        files = list(dir_path.glob("*.pdf")) + list(dir_path.glob("*.txt"))
+        if not files:
+            logger.warning(f"No PDF/TXT files found in {directory}")
             return []
-        
+
         processed_entries = []
-        
-        for pdf_file in pdf_files:
+        for file in files:
             try:
-                knowledge_entry = self.process_pdf(str(pdf_file))
-                if 'error' not in knowledge_entry:
-                    saved_path = self.save_knowledge_entry(knowledge_entry)
-                    knowledge_entry['saved_path'] = saved_path
-                    processed_entries.append(knowledge_entry)
-                    self.processed_files.append(str(pdf_file))
+                entry = self.process_file(str(file))
+                if 'error' not in entry:
+                    saved_path = self.save_entry(entry)
+                    entry['saved_path'] = saved_path
+                    processed_entries.append(entry)
+                    self.processed_files.append(str(file))
                 else:
-                    logger.error(f"Failed to process {pdf_file}: {knowledge_entry['error']}")
+                    logger.error(f"Failed to process {file}: {entry['error']}")
             except Exception as e:
-                logger.error(f"Error processing {pdf_file}: {str(e)}")
-        
+                logger.error(f"Error processing {file}: {e}")
         return processed_entries
-    
+
+    # ---------- LOAD KNOWLEDGE ----------
     def load_all_knowledge(self) -> Dict[str, Any]:
-        """Load all processed knowledge from JSON files"""
-        knowledge_base = {
-            'crop_cultivation': [],
-            'pest_diseases': [],
-            'fertilizer_management': [],
-            'irrigation': [],
-            'harvesting': [],
-            'soil_management': [],
-            'weather_guidance': [],
-            'market_information': [],
-            'general_advice': []
-        }
-        
+        """Load all processed knowledge JSON files"""
+        knowledge_base = {k: [] for k in self.section_keywords.keys()}
         json_files = list(self.knowledge_base_dir.glob("*_knowledge.json"))
-        
+
         for json_file in json_files:
             try:
                 with open(json_file, 'r', encoding='utf-8') as f:
                     data = json.load(f)
-                
-                # Add sections to knowledge base
                 for section, content in data.get('sections', {}).items():
                     if content.strip() and section in knowledge_base:
                         knowledge_base[section].append({
@@ -186,50 +199,78 @@ class AgriculturalPDFProcessor:
                             'content': content.strip()
                         })
             except Exception as e:
-                logger.error(f"Error loading {json_file}: {str(e)}")
-        
+                logger.error(f"Error loading {json_file}: {e}")
+
         return knowledge_base
-    
-    def search_knowledge(self, query: str, knowledge_base: Dict[str, Any]) -> List[Dict[str, str]]:
-        """Search through knowledge base for relevant information"""
+
+    # ---------- ADVANCED SEARCH ----------
+    def search_knowledge(self,
+                         query: str,
+                         knowledge_base: Dict[str, Any],
+                         min_score: float = 0.1) -> List[Dict[str, str]]:
+        """
+        Search knowledge base using ranked relevance:
+          - Token overlap
+          - Keyword match
+          - Partial/phrase match
+        """
         query_lower = query.lower()
+        query_tokens = set(query_lower.split())
         results = []
-        
+
         for section, entries in knowledge_base.items():
             for entry in entries:
                 content_lower = entry['content'].lower()
-                if any(word in content_lower for word in query_lower.split()):
+
+                # Exact phrase match gets bonus
+                phrase_score = 2.0 if query_lower in content_lower else 0.0
+
+                # Token overlap score
+                entry_tokens = set(content_lower.split())
+                overlap = len(query_tokens & entry_tokens)
+                overlap_score = overlap / max(len(query_tokens), 1)
+
+                # Partial match
+                partial_score = 1.0 if any(q in content_lower for q in query_tokens) else 0.0
+
+                total_score = phrase_score + overlap_score + partial_score
+
+                if total_score >= min_score:
                     results.append({
                         'section': section,
                         'source': entry['source'],
+                        'score': round(total_score, 3),
                         'content': entry['content'][:500] + "..." if len(entry['content']) > 500 else entry['content']
                     })
-        
+
+        # Sort results by score descending
+        results.sort(key=lambda x: x['score'], reverse=True)
         return results
 
+
+# -----------------------------
+# Backward compatibility aliases
+# -----------------------------
+AgriculturalPDFProcessor = AgriculturalDocumentProcessor
+
 def main():
-    """Example usage of the PDF processor"""
-    processor = AgriculturalPDFProcessor()
+    """Example usage"""
+    processor = AgriculturalDocumentProcessor()
     
-    # Process PDFs from a directory
-    pdf_directory = "agricultural_pdfs"  # Change this to your PDF directory
-    processed_entries = processor.process_multiple_pdfs(pdf_directory)
+    # Process files
+    processed_entries = processor.process_multiple_files("agricultural_pdfs")
+    print(f"Processed {len(processed_entries)} files")
     
-    print(f"Processed {len(processed_entries)} PDF files")
-    
-    # Load all knowledge
+    # Load knowledge
     knowledge_base = processor.load_all_knowledge()
+    total_entries = sum(len(entries) for entries in knowledge_base.values())
+    print(f"Loaded {total_entries} knowledge entries")
     
-    # Example search
-    query = "rice cultivation"
-    results = processor.search_knowledge(query, knowledge_base)
-    
-    print(f"Found {len(results)} relevant entries for '{query}'")
-    for result in results[:3]:  # Show first 3 results
-        print(f"Section: {result['section']}")
-        print(f"Source: {result['source']}")
-        print(f"Content: {result['content'][:200]}...")
-        print("-" * 50)
+    # Search
+    results = processor.search_knowledge("coconut cultivation", knowledge_base)
+    print(f"Found {len(results)} relevant entries")
+    for result in results[:3]:
+        print(f"Score: {result['score']} | Section: {result['section']} | Source: {result['source']}")
 
 if __name__ == "__main__":
     main()

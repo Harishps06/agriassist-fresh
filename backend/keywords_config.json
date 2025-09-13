@@ -1,0 +1,38 @@
+{
+  "crop_cultivation": [
+    "cultivation", "planting", "sowing", "കൃഷി", "നടുക", "വിത്ത്", "വളരുക",
+    "crop", "farming", "agriculture", "growing", "seed", "seedling"
+  ],
+  "pest_diseases": [
+    "pest", "disease", "insect", "രോഗം", "കീടം", "പ്രതിരോധം", "നിയന്ത്രണം",
+    "control", "treatment", "prevention", "infestation", "fungus", "bacteria"
+  ],
+  "fertilizer_management": [
+    "fertilizer", "manure", "nutrient", "വളം", "ഊർജ്ജം", "ഭക്ഷണം",
+    "compost", "organic", "chemical", "NPK", "micronutrients", "soil fertility"
+  ],
+  "irrigation": [
+    "irrigation", "watering", "water", "ജലസേചനം", "വെള്ളം", "ജലം",
+    "drip", "sprinkler", "flood", "drainage", "moisture", "hydroponics"
+  ],
+  "harvesting": [
+    "harvest", "yield", "collection", "വിളവെടുക്കുക", "വിളവ്", "ശേഖരണം",
+    "picking", "gathering", "production", "output", "crop yield"
+  ],
+  "soil_management": [
+    "soil", "land", "മണ്ണ്", "ഭൂമി", "ഭൂമിശാസ്ത്രം",
+    "earth", "ground", "terrain", "topsoil", "subsoil", "pH", "texture"
+  ],
+  "weather_guidance": [
+    "weather", "climate", "rain", "കാലാവസ്ഥ", "മഴ", "താപനില",
+    "temperature", "humidity", "season", "monsoon", "drought", "flood"
+  ],
+  "market_information": [
+    "market", "price", "selling", "വിപണി", "വില", "വിൽപ്പന",
+    "trade", "commerce", "profit", "cost", "revenue", "economics"
+  ],
+  "general_advice": [
+    "advice", "tips", "guidance", "ഉപദേശം", "സഹായം", "മാർഗദർശനം",
+    "help", "support", "recommendation", "suggestion", "best practice"
+  ]
+}

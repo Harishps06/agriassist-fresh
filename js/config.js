@@ -9,7 +9,7 @@ const CONFIG = {
     // API Configuration
     api: {
     development: {
-        baseUrl: 'http://172.20.10.3:3000',
+        baseUrl: 'http://localhost:3000',
             timeout: 30000,
             retryAttempts: 3
         },
